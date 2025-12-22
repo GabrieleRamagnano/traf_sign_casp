@@ -1,3 +1,3 @@
 Encoding,Horizon,Problem,counter wrac1_y_wrbc1,counter wrbc1_b_wrcc1,counter wrcc1_x_wrdc1,counter wrdc1_b_wrec1,counter wrec1_y_wrfc1,Total
-clingcon,840,./Instancesv2/sippv2/fixlen4/30noon/p03[count=350]_asp_bound_hcafe_840.txt,29382720 ,21542400 ,21712580 , , ,72637700
-clingcon,840,./Instancesv2/sippv2/fixlen4/30noon/p01[count=350]_asp_bound_hcafe_840.txt,29448320 , , , , ,29448320
+clingcon,840,./Instancesv2/sippv2/fixlen4/30noon/p03[count=350]_asp_bound_hcafe_840.txt,29382720,21542400,21712580,,,72637700
+clingcon,840,./Instancesv2/sippv2/fixlen4/30noon/p01[count=350]_asp_bound_hcafe_840.txt,29448320,,,,,29448320

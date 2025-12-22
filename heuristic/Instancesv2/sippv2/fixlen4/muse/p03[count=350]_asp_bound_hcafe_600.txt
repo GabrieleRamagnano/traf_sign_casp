@@ -1,0 +1,25 @@
+clingcon version 5.2.1
+Reading from .../sippv2/fixlen4/muse/p03[count=350].lp ...
+Solving...
+Answer: 1 (Time: 20.763s)
+sol(298,inter(wrec1,4),conf_wrec1_1,conf_wrec1_4) sol(418,inter(wrac1,4),conf_wrac1_1,conf_wrac1_6) sol(561,inter(wrcc1,6),conf_wrcc1_1,conf_wrcc1_5)
+Assignment:
+h_cafe_tot1(300)=76863300 counter(600,link(wrac1,y,wrbc1))=19400900 counter(600,link(wrbc1,b,wrcc1))=14337900 counter(600,link(wrcc1,x,wrdc1))=16680000 h_cafe(300,link(wrac1,y,wrbc1))=24883500 h_cafe(300,link(wrbc1,b,wrcc1))=26624500 h_cafe(300,link(wrcc1,x,wrdc1))=25355300
+Cost: -50418800
+Answer: 2 (Time: 177.373s)
+sol(392,inter(wrec1,4),conf_wrec1_1,conf_wrec1_2) sol(418,inter(wrac1,4),conf_wrac1_1,conf_wrac1_5) sol(450,inter(wrfc1,3),conf_wrfc1_1,conf_wrfc1_6) sol(561,inter(wrcc1,6),conf_wrcc1_1,conf_wrcc1_5) sol(591,inter(wrdc1,4),conf_wrdc1_1,conf_wrdc1_4)
+Assignment:
+h_cafe_tot1(300)=76863300 counter(600,link(wrac1,y,wrbc1))=19495700 counter(600,link(wrbc1,b,wrcc1))=14337900 counter(600,link(wrcc1,x,wrdc1))=16680000 h_cafe(300,link(wrac1,y,wrbc1))=24883500 h_cafe(300,link(wrbc1,b,wrcc1))=26624500 h_cafe(300,link(wrcc1,x,wrdc1))=25355300
+Cost: -50513600
+Answer: 3 (Time: 267.204s)
+sol(392,inter(wrec1,4),conf_wrec1_1,conf_wrec1_2) sol(450,inter(wrfc1,3),conf_wrfc1_1,conf_wrfc1_5) sol(561,inter(wrcc1,6),conf_wrcc1_1,conf_wrcc1_5) sol(591,inter(wrdc1,4),conf_wrdc1_1,conf_wrdc1_4)
+Assignment:
+h_cafe_tot1(300)=76863300 counter(600,link(wrac1,y,wrbc1))=19527400 counter(600,link(wrbc1,b,wrcc1))=14337900 counter(600,link(wrcc1,x,wrdc1))=16680000 h_cafe(300,link(wrac1,y,wrbc1))=24883500 h_cafe(300,link(wrbc1,b,wrcc1))=26624500 h_cafe(300,link(wrcc1,x,wrdc1))=25355300
+Cost: -50545300
+SATISFIABLE
+
+TIME LIMIT   : 1
+Models       : 3+
+Calls        : 1
+Time         : 600.828s (Solving: 584.54s 1st Model: 4.46s Unsat: 0.00s)
+CPU Time     : 599.339s

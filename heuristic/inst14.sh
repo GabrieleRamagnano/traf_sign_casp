@@ -1,9 +1,11 @@
 #!/bin/bash
 
 horizon=$1
-day=$2
-time_slot=$3
-scenario="${day}${time_slot}"
+scenario=$2
+#day=$2
+#time_slot=$3
+#scenario="${day}${time_slot}"
+
 
 instance_round="Instancesv2_round/"
 instance="Instancesv2/"

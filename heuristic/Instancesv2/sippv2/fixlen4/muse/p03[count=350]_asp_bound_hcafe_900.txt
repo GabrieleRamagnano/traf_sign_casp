@@ -1,0 +1,15 @@
+clingcon version 5.2.1
+Reading from .../sippv2/fixlen4/muse/p03[count=350].lp ...
+Solving...
+Answer: 1 (Time: 23.463s)
+promising_conf_1(wrac1,8,conf_wrac1_4) sol(298,inter(wrec1,4),conf_wrec1_1,conf_wrec1_4) sol(418,inter(wrac1,4),conf_wrac1_1,conf_wrac1_6) sol(862,inter(wrac1,4),conf_wrac1_6,conf_wrac1_4) sol(862,inter(wrec1,4),conf_wrec1_4,conf_wrec1_3) sol(898,inter(wrfc1,3),conf_wrfc1_1,conf_wrfc1_3)
+Assignment:
+h_cafe_tot1(450)=64039500 counter(900,link(wrac1,y,wrbc1))=29026200 counter(900,link(wrbc1,b,wrcc1))=20929800 counter(900,link(wrcc1,x,wrdc1))=24949800 h_cafe(450,link(wrac1,y,wrbc1))=19420100 h_cafe(450,link(wrbc1,b,wrcc1))=23375600 h_cafe(450,link(wrcc1,x,wrdc1))=21243800
+Cost: -74905800
+SATISFIABLE
+
+TIME LIMIT   : 1
+Models       : 1+
+Calls        : 1
+Time         : 604.707s (Solving: 587.39s 1st Model: 6.13s Unsat: 0.00s)
+CPU Time     : 573.113s

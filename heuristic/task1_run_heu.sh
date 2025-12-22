@@ -14,10 +14,12 @@ day_s=("26" "30")
 function run_all
 {
     for horizon in "${horizon_s[@]}"; do
+        bash $clingo_run $horizon "muse" && \
+        bash $get_result $horizon "muse"
         for day in "${day_s[@]}"; do
-            for time_slot in "${time_slot_s[@]}"; do
-                bash $clingo_run $horizon $day $time_slot && \
-                bash $get_result $horizon $day $time_slot
+            for time_slot in "${time_slot_s}"; do
+                bash $clingo_run $horizon "${day}""${time_slot}" && \
+                bash $get_result $horizon "${day}""${time_slot}"
             done
         done
     done
@@ -26,9 +28,10 @@ function run_all
 function print_all
 {
     for horizon in "${horizon_s[@]}"; do
+        bash $get_result $horizon "muse"
         for day in "${day_s[@]}"; do
-            for time_slot in "${time_slot_s}"; do
-                bash $get_result $horizon $day $time_slot
+            for time_slot in "${time_slot_s[@]}"; do
+                bash $get_result $horizon "${day}""${time_slot}"
             done
         done
     done
@@ -53,6 +56,8 @@ function set_csv { ls $csv_tot && rm -r $csv_tot; printf "$fst_line"$'\n' > $csv
 function group_all
 {
     for horizon in "${horizon_s[@]}"; do
+        csv="./results_hcafe/result_det_bound_hcafe_${horizon}_muse.csv"
+        tail -n +2 $csv | while read -r line; do printf "$line"$'\n' >> $csv_tot; done
         for day in "${day_s[@]}"; do
             for time_slot in "${time_slot_s[@]}"; do
                 scenario="${day}${time_slot}"
@@ -64,6 +69,23 @@ function group_all
 }
 
 
-#run_all
+function muse
+{
+    #run&print&group
+    for horizon in "${horizon_s[@]}"; do
+        bash $clingo_run $horizon "muse" && \
+        bash $get_result $horizon "muse"
+        csv="./results_hcafe/result_det_bound_hcafe_${horizon}_muse.csv"
+        tail -n +2 $csv | while read -r line; do printf "$line"$'\n' >> $csv_tot; done
+    done;
+    
+}
+
+#muse
 print_all
+set_csv
 group_all
+
+
+
+ 

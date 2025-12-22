@@ -1,5 +1,5 @@
 Encoding,Horizon,Problem,counter wrac1_y_wrbc1,counter wrbc1_b_wrcc1,counter wrcc1_x_wrdc1,counter wrdc1_b_wrec1,counter wrec1_y_wrfc1,Total
-clingcon,600,./Instancesv2/sippv2/fixlen4/26eve/p03[count=350]_asp_bound_hcafe_600.txt,21965300 ,14630400 ,15025920 , , ,51621620
-clingcon,600,./Instancesv2/sippv2/fixlen4/26eve/p04[count=350]_asp_bound_hcafe_600.txt,21965300 ,14630400 ,15025920 ,15483900 , ,67105520
-clingcon,600,./Instancesv2/sippv2/fixlen4/26eve/p05[count=350]_asp_bound_hcafe_600.txt,21965300 ,14630400 ,15025920 ,15483900 ,18822100 ,85927620
-clingcon,600,./Instancesv2/sippv2/fixlen4/26eve/p02[count=350]_asp_bound_hcafe_600.txt,21805740 ,14918400 , , , ,36724140
+clingcon,600,./Instancesv2/sippv2/fixlen4/26eve/p03[count=350]_asp_bound_hcafe_600.txt,22037740,14630400,15025920,,,51694060
+clingcon,600,./Instancesv2/sippv2/fixlen4/26eve/p04[count=350]_asp_bound_hcafe_600.txt,21965300,14630400,15025920,15483900,,67105520
+clingcon,600,./Instancesv2/sippv2/fixlen4/26eve/p05[count=350]_asp_bound_hcafe_600.txt,21965300,14630400,15025920,15483900,18986900,86092420
+clingcon,600,./Instancesv2/sippv2/fixlen4/26eve/p02[count=350]_asp_bound_hcafe_600.txt,22037740,14918400,,,,36956140

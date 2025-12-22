@@ -16,9 +16,10 @@ fst_line="Encoding,Horizon,Problem,counter wrac1_y_wrbc1,counter wrbc1_b_wrcc1,c
 
 
 horizon=$1
-day=$2
-time_slot=$3
-scenario="${day}${time_slot}"
+scenario=$2
+#day=$2
+#time_slot=$3
+#scenario="${day}${time_slot}"
 
 
 instance_round="Instancesv2_round/"
@@ -165,37 +166,77 @@ function go_ahaed
     _prefix="${_elem:0:$start}"
 }
 
+
+function print_line
+{
+    local -n _counter_s=$1
+    
+    line=""
+    for item in "${_counter_s[@]}"; do line="$line""$item"; done
+    printf "clingcon,${horizon},${asp_out}${line}"$'\n' >> $csv
+    
+}
+
+function find_best_solution
+{
+    local asw_num
+    local -i len start end 
+    local -a asp_answer_s
+    local -n _asp_out=$1 _answ_set=$2 _set=$3
+
+    asp_answer_s=()
+    for elem in "${answ_sets[@]}"; do
+        if [[ "$elem" == "$_asp_out"* ]]; then
+            idx="${#asp_answer_s[@]}"
+            asp_answer_s[idx]+="$elem"
+        fi
+    done 
+
+    answer="Answer: "
+    if [[ "${#asp_answer_s[@]}" -gt 0 ]]; then
+        _set=${asp_answer_s[-1]} 
+        calculate_position answer _set len start end
+        calc_answ_number asw_num end _set
+        _answ_set="${answer}""${asw_num}"
+        
+    fi
+}
+
+
 function calculate_tot_counter
 {
     local key="="
     local prefix
+    local answ_set
+    local best_set
     local counter_value
     local -i end tot_value link_n
     local -a counter_s 
     
     #echo "------------------------------------------------------------------"
     for asp_out in "${asp_outputs[@]}"; do
-        #find for all the asp_outputs only the results of the 'Answer: 1'
-        prefix="${asp_out}::Answer: 1"
-        for elem in "${answ_sets[@]}"; do
-            #get the value of each counter atom in the answer set 1
-            tot_value=0 
-            end=${#prefix}
-            counter_s=(, , , , ,)
-            last=${#counter_s[*]}
-            if [[ "$elem" == "$prefix"* ]]; then
-               while [[ "${elem:$end:1}" == ";" ]]; do
-                     go_ahaed key prefix elem link_n
-                     end=${#prefix}                         #; echo $prefix
-                     calc_atom_value counter_value end elem
-                     #sum all the counter's values 
-                     tot_value+=$counter_value              #; echo $tot_value
-                     #add values to printout
-                     counter_s[$link_n]+=$counter_value     #; echo ${counter_s[*]}
-                     counter_s[last]=","$tot_value          #; echo ${counter_s[*]}
-               done; printf "clingcon,${horizon},${asp_out}${counter_s[*]}"$'\n' >> $csv
-            fi
-        done
+        #find for all the asp_outputs only the results of the best answer set
+        find_best_solution asp_out answ_set best_set
+        prefix="${asp_out}::""${answ_set}"
+        #get the value of each counter atom in the answer set 
+        tot_value=0 
+        end=${#prefix}
+        counter_s=(, , , , ,)
+        last=${#counter_s[*]}
+        if [[ "$best_set" == "$prefix"* ]]; then
+           while [[ "${best_set:$end:1}" == ";" ]]; do
+                 go_ahaed key prefix best_set link_n
+                 end=${#prefix}                         #; echo $prefix
+                 calc_atom_value counter_value end best_set
+                 #sum all the counter's values 
+                 tot_value+=$counter_value              #; echo $tot_value
+                 #add values to printout
+                 counter_s[$link_n]+=$counter_value     #; echo ${counter_s[*]}
+                 counter_s[last]=","$tot_value          #; echo ${counter_s[*]}
+           done
+           print_line counter_s
+        fi
+        
     done
 
 }
