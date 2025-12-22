@@ -15,7 +15,7 @@ function run_all
 {
     for horizon in "${horizon_s[@]}"; do
         for day in "${day_s[@]}"; do
-            for time_slot in "${time_slot_s}"; do
+            for time_slot in "${time_slot_s[@]}"; do
                 bash $clingo_run $horizon $day $time_slot && \
                 bash $get_result $horizon $day $time_slot
             done
@@ -63,9 +63,7 @@ function group_all
     done 
 }
 
-#set_csv; group_all
-#print_all
-clean_all
 
-
- 
+#run_all
+print_all
+group_all

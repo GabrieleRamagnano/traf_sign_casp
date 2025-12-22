@@ -1,0 +1,25 @@
+clingcon version 5.2.1
+Reading from ...ippv2/fixlen4/30morn/p04[count=350].lp ...
+Solving...
+Answer: 1 (Time: 112.514s)
+promising_conf_1(wrbc1,0,conf_wrbc1_1) promising_conf_1(wrbc1,1,conf_wrbc1_1) promising_conf_1(wrbc1,2,conf_wrbc1_1) promising_conf_1(wrbc1,3,conf_wrbc1_1) promising_conf_1(wrbc1,4,conf_wrbc1_2) promising_conf_1(wrbc1,5,conf_wrbc1_2) promising_conf_1(wrcc1,0,conf_wrcc1_1) promising_conf_1(wrcc1,1,conf_wrcc1_1) promising_conf_1(wrcc1,2,conf_wrcc1_1) promising_conf_1(wrcc1,3,conf_wrcc1_1) promising_conf_2(wrbc1,0,conf_wrbc1_1) promising_conf_2(wrbc1,1,conf_wrbc1_1) promising_conf_2(wrbc1,2,conf_wrbc1_1) promising_conf_2(wrbc1,3,conf_wrbc1_1) promising_conf_2(wrbc1,4,conf_wrbc1_2) promising_conf_2(wrbc1,5,conf_wrbc1_2) promising_conf_2(wrcc1,0,conf_wrcc1_1) promising_conf_2(wrcc1,1,conf_wrcc1_1) promising_conf_2(wrcc1,2,conf_wrcc1_1) promising_conf_2(wrcc1,3,conf_wrcc1_1) sol(422,inter(wrec1,4),conf_wrec1_1,conf_wrec1_4) sol(447,inter(wrfc1,3),conf_wrfc1_1,conf_wrfc1_5) sol(497,inter(wrdc1,4),conf_wrdc1_1,conf_wrdc1_4) sol(524,inter(wrbc1,5),conf_wrbc1_1,conf_wrbc1_2) sol(585,inter(wrac1,4),conf_wrac1_1,conf_wrac1_6) sol(592,inter(wrcc1,6),conf_wrcc1_1,conf_wrcc1_6)
+Assignment:
+h_cafe_tot2(360)=120982680 counter(720,link(wrac1,y,wrbc1))=8411820 counter(720,link(wrbc1,b,wrcc1))=6912000 counter(720,link(wrcc1,x,wrdc1))=7860240 counter(720,link(wrdc1,b,wrec1))=7413000 h_cafe(360,link(wrac1,y,wrbc1))=29708940 h_cafe(360,link(wrbc1,b,wrcc1))=30827000 h_cafe(360,link(wrcc1,x,wrdc1))=29893940 h_cafe(360,link(wrdc1,b,wrec1))=30552800
+Cost: -30597060
+Answer: 2 (Time: 115.816s)
+promising_conf_1(wrbc1,0,conf_wrbc1_1) promising_conf_1(wrbc1,1,conf_wrbc1_1) promising_conf_1(wrbc1,2,conf_wrbc1_1) promising_conf_1(wrbc1,3,conf_wrbc1_1) promising_conf_1(wrbc1,4,conf_wrbc1_2) promising_conf_1(wrbc1,5,conf_wrbc1_2) promising_conf_1(wrcc1,0,conf_wrcc1_1) promising_conf_1(wrcc1,1,conf_wrcc1_1) promising_conf_1(wrcc1,2,conf_wrcc1_1) promising_conf_1(wrcc1,3,conf_wrcc1_1) promising_conf_2(wrbc1,0,conf_wrbc1_1) promising_conf_2(wrbc1,1,conf_wrbc1_1) promising_conf_2(wrbc1,2,conf_wrbc1_1) promising_conf_2(wrbc1,3,conf_wrbc1_1) promising_conf_2(wrbc1,4,conf_wrbc1_2) promising_conf_2(wrbc1,5,conf_wrbc1_2) promising_conf_2(wrcc1,0,conf_wrcc1_1) promising_conf_2(wrcc1,1,conf_wrcc1_1) promising_conf_2(wrcc1,2,conf_wrcc1_1) promising_conf_2(wrcc1,3,conf_wrcc1_1) sol(422,inter(wrec1,4),conf_wrec1_1,conf_wrec1_4) sol(447,inter(wrfc1,3),conf_wrfc1_1,conf_wrfc1_5) sol(497,inter(wrdc1,4),conf_wrdc1_1,conf_wrdc1_4) sol(524,inter(wrbc1,5),conf_wrbc1_1,conf_wrbc1_2) sol(585,inter(wrac1,4),conf_wrac1_1,conf_wrac1_4) sol(592,inter(wrcc1,6),conf_wrcc1_1,conf_wrcc1_6)
+Assignment:
+h_cafe_tot2(360)=120982680 counter(720,link(wrac1,y,wrbc1))=8411820 counter(720,link(wrbc1,b,wrcc1))=6912000 counter(720,link(wrcc1,x,wrdc1))=7904940 counter(720,link(wrdc1,b,wrec1))=7413000 h_cafe(360,link(wrac1,y,wrbc1))=29708940 h_cafe(360,link(wrbc1,b,wrcc1))=30827000 h_cafe(360,link(wrcc1,x,wrdc1))=29893940 h_cafe(360,link(wrdc1,b,wrec1))=30552800
+Cost: -30641760
+Answer: 3 (Time: 128.059s)
+promising_conf_1(wrbc1,0,conf_wrbc1_1) promising_conf_1(wrbc1,1,conf_wrbc1_1) promising_conf_1(wrbc1,2,conf_wrbc1_1) promising_conf_1(wrbc1,3,conf_wrbc1_1) promising_conf_1(wrbc1,4,conf_wrbc1_2) promising_conf_1(wrbc1,5,conf_wrbc1_2) promising_conf_1(wrcc1,0,conf_wrcc1_1) promising_conf_1(wrcc1,1,conf_wrcc1_1) promising_conf_1(wrcc1,2,conf_wrcc1_1) promising_conf_1(wrcc1,3,conf_wrcc1_1) promising_conf_1(wrcc1,4,conf_wrcc1_2) promising_conf_2(wrbc1,0,conf_wrbc1_1) promising_conf_2(wrbc1,1,conf_wrbc1_1) promising_conf_2(wrbc1,2,conf_wrbc1_1) promising_conf_2(wrbc1,3,conf_wrbc1_1) promising_conf_2(wrbc1,4,conf_wrbc1_2) promising_conf_2(wrbc1,5,conf_wrbc1_2) promising_conf_2(wrcc1,0,conf_wrcc1_1) promising_conf_2(wrcc1,1,conf_wrcc1_1) promising_conf_2(wrcc1,2,conf_wrcc1_1) promising_conf_2(wrcc1,3,conf_wrcc1_1) promising_conf_2(wrcc1,4,conf_wrcc1_2) sol(422,inter(wrec1,4),conf_wrec1_1,conf_wrec1_4) sol(447,inter(wrfc1,3),conf_wrfc1_1,conf_wrfc1_5) sol(497,inter(wrdc1,4),conf_wrdc1_1,conf_wrdc1_4) sol(524,inter(wrbc1,5),conf_wrbc1_1,conf_wrbc1_2) sol(592,inter(wrcc1,6),conf_wrcc1_1,conf_wrcc1_2) sol(696,inter(wrac1,4),conf_wrac1_1,conf_wrac1_6)
+Assignment:
+h_cafe_tot2(360)=120982680 counter(720,link(wrac1,y,wrbc1))=8411820 counter(720,link(wrbc1,b,wrcc1))=6912000 counter(720,link(wrcc1,x,wrdc1))=7994340 counter(720,link(wrdc1,b,wrec1))=7413000 h_cafe(360,link(wrac1,y,wrbc1))=29708940 h_cafe(360,link(wrbc1,b,wrcc1))=30827000 h_cafe(360,link(wrcc1,x,wrdc1))=29893940 h_cafe(360,link(wrdc1,b,wrec1))=30552800
+Cost: -30731160
+SATISFIABLE
+
+TIME LIMIT   : 1
+Models       : 3+
+Calls        : 1
+Time         : 602.116s (Solving: 573.12s 1st Model: 83.49s Unsat: 0.00s)
+CPU Time     : 590.492s

@@ -1,0 +1,20 @@
+clingcon version 5.2.1
+Reading from ...ippv2/fixlen4/30noon/p04[count=350].lp ...
+Solving...
+Answer: 1 (Time: 74.055s)
+promising_conf_1(wrcc1,0,conf_wrcc1_1) promising_conf_1(wrcc1,1,conf_wrcc1_1) promising_conf_1(wrcc1,2,conf_wrcc1_1) promising_conf_1(wrcc1,3,conf_wrcc1_1) promising_conf_2(wrcc1,0,conf_wrcc1_1) promising_conf_2(wrcc1,1,conf_wrcc1_1) promising_conf_2(wrcc1,2,conf_wrcc1_1) promising_conf_2(wrcc1,3,conf_wrcc1_1) sol(357,inter(wrec1,4),conf_wrec1_1,conf_wrec1_4) sol(378,inter(wrac1,4),conf_wrac1_1,conf_wrac1_6) sol(530,inter(wrbc1,5),conf_wrbc1_1,conf_wrbc1_6) sol(594,inter(wrcc1,6),conf_wrcc1_1,conf_wrcc1_2) sol(870,inter(wrfc1,3),conf_wrfc1_1,conf_wrfc1_3)
+Assignment:
+h_cafe_tot2(450)=84513740 counter(900,link(wrac1,y,wrbc1))=31406320 counter(900,link(wrbc1,b,wrcc1))=21772800 counter(900,link(wrcc1,x,wrdc1))=22579040 counter(900,link(wrdc1,b,wrec1))=21809000 h_cafe(450,link(wrac1,y,wrbc1))=17971600 h_cafe(450,link(wrbc1,b,wrcc1))=22417400 h_cafe(450,link(wrcc1,x,wrdc1))=22581540 h_cafe(450,link(wrdc1,b,wrec1))=21543200
+Cost: -97567160
+Answer: 2 (Time: 145.874s)
+promising_conf_1(wrcc1,0,conf_wrcc1_1) promising_conf_1(wrcc1,1,conf_wrcc1_1) promising_conf_1(wrcc1,2,conf_wrcc1_1) promising_conf_1(wrcc1,3,conf_wrcc1_1) promising_conf_2(wrcc1,0,conf_wrcc1_1) promising_conf_2(wrcc1,1,conf_wrcc1_1) promising_conf_2(wrcc1,2,conf_wrcc1_1) promising_conf_2(wrcc1,3,conf_wrcc1_1) sol(378,inter(wrac1,4),conf_wrac1_1,conf_wrac1_6) sol(451,inter(wrec1,4),conf_wrec1_1,conf_wrec1_4) sol(530,inter(wrbc1,5),conf_wrbc1_1,conf_wrbc1_6) sol(594,inter(wrcc1,6),conf_wrcc1_1,conf_wrcc1_2) sol(832,inter(wrdc1,4),conf_wrdc1_1,conf_wrdc1_6) sol(870,inter(wrfc1,3),conf_wrfc1_1,conf_wrfc1_3)
+Assignment:
+h_cafe_tot2(450)=84513740 counter(900,link(wrac1,y,wrbc1))=31406320 counter(900,link(wrbc1,b,wrcc1))=21772800 counter(900,link(wrcc1,x,wrdc1))=22579040 counter(900,link(wrdc1,b,wrec1))=21940800 h_cafe(450,link(wrac1,y,wrbc1))=17971600 h_cafe(450,link(wrbc1,b,wrcc1))=22417400 h_cafe(450,link(wrcc1,x,wrdc1))=22581540 h_cafe(450,link(wrdc1,b,wrec1))=21543200
+Cost: -97698960
+SATISFIABLE
+
+TIME LIMIT   : 1
+Models       : 2+
+Calls        : 1
+Time         : 604.646s (Solving: 546.39s 1st Model: 15.78s Unsat: 0.00s)
+CPU Time     : 557.317s

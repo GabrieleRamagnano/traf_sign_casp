@@ -1,0 +1,25 @@
+clingcon version 5.2.1
+Reading from ...ippv2/fixlen4/26noon/p05[count=350].lp ...
+Solving...
+Answer: 1 (Time: 50.734s)
+sol(328,inter(wrec1,4),conf_wrec1_1,conf_wrec1_4) sol(571,inter(wrbc1,5),conf_wrbc1_1,conf_wrbc1_6)
+Assignment:
+h_cafe_tot3(390)=113949860 counter(780,link(wrac1,y,wrbc1))=27025420 counter(780,link(wrbc1,b,wrcc1))=19468800 counter(780,link(wrcc1,x,wrdc1))=19656380 counter(780,link(wrdc1,b,wrec1))=19488000 counter(780,link(wrec1,y,wrfc1))=20740600 h_cafe(390,link(wrac1,y,wrbc1))=20524280 h_cafe(390,link(wrbc1,b,wrcc1))=23684600 h_cafe(390,link(wrcc1,x,wrdc1))=24427980 h_cafe(390,link(wrdc1,b,wrec1))=23202300 h_cafe(390,link(wrec1,y,wrfc1))=22110700
+Cost: -106379200
+Answer: 2 (Time: 56.727s)
+promising_conf_1(wrac1,7,conf_wrac1_4) sol(328,inter(wrec1,4),conf_wrec1_1,conf_wrec1_4) sol(571,inter(wrbc1,5),conf_wrbc1_1,conf_wrbc1_6) sol(704,inter(wrec1,4),conf_wrec1_4,conf_wrec1_1) sol(753,inter(wrac1,4),conf_wrac1_1,conf_wrac1_4) sol(763,inter(wrdc1,4),conf_wrdc1_1,conf_wrdc1_4)
+Assignment:
+h_cafe_tot3(390)=113949860 counter(780,link(wrac1,y,wrbc1))=27025420 counter(780,link(wrbc1,b,wrcc1))=19468800 counter(780,link(wrcc1,x,wrdc1))=19656380 counter(780,link(wrdc1,b,wrec1))=19488000 counter(780,link(wrec1,y,wrfc1))=20823000 h_cafe(390,link(wrac1,y,wrbc1))=20524280 h_cafe(390,link(wrbc1,b,wrcc1))=23684600 h_cafe(390,link(wrcc1,x,wrdc1))=24427980 h_cafe(390,link(wrdc1,b,wrec1))=23202300 h_cafe(390,link(wrec1,y,wrfc1))=22110700
+Cost: -106461600
+Answer: 3 (Time: 154.846s)
+promising_conf_1(wrcc1,5,conf_wrcc1_2) promising_conf_2(wrcc1,5,conf_wrcc1_2) sol(328,inter(wrec1,4),conf_wrec1_1,conf_wrec1_4) sol(571,inter(wrbc1,5),conf_wrbc1_1,conf_wrbc1_6) sol(704,inter(wrec1,4),conf_wrec1_4,conf_wrec1_1) sol(714,inter(wrcc1,6),conf_wrcc1_1,conf_wrcc1_2) sol(753,inter(wrac1,4),conf_wrac1_1,conf_wrac1_6) sol(763,inter(wrdc1,4),conf_wrdc1_1,conf_wrdc1_6)
+Assignment:
+h_cafe_tot3(390)=113949860 counter(780,link(wrac1,y,wrbc1))=27025420 counter(780,link(wrbc1,b,wrcc1))=19468800 counter(780,link(wrcc1,x,wrdc1))=19701080 counter(780,link(wrdc1,b,wrec1))=19488000 counter(780,link(wrec1,y,wrfc1))=20823000 h_cafe(390,link(wrac1,y,wrbc1))=20524280 h_cafe(390,link(wrbc1,b,wrcc1))=23684600 h_cafe(390,link(wrcc1,x,wrdc1))=24427980 h_cafe(390,link(wrdc1,b,wrec1))=23202300 h_cafe(390,link(wrec1,y,wrfc1))=22110700
+Cost: -106506300
+SATISFIABLE
+
+TIME LIMIT   : 1
+Models       : 3+
+Calls        : 1
+Time         : 613.883s (Solving: 573.03s 1st Model: 9.85s Unsat: 0.00s)
+CPU Time     : 588.333s
