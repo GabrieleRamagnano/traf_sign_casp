@@ -51,108 +51,63 @@ turnrate_gez(S,L1,L2,R) :- turnrate(S,L1,L2,R).
 % add atoms for connections with missing turnrate 
 turnrate_gez(S,link(J1,L1,J2),link(J2,L2,J3),0) :- link(J1,L1,J2), link(J2,L2,J3), status(J2,S), turnrate(S1,link(J1,L1,J2),link(J2,L2,J3),_), S1 != S, not turnrate(S,link(J1,L1,J2),link(J2,L2,J3),_).
 
-%junc_in(J) :- goal_count(link(J,_,_),350).
-%junc_out(J) :- goal_count(link(_,_,J),350).
 
-%conf_in(A) :- junc_in(J), active_conf(_,J,A).
-%conf_out(A) :- junc_out(J), active_conf(_,J,A).
 
-%turn_in(J1,A,M) :- goal_count(link(J1,GL,J2),350),
-%                   configuration(J1,0,0,A),
-%                   M=#sum{R,S : phase_limit(S,A,_), 
-%                                turnrate_gez(S,_,link(J1,GL,J2),R)}.
+% Each configuration defines a set of signal stages and their associated green times.
+% To estimate the contribuition to the. link counter from the current configurations,
+% the heuristic computes the expected inflow and outflow.
 
-turn_in(J1,S,A,M) :- goal_count(link(J1,GL,J2),350),
-                     configuration(J1,_,_,A),
-                     S = stage(J1,_),
-                     phase_limit(S,A,_),
-                     M=#sum{R : turnrate_gez(S,_,link(J1,GL,J2),R)}.
+turn_in(J1,S,M) :- goal_count(link(J1,GL,J2),_),
+                   S = stage(J1,_),
+                   M=#sum{R,L2 : turnrate_gez(S,L2,link(J1,GL,J2),R)}.
 
-green_time_in(J1,S,A,L) :- turn_in(J1,S1,A,M),
-                           next(S1,S),
-                           not end(S1),
-                           phase_limit(S,A,L).
-                      
-exp_in(J1,S,A,E) :- turn_in(J1,S1,A,M),
-                    green_time_in(J1,S,A,L),
-                    next(S1,S),
-                    E = M*L.                  
+exp_in(J1,S,A,E) :- turn_in(J1,S,M),
+                    phase_limit(S,A,L),
+                    E = M*L.        
 
-inflow(J1,A,I) :- goal_count(link(J1,GL,J2),350),
-                  configuration(J1,_,_,A),
+inflow(J1,A,I) :- goal_count(link(J1,GL,J2),_),
+                  available_conf(J1,A)
                   I = #sum{E : exp_in(J1,S,A,E)}.
 %------------------------------------------------------------------
 
-turn_out(J2,S,A,M) :- goal_count(link(J1,GL,J2),350),
+turn_out(J2,S,A,M) :- goal_count(link(J1,GL,J2),_),
                       configuration(J2,_,_,A),
                       S = stage(J2,_),
                       phase_limit(S,A,_),
                       M=#sum{R : turnrate_gez(S,link(J1,GL,J2),_,R)}.
 
-green_time_out(J2,S,A,L) :- turn_out(J2,S1,A,M),
-                            next(S1,S),
-                            not end(S1),
-                            phase_limit(S,A,L).
-                      
-exp_out(J2,S,A,E) :- turn_out(J2,S1,A,M),
-                     green_time_out(J2,S,A,L),
-                     next(S1,S),
-                     E = M*L.                  
+exp_out(J2,S,A,E) :- turn_out(J2,S,A,M),
+                     phase_limit(S,A,L),
+                     E = M*L.  
 
-outflow(J2,A,O) :- goal_count(link(J1,GL,J2),350),
+
+outflow(J2,A,O) :- goal_count(link(J1,GL,J2),_),
                    configuration(J2,_,_,A),
                    O = #sum{E : exp_out(J2,S,A,E)}.
 
 %------------------------------------------------------------------
 
-exp(L,I) :- goal_count(link(J1,GL,J2),350),
-            L = link(J1,GL,J2),
-            inflow(J1,A1,I),
-            outflow(J2,A2,O),
-            active_conf(T,J1,A1),
-            active_conf(T,J2,A2),
-            I <= O.
+exp(L,I,A1) :- goal_count(link(J1,GL,J2),_),
+               L = link(J1,GL,J2),
+               inflow(J1,A1,I),
+               outflow(J2,A2,O),
+               active_conf(T,J1,A1),
+               active_conf(T,J2,A2),
+               I <= O.
 
-exp(L,O) :- goal_count(link(J1,GL,J2),350),
-            L = link(J1,GL,J2),
-            inflow(J1,A1,I),
-            outflow(J2,A2,O),
-            active_conf(T,J1,A1),
-            active_conf(T,J2,A2),
-            O <= I.
+exp(L,O,A2) :- goal_count(link(J1,GL,J2),_),
+               L = link(J1,GL,J2),
+               inflow(J1,A1,I),
+               outflow(J2,A2,O),
+               active_conf(T,J1,A1),
+               active_conf(T,J2,A2),
+               O <= I.
 %------------------------------------------------------------------
 
-% validation of turn_in:
-% which phases?
-%phase(J1,S) :- goal_count(link(J1,_,_),350),
-%               configuration(J1,0,0,A),
-%               status(J1,S).
-%
-%% which turnrate's values?
-%turn_r(S,R) :- goal_count(link(J1,GL,J2),350),
-%               phase(J1,S),
-%               turnrate_gez(S,_,link(J1,GL,J2),R).
-%
-%% turnrates
-%turnrate_2(S,L1,L2,R) :- L2 = link(J1,GL,J2),
-%                         turn_r(S,R),
-%                         turnrate(S,L1,L2,R).
-%
-%#show time/3.
-%#show sub/2.
-%#show configuration/4.
-%#show change/4.
-%#show turn_in/4.
-%#show turn_out/4.
-%#show green_time_in/4.
-%#show green_time_out/4.
-%#show exp_in/4.
-%#show exp_out/4.
-%#show inflow/3.
-%#show outflow/3.
+#show exp_in/4.
+#show exp_out/4.
+#show inflow/3.
+#show outflow/3.
 #show exp/2.
-%#show h_cafe/2.
-%#show phase/2.
-%#show turn_r/2.
-%#show turnrate_2/4.
+
 

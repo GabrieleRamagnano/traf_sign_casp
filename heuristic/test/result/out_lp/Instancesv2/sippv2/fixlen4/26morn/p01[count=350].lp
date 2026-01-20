@@ -2,7 +2,7 @@ clingcon
 version
 5.2.1Reading
 from
-...sippv2/fixlen4/26eve/p01[count=350].lp
+...ippv2/fixlen4/26morn/p01[count=350].lp
 ...Solving...UNKNOWNTIME
 LIMIT
  
@@ -23,9 +23,9 @@ LIMIT
  
  
 :
-601.315s
+601.157s
 (Solving:
-586.14s
+556.21s
 1st
 Model:
 0.00s
@@ -35,4 +35,4 @@ Time
  
  
 :
-599.569s
+597.343s

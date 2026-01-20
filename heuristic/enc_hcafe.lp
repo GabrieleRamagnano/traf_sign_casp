@@ -1,7 +1,6 @@
 %------------------------------------------------------------------
 #const threshold_lim = bound/2.
-threshold(TS) :- unit(U),
-                 TS = threshold_lim.
+threshold(TS) :- TS = threshold_lim.
 %------------------------------------------------------------------
 turn_in(J1,S,A,M) :- goal_count(link(J1,GL,J2),350),
                      configuration(J1,_,_,A),
@@ -203,3 +202,7 @@ evaluate_heu :- &sum{h_cafe_tot3(horizon/2)} < TS,
 #show promising_conf_2/3.
 #show promising_conf_1/3.
 %#show change/4.
+
+%-----------------------------------------------------------------------------
+
+%&minimize{h_cafe(horizon/2,L) : L = link(J1,GL,J2), goal_count(L,K)}.

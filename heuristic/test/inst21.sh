@@ -26,8 +26,8 @@ function run_all
 function single_run
 {
     horizon="600"
-    day="26"
-    time_slot="eve"
+    day="30"
+    time_slot="noon"
 
     bash $clingo_run $horizon $day $time_slot
 }

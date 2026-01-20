@@ -45,24 +45,25 @@ promising_conf_1(J,C,A) :- configuration(J,C,_,A),
 #show optimal_conf_fill/2.
 #show optimal_conf_empty/2.
 
-evaluate_heu :- &sum{h_cafe(horizon/2,L)} < TS,
+evaluate_heu :- &sum{h_cafe(horizon/2,L)} > TS,
+                num(1),
                 L = link(J1,GL,J2),
                 goal_count(L,K),
                 threshold(TS).
 
-evaluate_heu :- &sum{h_cafe_tot(horizon/2)} < TS,
+evaluate_heu :- &sum{h_cafe_tot(horizon/2)} > TS,
                 num(2),
                 threshold(TS).
                     
-evaluate_heu :- &sum{h_cafe_tot1(horizon/2)} < TS,
+evaluate_heu :- &sum{h_cafe_tot1(horizon/2)} > TS,
                 num(3),
                 threshold(TS).
 
-evaluate_heu :- &sum{h_cafe_tot2(horizon/2)} < TS,
+evaluate_heu :- &sum{h_cafe_tot2(horizon/2)} > TS,
                 num(4),
                 threshold(TS).
 
-evaluate_heu :- &sum{h_cafe_tot3(horizon/2)} < TS,
+evaluate_heu :- &sum{h_cafe_tot3(horizon/2)} > TS,
                 num(5),
                 threshold(TS).
 

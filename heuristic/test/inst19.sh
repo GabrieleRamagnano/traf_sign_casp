@@ -5,11 +5,11 @@ declare -a argument_s
 
 instance_fixed=" ./model/instance_fixed.lp "
 constants=" ./model/constants.lp "
-phase_limit=" ./model/dates/phase_limit.lp "
-turnrate=" ./model/dates/turnrate.lp "
-capacity=" ./model/dates/capacity.lp "
-occupancy=" ./model/dates/init_occ.lp "
-activation=" ./model/dates/activation.lp "
+phase_limit=" ./model/data/phase_limit.lp "
+turnrate=" ./model/data/turnrate.lp "
+capacity=" ./model/data/capacity.lp "
+occupancy=" ./model/data/init_occ.lp "
+activation=" ./model/data/activation.lp "
 
 configuration=" ./enc_conf.lp "
 counter=" ./enc_counter.lp " 
@@ -51,6 +51,20 @@ argument_s=("$instance_fixed"
             "$heuristic"
             "$change"
             "$options")
+
+#argument_s=("$instance_fixed" 
+#            "$constants"
+#            "$phase_limit"
+#            "$turnrate"
+#            "$activation"
+#            "$configuration")
+
+#argument_s=("$instance_fixed"
+#            "$constants"
+#            "$configuration"
+#            "$counter"
+#            "$heuristic"
+#            "$options")
 #
 function compose 
 {
