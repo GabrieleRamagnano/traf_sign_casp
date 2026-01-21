@@ -88,48 +88,6 @@ function complete_data
     muse="muse"
 }
 
-
-function add
-{
-    local -n lst=$1
-    local -i idx
-
-    idx="${#lst[@]}"
-    lst[idx]+="${input}"
-    echo "${lst[@]}"
-}
-
-function check_input
-{
-    local -n lst=$1
-
-    #first check list
-    for l in "${lst[@]}"; do
-        if [[ "$l" == "${input}" ]];then
-            echo "this input exists!"
-            return 1
-        fi
-    done
-    #then check horizon
-    for h in "${horz_s[@]}"; do
-        if [[ "$h" == "${input}" ]];then
-            return 0
-        fi
-    done
-    return 1
-}
-
-function insert
-{
-    local -n list_=$1
-
-    echo "horizon: ""${horz_s[@]}"
-    echo -e "choose::\c"
-    read -e input
-    check_input list_ && echo "valid input!" && add list_ ||
-    (echo "input not valid")
-}
-
 function addi
 {
     local in_=$1
@@ -137,8 +95,7 @@ function addi
     local -i idx
 
     idx="${#lst[@]}"
-    lst[idx]+="${in_}"
-    echo "${lst[@]}"
+    lst[idx]+="${in_}" #;echo "${lst[@]}"
 }
 
 function has_item
@@ -166,19 +123,64 @@ function change
 
 }
 
+function check_item
+{
+    local item=$1
+    #local -n out=$2
+    for elem in "${horz_s[@]}"; do
+        if [[ "${elem}" == "${item}" ]]; then
+            return 0
+        fi
+    done
+    return 1
+}
+
+function add
+{
+    local -n _lst=$1
+    local input=$2
+    local -i idx
+
+    idx="${#_lst[@]}"
+    _lst[idx]+="${input}" #;echo "${_lst[@]}"
+}
+
+function check_input
+{   
+    local -n lst=$1
+    local -a tmp
+    
+    for elem in "${input_s[@]}";do
+        check_item "${elem}" && add tmp "${elem}" || return 1
+    done
+    for t in "${tmp[@]}"; do
+        add lst "${t}"
+    done
+    return 0
+}
+
+function insert
+{
+    local -n list_=$1
+    local -a input_s
+
+    echo "horizon: ""${horz_s[@]}"
+    echo -e "choose::\c"
+    read -e -a input_s
+    check_input list_ && echo "valid input!" ||
+    (echo "input not valid")
+}
+
 declare -a -g output
 function menu
 {
     local -n _list=$1
-    #local -a output
-
 
     echo "${_list[@]}"
     select opt in "horizon" "time" "day" "done"; do
-           case "${opt}" in horizon | time | day) insert _list #"${opt}"
-                                                  echo "${_list[@]}"
-                                                  change _list output
-                                                  echo "${output[@]}"
+           case "${opt}" in horizon | time | day) _list=()
+                                                  insert _list #"${opt}" #;echo "${_list[@]}"
+                                                  change _list output    #;echo "${output[@]}"
                                                   menu output;;
                             done) echo "bye";;
                             *) echo "not valid option"
