@@ -195,6 +195,10 @@ function set_parameters
 
     break;
     done
+
+    ###todo...in future
+    #bash "${utility}" set_var muse,"muse"
+    #tail -n +1 tmp.txt | read -r line; muse="${line}"
 }
 
 function customize_data
