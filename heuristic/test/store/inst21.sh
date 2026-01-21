@@ -15,6 +15,7 @@ day_s=("26" "30")
 function run_all
 {
     for horizon in "${horizon_s[@]}"; do
+        bash $clingo_run $horizon "muse" 
         for day in "${day_s[@]}"; do
             for time_slot in "${time_slot_s}"; do
                 bash $clingo_run $horizon $day $time_slot

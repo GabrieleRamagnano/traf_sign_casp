@@ -127,7 +127,9 @@ function check_input
     if [[ "${#param_s[@]}" -ge 2 ]]; then
         prefix=${param_s[s_pos]}
         suffix=${param_s[s_pos+1]}
-        sign=""
+        if [[ "${suffix}" != ".sh" ]]; then
+            sign=""
+        fi
         if [[ "${param_s[s_pos+2]}" == "-f" ]]; then
             root=${param_s[s_pos+3]}
         fi
@@ -138,7 +140,7 @@ function check_input
 function secure_exec
 {
     local -i start=$1
-    local -n _input_s
+    local _input_s
     
     read -e -a _input_s
     check_input _input_s "${start}"
@@ -208,12 +210,5 @@ function prompt
 shopt -s lastpipe
 prompt
 
-
-
-#function func
-#{
-#    #list_result help
-#    print_elements help
-#}
 
 
