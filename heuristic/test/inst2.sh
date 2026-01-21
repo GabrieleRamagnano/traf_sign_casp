@@ -88,46 +88,21 @@ function complete_data
     muse="muse"
 }
 
-function addi
+function add
 {
-    local in_=$1
-    local -n lst=$2
+    local -n _arr=$1
     local -i idx
 
-    idx="${#lst[@]}"
-    lst[idx]+="${in_}" #;echo "${lst[@]}"
-}
-
-function has_item
-{
-    local item=$1
-    local -n out=$2
-    for elem in "${out[@]}"; do
-        if [[ "${elem}" == "${item}" ]]; then
-            return 1
-        fi
-    done
-    return 0
-}
-
-function change
-{
-    local -n swap_s=$1
-    local -n _output=$2
- 
-    #echo "ciao"
-    for sw in "${swap_s[@]}"; do
-        has_item "${sw}" _output &&
-        addi "${sw}" _output
-    done
-
+    idx="${#_arr[@]}"
+    _arr[idx]+=$2  #;echo "${_arr[@]}"
 }
 
 function check_item
 {
     local item=$1
-    #local -n out=$2
-    for elem in "${horz_s[@]}"; do
+    local -n _ref=$2
+
+    for elem in "${_ref[@]}"; do
         if [[ "${elem}" == "${item}" ]]; then
             return 0
         fi
@@ -135,57 +110,87 @@ function check_item
     return 1
 }
 
-function add
-{
-    local -n _lst=$1
-    local input=$2
-    local -i idx
-
-    idx="${#_lst[@]}"
-    _lst[idx]+="${input}" #;echo "${_lst[@]}"
-}
-
 function check_input
 {   
-    local -n lst=$1
-    local -a tmp
+    local -n _lst=$1 _reference=$2
+    local -a tmp_s
     
+    #check the correctness of the input
     for elem in "${input_s[@]}";do
-        check_item "${elem}" && add tmp "${elem}" || return 1
+        check_item "${elem}" _reference && 
+        add tmp_s "${elem}" || return 1
     done
-    for t in "${tmp[@]}"; do
-        add lst "${t}"
+    #set the main list with the current input
+    for t in "${tmp_s[@]}"; do
+        add _lst "${t}"
     done
     return 0
 }
 
 function insert
 {
-    local -n list_=$1
+    local type=$1
+    local -n _list=$2 _choice_s=$3
     local -a input_s
 
-    echo "horizon: ""${horz_s[@]}"
+    echo "${type}: ""${_choice_s[@]}"
     echo -e "choose::\c"
+    #read input
     read -e -a input_s
-    check_input list_ && echo "valid input!" ||
+    #validation input
+    check_input _list _choice_s ||
     (echo "input not valid")
 }
 
-declare -a -g output
-function menu
+function set_var
 {
-    local -n _list=$1
+    local -n _var=$1
+    local name=$2
+    local input
 
-    echo "${_list[@]}"
-    select opt in "horizon" "time" "day" "done"; do
-           case "${opt}" in horizon | time | day) _list=()
-                                                  insert _list #"${opt}" #;echo "${_list[@]}"
-                                                  change _list output    #;echo "${output[@]}"
-                                                  menu output;;
+    echo "${_var:-$name}"
+    echo -e "choose::[y/n]\c"
+    #read input
+    read -e input
+    #validate input
+    case "${input}" in y) _var="muse";;
+                       n) echo "${_var:-$name not set}";;
+                       *) echo "input not valid";;
+    esac 
+}
+
+function resume 
+{
+    echo "current setting:"
+    echo "${horizon_s[@]:+horizon::}" \
+         "${horizon_s[@]:- horizon-empty}"
+    echo "${time_slot_s[@]:+time::}" \
+         "${time_slot_s[@]:- time-empty}"
+    echo "${day_s[@]:+day::}" \
+         "${day_s[@]:- day-empty}"    
+    echo "${muse:+muse::}"\
+         "${muse:-muse-empty}"
+}
+
+function set_parameters
+{
+    resume
+    select opt in "horizon" "time" "day" "muse" "done"; do
+           case "${opt}" in horizon) horizon_s=()
+                                     insert "${opt}" horizon_s horz_s
+                                     set_parameters;;
+                            time) time_slot_s=()
+                                  insert "${opt}" time_slot_s time_s
+                                  set_parameters;;
+                            day) day_s=()
+                                 insert "${opt}" day_s days
+                                 set_parameters;;
+                            muse) muse=""
+                                  set_var muse "muse"
+                                  set_parameters;; 
                             done) echo "bye";;
                             *) echo "not valid option"
-                               change _list output
-                               menu output;;
+                               set_parameters;;
            esac
 
     break;
@@ -199,10 +204,8 @@ function customize_data
     local -a time_s=("morn" "noon" "eve")
     local -a days=("26" "30")
     local ms="muse"
-    local input
-    local -a list
+    set_parameters
 
-    menu list
 }
 
 function prepare_parameters { export args 
