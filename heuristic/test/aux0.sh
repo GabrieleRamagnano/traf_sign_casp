@@ -52,7 +52,7 @@ function search
     return 1
 }
 
-function set_output { search $1 $2 && rm -r $2; }
+function set_output { search $1 $2 && rm -r $1$2; }
 
 function reorder_result
 {
@@ -67,13 +67,13 @@ function reorder_result
     until [[ "${lines:$holder:4}" == "stop" ]]; do 
           if [[ "${lines:$holder:1}" == *" "* && $holder -gt $start ]]; then 
              end=$(($holder - $start)) 
-             echo "${lines:$start:$end}" >> "${out}" 
+             echo "${lines:$start:$end}" >> "${root}${out}" 
              start=$(($holder+1))  
           fi 
           ((holder++))
     done
     end=$(($holder - $start)) 
-    echo "${lines:$start:$end}" >> "${out}" 
+    echo "${lines:$start:$end}" >> "${root}${out}" 
 }
 
 function get_parameters
@@ -176,3 +176,5 @@ function aux
 
 shopt -s lastpipe
 aux $@
+#reorder_result
+#set_output

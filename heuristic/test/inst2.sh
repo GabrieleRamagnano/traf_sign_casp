@@ -3,6 +3,9 @@
 ##File to organize input 
 ## -- the standard setting does not provide unbounded test (Task2) --
 
+#input parameters
+declare help=$* # -h option about the script
+
 #varaiable parameters
 declare -a -g horizon_s
 declare -a -g time_slot_s
@@ -38,15 +41,18 @@ function set_standard_traffic
                     *) export instance="Instancesv2/";;
     esac
     export bounds="../../Results_experiments/Task1/bounds.csv"
+    export instance_fixed=" ./model/instance_fixed.lp "
+    export enc_clingcon=" ./model/enc_clingcon.lp " 
+
+    #compose
+    args="${args}${instance_fixed}${enc_clingcon}"
+    
 }
 
 function set_constants
 { 
-    const_h=" --const horizon="
-    const_b=" --const bound="
-
-    #compose
-    args="${args}${const_h}${const_b}"
+    export const_h=" --const horizon="
+    export const_b=" --const bound="
 }
 
 function set_options
@@ -218,7 +224,7 @@ function prepare_parameters { export args
 function run_experiment
 {
     for horz in "${horizon_s[@]}"; do
-        export horizon_s="${horz}"
+        export horizon="${horz}"
         export day="${muse}"
         bash "${clingo_run}"
         for day in "${day_s[@]}"; do
@@ -231,5 +237,96 @@ function run_experiment
     done   
 }
 
+function expand_cmd { echo "description not available"; }
+
+function see_services
+{
+    local -a service_s=("customize_run"
+                        "total_run")
+    
+    select srv in "${service_s[@]}" "done"; do
+           case "${srv}" in customize_run) service="customize_run";;
+                            total_run) service="total_run";;
+                            done) echo "bye";;
+                               *) echo "input not correct"
+                                  see_services;;
+           esac
+    break;
+    done 
+}
+
+function total_run
+{
+    set_task
+    complete_data
+    prepare_parameters
+    run_experiment
+}
+
+function customize_run
+{
+    set_task
+    customize_data
+    prepare_parameters
+    run_experiment
+}
+
+function execute
+{
+    local svr=$1
+    case "${svr}" in customize_run) customize_run;;
+                     total_run) total_run;;
+                     *) echo "error";;
+    esac
+}
+
+function fast_run
+{
+    local -a input_s
+    local service
+
+    #echo "bash filename [prefix] [suffix] [-f foldername]"
+    #echo -e "bash ./create_scripts.sh\c"
+
+    see_services
+    #run program
+    execute "${service}"
+
+}
+
+function menu
+{   
+    select opt in "${options[@]}"; do
+           case $opt in continue...) expand_cmd 
+                                     menu;;
+                        run) fast_run;;
+                        exit) echo "bye";;
+                        *) echo "non valid option!"
+                           menu;;
+           esac
+    break;
+    done
+}
+
+function show_cmd
+{
+    local -a options=("continue..."
+                      "run"
+                      "exit")
+
+    echo "bash filename -h"
+    menu    
+}
+
+function prompt
+{
+    local -a input
+
+    case "${help}" in -h) show_cmd;;
+                       *) echo "not available to be run \
+                                independently";;
+    esac 
+}
+
 shopt -s lastpipe
-customize_data
+prompt
