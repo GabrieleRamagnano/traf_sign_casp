@@ -44,7 +44,7 @@ function run_test
 
 function execute
 {
-    run_test p02
+    run_test p03
     #echo $( export -p)
     echo $args
     

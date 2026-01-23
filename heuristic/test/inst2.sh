@@ -16,6 +16,7 @@ declare -g args
 declare -a prefix_s=("inst"
                      "aux")
 declare clingo_run="./${prefix_s[0]}0.sh"
+declare test_run=""
 declare utility="./${prefix_s[1]}0.sh"
 
 function set_test_traffic
@@ -239,20 +240,260 @@ function run_experiment
 
 function expand_cmd { echo "description not available"; }
 
+function check_duplicate
+{   
+    local item=$1
+    local -n ref_=$2
+
+    if check_item "${item}" ref_ ; then 
+       echo "file already exists"
+       return 1
+    else 
+       return 0 
+    fi
+
+}
+
+function store_file
+{
+    local -i idx
+    add choice_s "${file}"
+    idx=$(($REPLY-1))
+    add exp_choice_s "${exp_para_s[$idx]%%".lp"}"
+}
+
+function choose_files
+{
+    
+    select file in "${file_s[@]}" "done"; do
+           case "${file}" in *.lp) check_duplicate "${file}" choice_s &&
+                                   store_file
+                                   choose_files;;
+                             done) echo "good choice!"
+                                   echo "bye";;
+                                *) echo "not valid option"
+                                   choose_files;;
+           esac
+    break;
+    done
+}
+
+function list
+{
+    local -n _flist=$1
+    local root=$2
+    local -i idx
+
+    tree "${root}" -i $3 -v | 
+    while read -r line; do
+          if [[ "${line}" == *$4 ]]; then  
+             add _flist "${line}"
+          fi  
+    done
+}
+
+function composexp 
+{
+    local -n arg_s=$1
+    local -i idx
+
+    args=""
+    idx=0
+    for elem in "${arg_s[@]}"; do
+        export "${exp_choice_s[$idx]}=${elem}"
+        args="$args ""${elem}"
+        ((idx++))
+    done
+}
+
+function answer
+{
+    local ans
+    read -e ans
+    case "${ans}" in y) composexp choice_s;;
+                     n) echo "files deleted"
+                        choice_s=();;
+                     *) echo "bad option"
+                        answer;;
+    esac
+}
+
+function print_elements
+{     
+    local -n arr_=$1
+    local msg=$2
+
+    echo "${msg} "
+    for elem in "${arr_[@]}"; do
+        echo $elem 
+    done 
+}
+
+function file_set
+{
+    local -a file_s exp_para_s choice_s exp_choice_s
+
+    list file_s "./model" "-f" ".lp"
+    list exp_para_s "./model" " " ".lp"
+    choose_files
+    print_elements choice_s "The files are"
+    print_elements exp_choice_s "The export variable are"
+    echo -e "Are you sure of your choices?[y/n]\c"
+    answer
+    #echo "${choice_s[@]}"
+
+}
+
+function general_answer
+{
+    local input
+    read -e input
+    case "${input}" in y) return 0;;
+                       n) return 1;;
+                       *) echo "bad option"
+                          general_answer;;
+    esac
+}
+
+function preset_options
+{
+    local input
+    echo -e "digit -round for selecting Instancesv2_round/:\c "
+    read -e input
+    set_standard_traffic "${input}"
+}
+
+function preset_standard_traffic
+{
+    local input
+    echo "digit -heu for the heuristic version:\c "
+    read -e input
+    set_options "${input}"
+}
+
+function see_standard_traffic
+{
+    local -a std_traffic=("../../Results_experiments/Task1/bounds.csv"
+                          "./model/instance_fixed.lp "
+                          "./model/enc_clingcon.lp "
+                          "Instancesv2_round/ | Instancesv2/")
+
+    for std in "${std_traffic[@]}"; do
+        echo "${std}"
+    done
+    echo -e "Do you want to export these variables?[y/n]\c"
+    general_answer || return 1
+
+}
+
+function see_constants
+{
+    for cos in "--const horizon=" "--const bound="; do
+        echo "${cos}"
+    done
+    echo -e "Do you want to export these variables?[y/n]\c"
+    general_answer || return 1
+}
+
+function see_options
+{
+    classic=" --config=crafty --time-limit=600 "
+    for opt in "${classic}" "${classic} --heuristic=Domain "; do
+        echo "${opt}"
+    done
+    echo -e "Do you want to export these variables?[y/n]\c"
+    general_answer || return 1
+}
+
+function see_standard_output
+{
+    local input
+    root="./result"
+    for out in "${root}" "${root}""/out_txt/" "${root}""/out_lp/"; do
+        echo "${out}"
+    done
+    echo -e "Do you want to export these variables?[y/n]\c"
+    general_answer || return 1
+
+}
+
+function additional_export
+{
+    local -a package_s=("standard_traffic_instance"
+                        "clingo_constants"
+                        "clingo_options"
+                        "standard_output"
+                        "traffic_parameters")
+
+    echo "There are also these additional packages:"
+    select pack in "${package_s[@]}" "done"; do
+           case "${pack}" in standard_traffic_instance) see_standard_traffic &&
+                                                        preset_standard_traffic
+                                                        additional_export;;
+                             clingo_constants) see_constants &&
+                                               set_constants
+                                               additional_export;;
+                             clingo_options) see_options && 
+                                             preset_options
+                                             echo $( export -p)
+                                             additional_export;;
+                             standard_output) see_standard_output &&
+                                              set_standard_output
+                                              echo $( export -p)
+                                              additional_export;;
+                             traffic_parameters) set_parameters
+                                                 additional_export;;
+                             done) echo "bye";;
+                                *) echo "not valid option"
+                                   additional_export;; 
+
+           esac
+    break;
+    done
+}
+
+function set_script
+{
+    local -a script_s 
+    ls *.sh | 
+    while read -r line; do add script_s "${line}"; done
+    echo "Choose the script for testing your code:"
+    select script in "${script_s[@]}";do
+           test_run="${script}"
+           echo "The file choosen is ${test_run}"
+           echo -e "Continue?[y/n]\c"
+           general_answer && break || set_script
+    done
+}
+
 function see_services
 {
     local -a service_s=("customize_run"
-                        "total_run")
+                        "total_run"
+                        "test_run")
     
     select srv in "${service_s[@]}" "done"; do
-           case "${srv}" in customize_run) service="customize_run";;
-                            total_run) service="total_run";;
+           case "${srv}" in customize_run) service="customize_run"
+                                           see_services;;
+                            total_run) service="total_run"
+                                       see_services;;
+                            test_run) file_set
+                                      additional_export
+                                      set_script
+                                      service="test_run"
+                                      see_services;;
                             done) echo "bye";;
                                *) echo "input not correct"
                                   see_services;;
            esac
     break;
     done 
+}
+
+function test_run
+{
+    echo "not available yet..."
+    prepare_parameters #...
 }
 
 function total_run
@@ -276,6 +517,7 @@ function execute
     local svr=$1
     case "${svr}" in customize_run) customize_run;;
                      total_run) total_run;;
+                     test_run) test_run;;
                      *) echo "error";;
     esac
 }
@@ -323,8 +565,7 @@ function prompt
     local -a input
 
     case "${help}" in -h) show_cmd;;
-                       *) echo "not available to be run \
-                                independently";;
+                       *) echo "not available to be run independently";;
     esac 
 }
 
