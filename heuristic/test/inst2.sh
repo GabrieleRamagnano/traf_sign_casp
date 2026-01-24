@@ -336,11 +336,18 @@ function menu_saved_exp
     local -a label_s
     local -a exp_list
     
-    recover_ "_labels" "Name::"
-    select lb in "${label_s[@]}"; do
-           recover_ "_files" "--${lb}"
-           print_elements exp_list "${lb}...\n"
-           load_files
+    recover_ "_labels" "Name"
+    select lb in "${label_s[@]}" "done"; do
+           case "${lb}" in ::*) choice_s=();exp_choice_s=()
+                                recover_ "_files" "--${lb:2}"
+                                print_elements exp_list "${lb}...\n" 
+                                load_files
+                                menu_saved_exp "${exp_files}";;
+                          done) echo "bye";;
+                             *) echo "not valid option"
+                                menu_saved_exp "${exp_files}";;
+           esac
+           
     break;
     done
 }
@@ -437,7 +444,6 @@ function file_set
     echo -e "\rAre you sure of your choices?[y/n]\c"
     if bash "${utility}" general_answer; then 
        composexp choice_s
-       echo $( export -p )
        save_file_set
        return 0
     else
