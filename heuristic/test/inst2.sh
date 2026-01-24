@@ -251,20 +251,109 @@ function check_duplicate
 }
 
 function store_file
-{
-    local -i idx
-    add choice_s "${file}"
-    idx=$(($REPLY-1))
+{   
+    local _file=$1
+    local -i idx=$2
+    add choice_s "${_file}"
     add exp_choice_s "${exp_para_s[$idx]%%".lp"}"
+}
+
+function split_line
+{
+    local line=$1 
+    local -n _input_s=$2 
+    local -i start=0
+    local -i holder=0
+    local -i idx
+    local ifs=" "
+    
+    line="${line}stop" 
+    until [[ "${line:$holder:4}" == "stop" ]]; do 
+          if [[ "${line:$holder:1}" == *"${ifs}"* && $holder -gt $start ]]; then 
+             end=$(($holder - $start)) 
+             add _input_s "${line:$start:$end}"
+             start=$(($holder+1))  
+          fi 
+          ((holder++))
+    done
+    end=$(($holder - $start)) 
+    add _input_s "${line:$start:$end}"
+}
+
+function _labels
+{
+    local -i len
+    len="${#key}"
+    if [[ "${line}" == "${key}"* ]]; then
+        add label_s "${line:len}"
+    fi  
+}
+
+function _files 
+{
+    if [[ "${line}" == *"${key}" ]]; then
+        split_line "${line%"--"*}" exp_list
+    fi      
+}
+
+function recover_
+{    
+    local item=$1
+    local key=$2
+
+    tail -n +1 "${exp_files}" | 
+    while read -r line; do $item; done
+}
+
+
+function find
+{
+    local item=$1
+    local -n _i=$2 
+
+    _i=0
+    for v_exp in "${exp_para_s[@]}"; do
+        if [[ "${item}" == *"${v_exp}" ]]; then
+            return 0
+        fi
+        ((++_i))
+    done
+
+}
+
+function load_files
+{
+    local -i idx_
+    for expf in "${exp_list[@]}"; do
+        find "${expf}" idx_
+        store_file "${expf}" idx_
+    done
+}
+
+function menu_saved_exp
+{
+    local exp_files=$1
+    local -a label_s
+    local -a exp_list
+    
+    recover_ "_labels" "Name::"
+    select lb in "${label_s[@]}"; do
+           recover_ "_files" "--${lb}"
+           print_elements exp_list "${lb}...\n"
+           load_files
+    break;
+    done
 }
 
 function choose_files
 {
     
-    select file in "${file_s[@]}" "done"; do
+    select file in "${file_s[@]}" "export_files.txt" "done"; do
            case "${file}" in *.lp) check_duplicate "${file}" choice_s &&
-                                   store_file
+                                   store_file "${file}" "$(($REPLY-1))"
                                    choose_files;;
+                             export_files.txt) menu_saved_exp "${file}"
+                                               choose_files;;
                              done) echo "good choice!"
                                    echo "bye";;
                                 *) echo "not valid option"
@@ -313,6 +402,29 @@ function print_elements
     done 
 }
 
+function name_file_set
+{
+    echo -e "\rHow do you call this file set?"
+    echo -e "\rName: \c"
+    read -e name
+    echo -e "\rThe name is: ${name}"
+    echo -e "\rAre you sure of your choice[y/n]?\c"
+    bash "${utility}" general_answer || name_file_set
+}
+
+function save_file_set
+{
+    local name
+
+    echo -e "\rDo you want to save this file set?[y/n]\c"
+    if bash "${utility}" general_answer; then
+       name_file_set
+       echo "Name::${name}" >> export_files.txt
+       echo "${args}--${name}" >> export_files.txt
+       echo -e "\rThe file set ${name} is saved!"
+    fi
+}
+
 function file_set
 {
     local -a file_s exp_para_s choice_s exp_choice_s
@@ -325,6 +437,8 @@ function file_set
     echo -e "\rAre you sure of your choices?[y/n]\c"
     if bash "${utility}" general_answer; then 
        composexp choice_s
+       echo $( export -p )
+       save_file_set
        return 0
     else
         echo "files deleted"
