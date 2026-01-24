@@ -169,14 +169,10 @@ function set_var
 function resume 
 {
     echo "current setting:"
-    echo "${horizon_s[@]:+horizon::}" \
-         "${horizon_s[@]:- horizon-empty}"
-    echo "${time_slot_s[@]:+time::}" \
-         "${time_slot_s[@]:- time-empty}"
-    echo "${day_s[@]:+day::}" \
-         "${day_s[@]:- day-empty}"    
-    echo "${muse:+muse::}"\
-         "${muse:-muse-empty}"
+    echo -e "\r${horizon_s[@]:+horizon::}""${horizon_s[@]:-horizon-empty}"
+    echo -e "\r${time_slot_s[@]:+time::}""${time_slot_s[@]:-time-empty}"
+    echo -e "\r${day_s[@]:+day::}""${day_s[@]:-day-empty}"    
+    echo -e "\r${muse:+muse::}""${muse:-muse-empty}"
 }
 
 function set_parameters
@@ -306,26 +302,14 @@ function composexp
     done
 }
 
-function answer
-{
-    local ans
-    read -e ans
-    case "${ans}" in y) composexp choice_s;;
-                     n) echo "files deleted"
-                        choice_s=();;
-                     *) echo "bad option"
-                        answer;;
-    esac
-}
-
 function print_elements
 {     
     local -n arr_=$1
     local msg=$2
 
-    echo "${msg} "
+    echo -n -e "\r${arr_:+$msg}"
     for elem in "${arr_[@]}"; do
-        echo $elem 
+        echo -e "\r${elem}" 
     done 
 }
 
@@ -336,23 +320,19 @@ function file_set
     list file_s "./model" "-f" ".lp"
     list exp_para_s "./model" " " ".lp"
     choose_files
-    print_elements choice_s "The files are"
-    print_elements exp_choice_s "The export variable are"
-    echo -e "Are you sure of your choices?[y/n]\c"
-    answer
+    print_elements choice_s "The files are\n"
+    print_elements exp_choice_s "The export variables are\n"
+    echo -e "\rAre you sure of your choices?[y/n]\c"
+    if bash "${utility}" general_answer; then 
+       composexp choice_s
+       return 0
+    else
+        echo "files deleted"
+        choice_s=()
+        file_set
+    fi 
     #echo "${choice_s[@]}"
 
-}
-
-function general_answer
-{
-    local input
-    read -e input
-    case "${input}" in y) return 0;;
-                       n) return 1;;
-                       *) echo "bad option"
-                          general_answer;;
-    esac
 }
 
 function preset_options
@@ -371,50 +351,16 @@ function preset_standard_traffic
     set_options "${input}"
 }
 
-function see_standard_traffic
+function exp_view
 {
-    local -a std_traffic=("../../Results_experiments/Task1/bounds.csv"
-                          "./model/instance_fixed.lp "
-                          "./model/enc_clingcon.lp "
-                          "Instancesv2_round/ | Instancesv2/")
+    local -n _item_s=$1
+    local msg=$2
 
-    for std in "${std_traffic[@]}"; do
-        echo "${std}"
-    done
-    echo -e "Do you want to export these variables?[y/n]\c"
-    general_answer || return 1
-
-}
-
-function see_constants
-{
-    for cos in "--const horizon=" "--const bound="; do
-        echo "${cos}"
-    done
-    echo -e "Do you want to export these variables?[y/n]\c"
-    general_answer || return 1
-}
-
-function see_options
-{
-    classic=" --config=crafty --time-limit=600 "
-    for opt in "${classic}" "${classic} --heuristic=Domain "; do
-        echo "${opt}"
-    done
-    echo -e "Do you want to export these variables?[y/n]\c"
-    general_answer || return 1
-}
-
-function see_standard_output
-{
-    local input
-    root="./result"
-    for out in "${root}" "${root}""/out_txt/" "${root}""/out_lp/"; do
-        echo "${out}"
-    done
-    echo -e "Do you want to export these variables?[y/n]\c"
-    general_answer || return 1
-
+    for item in "${_item_s[@]}"; do
+        echo "${item}"
+    done 
+    echo -e "${msg}"
+    bash "${utility}" general_answer || return 1
 }
 
 function additional_export
@@ -424,25 +370,41 @@ function additional_export
                         "clingo_options"
                         "standard_output"
                         "traffic_parameters")
+    root="./result"
+    local -a std_output_s=("${root}""/out_txt/" 
+                           "${root}""/out_lp/")
+    classic=" --config=crafty --time-limit=600 "
+    local -a option_s=("${classic}"
+                       "${classic} --heuristic=Domain ")
+    local -a cost_s=("--const horizon="
+                     "--const bound=")
+    local -a std_traffic_s=("../../Results_experiments/Task1/bounds.csv"
+                            "./model/instance_fixed.lp "
+                            "./model/enc_clingcon.lp "
+                            "Instancesv2_round/ | Instancesv2/")
+    local messg="Do you want to export these variables?[y/n]\c"
 
     echo "There are also these additional packages:"
     select pack in "${package_s[@]}" "done"; do
-           case "${pack}" in standard_traffic_instance) see_standard_traffic &&
-                                                        preset_standard_traffic
-                                                        additional_export;;
-                             clingo_constants) see_constants &&
-                                               set_constants
-                                               additional_export;;
-                             clingo_options) see_options && 
-                                             preset_options
-                                             echo $( export -p)
-                                             additional_export;;
-                             standard_output) see_standard_output &&
-                                              set_standard_output
-                                              echo $( export -p)
-                                              additional_export;;
-                             traffic_parameters) set_parameters
-                                                 additional_export;;
+           case "${pack}" in standard_traffic_instance) 
+                             exp_view std_traffic_s "${messg}" &&
+                             preset_standard_traffic
+                             additional_export;;
+                             clingo_constants) 
+                             exp_view const_s "${messg}" &&
+                             set_constants
+                             additional_export;;
+                             clingo_options) 
+                             exp_view option_s "${messg}" && 
+                             preset_options
+                             additional_export;;
+                             standard_output) 
+                             exp_view std_output_s "${messg}" &&
+                             set_standard_output
+                             additional_export;;
+                             traffic_parameters) 
+                             customize_data
+                             additional_export;;
                              done) echo "bye";;
                                 *) echo "not valid option"
                                    additional_export;; 
@@ -458,11 +420,14 @@ function set_script
     ls *.sh | 
     while read -r line; do add script_s "${line}"; done
     echo "Choose the script for testing your code:"
-    select script in "${script_s[@]}";do
-           test_run="${script}"
-           echo "The file choosen is ${test_run}"
-           echo -e "Continue?[y/n]\c"
-           general_answer && break || set_script
+    select script in "${script_s[@]}" "done";do
+           case "${script}" in done) echo "bye";;
+                                  *) test_run="${script}"
+                                     echo "The file choosen is ${test_run}"
+                                     echo -e "Continue?[y/n]\c"
+                                     bash "${utility}" general_answer || set_script
+           esac
+    break;
     done
 }
 

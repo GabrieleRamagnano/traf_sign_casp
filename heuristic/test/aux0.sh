@@ -155,13 +155,25 @@ function set_var
     esac 
 }
 
+function general_answer
+{
+    local input
+    read -e input
+    case "${input}" in y) return 0;;
+                       n) return 1;;
+                       *) echo "bad option"
+                          general_answer;;
+    esac
+}
+
 #interface
 function aux
 {
     local func=$1
+    local commas=$2
     local -a param_s
 
-    get_parameters $2 param_s
+    get_parameters "${commas:-unset}" param_s
     case "${func}" in split_line) split_line $2 input;;
                       search) search "${param_s[0]}" "${param_s[1]}";;
                       set_output) set_output "${param_s[0]}" "${param_s[1]}";;
@@ -169,6 +181,7 @@ function aux
                       reorder_result) reorder_result "${param_s[0]}" "${param_s[1]}";;
                       insert) insert "${param_s[0]}" "${param_s[1]}" "${param_s[2]}";;
                       set_var) set_var "${param_s[0]}" "${param_s[1]}";;
+                      general_answer) general_answer;;
                       *) echo "function not found!"
                     
     esac
