@@ -3,10 +3,8 @@ version
 5.2.1Reading
 from
 ...sippv2/fixlen4/26eve/p01[count=350].lp
-...Solving...UNKNOWNTIME
-LIMIT
- 
-:
+...UNKNOWNINTERRUPTED
+ :
 1Models
  
  
@@ -23,9 +21,9 @@ LIMIT
  
  
 :
-601.315s
+0.179s
 (Solving:
-586.14s
+0.00s
 1st
 Model:
 0.00s
@@ -35,4 +33,4 @@ Time
  
  
 :
-599.569s
+0.177s

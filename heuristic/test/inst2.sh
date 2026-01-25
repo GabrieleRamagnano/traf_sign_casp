@@ -10,6 +10,7 @@ declare help=$* # -h option about the script
 declare -a -g horizon_s
 declare -a -g time_slot_s
 declare -a -g day_s
+declare -a -g instance_s
 declare -g muse
 declare -g args
 
@@ -93,6 +94,7 @@ function complete_data
     time_slot_s=("morn" "noon" "eve")
     day_s=("26" "30")
     muse="muse"
+    instance_s=("p01" "p02" "p03" "p04" "p05")
 }
 
 function add
@@ -173,12 +175,13 @@ function resume
     echo -e "\r${time_slot_s[@]:+time::}""${time_slot_s[@]:-time-empty}"
     echo -e "\r${day_s[@]:+day::}""${day_s[@]:-day-empty}"    
     echo -e "\r${muse:+muse::}""${muse:-muse-empty}"
+    echo -e "\r${instance_s[@]:+instance::}""${instance_s[@]:-instance-empty}"
 }
 
 function set_parameters
 {
     resume
-    select opt in "horizon" "time" "day" "muse" "done"; do
+    select opt in "horizon" "time" "day" "muse" "instance" "done"; do
            case "${opt}" in horizon) horizon_s=()
                                      insert "${opt}" horizon_s horz_s
                                      set_parameters;;
@@ -191,6 +194,9 @@ function set_parameters
                             muse) muse=""
                                   set_var muse "muse"
                                   set_parameters;; 
+                            instance) instance_s=()
+                                      insert "${opt}" instance_s inst_s
+                                      set_parameters;;
                             done) echo "bye";;
                             *) echo "not valid option"
                                set_parameters;;
@@ -211,6 +217,7 @@ function customize_data
     local -a time_s=("morn" "noon" "eve")
     local -a days=("26" "30")
     local ms="muse"
+    local -a inst_s=("p01" "p02" "p03" "p04" "p05")
     set_parameters
 
 }
@@ -220,15 +227,18 @@ function prepare_parameters { export args
 
 function run_experiment
 {
-    for horz in "${horizon_s[@]}"; do
-        export horizon="${horz}"
-        export day="${muse}"
-        bash "${clingo_run}"
-        for day in "${day_s[@]}"; do
-            for time in "${time_slot_s[@]}"; do
-                export day="${day}"
-                export time_slot="${time}"
-                bash "${clingo_run}"
+    for inst in "${instance_s[@]}"; do
+        export key="${inst}"
+        for horz in "${horizon_s[@]}"; do
+            export horizon="${horz}"
+            export day="${muse}"
+            bash "${clingo_run}"
+            for day in "${day_s[@]}"; do
+                for time in "${time_slot_s[@]}"; do
+                    export day="${day}"
+                    export time_slot="${time}"
+                    bash "${clingo_run}"
+                done
             done
         done
     done   
@@ -240,9 +250,10 @@ function check_duplicate
 {   
     local item=$1
     local -n ref_=$2
+    local msg=$3
 
     if check_item "${item}" ref_ ; then 
-       echo "file already exists"
+       echo -n -e "\r${msg:+$msg}"
        return 1
     else 
        return 0 
@@ -354,9 +365,9 @@ function menu_saved_exp
 
 function choose_files
 {
-    
+    local messg="file already exists\n"
     select file in "${file_s[@]}" "export_files.txt" "done"; do
-           case "${file}" in *.lp) check_duplicate "${file}" choice_s &&
+           case "${file}" in *.lp) check_duplicate "${file}" choice_s "${messg}" &&
                                    store_file "${file}" "$(($REPLY-1))"
                                    choose_files;;
                              export_files.txt) menu_saved_exp "${file}"
@@ -607,17 +618,42 @@ function execute
     esac
 }
 
+function collect_exp
+{
+    local -n _exp_s=$1
+    export -p | 
+    while read -r line; do
+          add _exp_s "${line}" 
+    done
+}
+
+function data_loaded
+{
+    local -a final_export_s
+
+    collect_exp final_export_s
+    for new_exp in "${final_export_s[@]}"; do
+        if check_duplicate "${new_exp}" init_export_s; then
+           echo -e "\r${new_exp:11}"
+        fi
+    done 
+    resume
+
+}
+
 function fast_run
 {
     local -a input_s
+    local -a init_export_s
     local service
 
     #echo "bash filename [prefix] [suffix] [-f foldername]"
     #echo -e "bash ./create_scripts.sh\c"
-
+    collect_exp init_export_s
     see_services
     #run program
     execute "${service}"
+    data_loaded
 
 }
 

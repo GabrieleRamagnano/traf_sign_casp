@@ -19,7 +19,6 @@ function split
 
 function run_test
 {
-    local key=$1 
     local root tail
    
     tail -n +2 $bounds | while IFS=',' read -r HORIZON PROBLEM MIN; do
@@ -44,7 +43,7 @@ function run_test
 
 function execute
 {
-    run_test p03
+    run_test 
     #echo $( export -p)
     echo $args
     

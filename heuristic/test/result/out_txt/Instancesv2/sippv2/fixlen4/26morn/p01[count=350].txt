@@ -1,0 +1,9 @@
+clingcon version 5.2.1
+Reading from ...ippv2/fixlen4/26morn/p01[count=350].lp ...
+UNKNOWN
+
+INTERRUPTED  : 1
+Models       : 0+
+Calls        : 1
+Time         : 0.933s (Solving: 0.00s 1st Model: 0.00s Unsat: 0.00s)
+CPU Time     : 0.927s

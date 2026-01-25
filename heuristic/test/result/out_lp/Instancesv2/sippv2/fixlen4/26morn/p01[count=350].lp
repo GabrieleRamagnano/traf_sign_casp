@@ -3,10 +3,8 @@ version
 5.2.1Reading
 from
 ...ippv2/fixlen4/26morn/p01[count=350].lp
-...Solving...UNKNOWNTIME
-LIMIT
- 
-:
+...UNKNOWNINTERRUPTED
+ :
 1Models
  
  
@@ -23,9 +21,9 @@ LIMIT
  
  
 :
-601.157s
+0.933s
 (Solving:
-556.21s
+0.00s
 1st
 Model:
 0.00s
@@ -35,4 +33,4 @@ Time
  
  
 :
-597.343s
+0.927s

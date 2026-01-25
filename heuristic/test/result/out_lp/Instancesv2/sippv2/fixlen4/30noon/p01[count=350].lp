@@ -3,92 +3,14 @@ version
 5.2.1Reading
 from
 ...ippv2/fixlen4/30noon/p01[count=350].lp
-...Solving...Answer:
-1
-(Time:
-384.002s)20860020
-evaluate_heu
-threshold(10430010)
-
-optimal_conf_empty(conf_wrbc1_2,link(wrac1,y,wrbc1))
-optimal_conf_empty(conf_wrbc1_4,link(wrac1,y,wrbc1))
-optimal_conf_fill(conf_wrac1_2,link(wrac1,y,wrbc1))
-optimal_conf_fill(conf_wrac1_3,link(wrac1,y,wrbc1))
-optimal_conf_fill(conf_wrac1_4,link(wrac1,y,wrbc1))
-
-exp(link(wrac1,y,wrbc1),4192900,conf_wrac1_1)
-exp(link(wrac1,y,wrbc1),4516460,conf_wrac1_4)
-
-inflow(wrac1,conf_wrac1_1,4192900)
-inflow(wrac1,conf_wrac1_4,4516460)
-outflow(wrbc1,conf_wrbc1_1,5859800)
-outflow(wrbc1,conf_wrbc1_4,5789200)
-
-promising_conf_1(wrac1,4,conf_wrac1_4)
-promising_conf_1(wrac1,5,conf_wrac1_4)
-promising_conf_2(wrbc1,4,conf_wrbc1_4)
-
-change(wrac1,4,379,conf_wrac1_4)
-change(wrbc1,4,531,conf_wrbc1_4)
-change(wrcc1,4,595,conf_wrcc1_4)
-change(wrdc1,4,476,conf_wrdc1_5)
-change(wrec1,4,358,conf_wrec1_3)
-change(wrfc1,4,423,conf_wrfc1_4)
-exp_in(wrac1,stage(wrac1,1),conf_wrac1_1,2296000)
-exp_in(wrac1,stage(wrac1,1),conf_wrac1_4,2427200)
-exp_in(wrac1,stage(wrac1,2),conf_wrac1_1,893420)
-exp_in(wrac1,stage(wrac1,2),conf_wrac1_4,547580)
-exp_in(wrac1,stage(wrac1,3),conf_wrac1_1,753480)
-exp_in(wrac1,stage(wrac1,3),conf_wrac1_4,1291680)
-exp_in(wrac1,stage(wrac1,4),conf_wrac1_1,250000)
-exp_in(wrac1,stage(wrac1,4),conf_wrac1_4,250000)
-exp_out(wrbc1,stage(wrbc1,1),conf_wrbc1_1,3035800)
-exp_out(wrbc1,stage(wrbc1,1),conf_wrbc1_4,2259200)
-exp_out(wrbc1,stage(wrbc1,2),conf_wrbc1_1,0)
-exp_out(wrbc1,stage(wrbc1,2),conf_wrbc1_4,0)
-exp_out(wrbc1,stage(wrbc1,3),conf_wrbc1_1,2329800)
-exp_out(wrbc1,stage(wrbc1,3),conf_wrbc1_4,3035800)
-exp_out(wrbc1,stage(wrbc1,4),conf_wrbc1_1,0)
-exp_out(wrbc1,stage(wrbc1,4),conf_wrbc1_4,0)
-exp_out(wrbc1,stage(wrbc1,5),conf_wrbc1_1,494200)
-exp_out(wrbc1,stage(wrbc1,5),conf_wrbc1_4,494200)
-
-sol(357,inter(wrec1,4),conf_wrec1_1,conf_wrec1_3)
-sol(378,inter(wrac1,4),conf_wrac1_1,conf_wrac1_4)
-sol(422,inter(wrfc1,3),conf_wrfc1_1,conf_wrfc1_4)
-sol(475,inter(wrdc1,4),conf_wrdc1_1,conf_wrdc1_5)
-sol(530,inter(wrbc1,5),conf_wrbc1_1,conf_wrbc1_4)
-sol(594,inter(wrcc1,6),conf_wrcc1_1,conf_wrcc1_4)
-
-turn_in(wrac1,stage(wrac1,1),conf_wrac1_1,65600)
-turn_in(wrac1,stage(wrac1,1),conf_wrac1_4,65600)
-turn_in(wrac1,stage(wrac1,2),conf_wrac1_1,28820)
-turn_in(wrac1,stage(wrac1,2),conf_wrac1_4,28820)
-turn_in(wrac1,stage(wrac1,3),conf_wrac1_1,53820)
-turn_in(wrac1,stage(wrac1,3),conf_wrac1_4,53820)
-turn_in(wrac1,stage(wrac1,4),conf_wrac1_1,25000)
-turn_in(wrac1,stage(wrac1,4),conf_wrac1_4,25000)
-turn_out(wrbc1,stage(wrbc1,1),conf_wrbc1_1,70600)
-turn_out(wrbc1,stage(wrbc1,1),conf_wrbc1_4,70600)
-turn_out(wrbc1,stage(wrbc1,2),conf_wrbc1_1,0)
-turn_out(wrbc1,stage(wrbc1,2),conf_wrbc1_4,0)
-turn_out(wrbc1,stage(wrbc1,3),conf_wrbc1_1,70600)
-turn_out(wrbc1,stage(wrbc1,3),conf_wrbc1_4,70600)
-turn_out(wrbc1,stage(wrbc1,4),conf_wrbc1_1,0)
-turn_out(wrbc1,stage(wrbc1,4),conf_wrbc1_4,0)
-turn_out(wrbc1,stage(wrbc1,5),conf_wrbc1_1,70600)
-turn_out(wrbc1,stage(wrbc1,5),conf_wrbc1_4,70600)Assignment:counter(600,link(wrac1,y,wrbc1))=20860020
-h_cafe(300,link(wrac1,y,wrbc1))=19670700Cost:
--20860020SATISFIABLETIME
-LIMIT
- 
-:
+...UNKNOWNINTERRUPTED
+ :
 1Models
  
  
  
 :
-1+Calls
+0+Calls
  
  
  
@@ -99,16 +21,16 @@ LIMIT
  
  
 :
-601.231s
+0.117s
 (Solving:
-584.46s
+0.00s
 1st
 Model:
-367.19s
+0.00s
 Unsat:
 0.00s)CPU
 Time
  
  
 :
-584.010s
+0.116s
