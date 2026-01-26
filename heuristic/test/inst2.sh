@@ -37,12 +37,22 @@ function set_test_traffic
     args="${args}${instance_fixed}${constants}${configuration}${counter}"
 }
 
-function set_standard_traffic
+function set_instancev2
 {
     case $1 in -round) export instance="Instancesv2_round/";;
                     *) export instance="Instancesv2/";;
     esac
+}
+
+function set_bound
+{
+    set_instancev2 $1
     export bounds="../../Results_experiments/Task1/bounds.csv"
+}
+
+function set_standard_traffic
+{
+    set_bound $1
     export instance_fixed=" ./model/instance_fixed.lp "
     export enc_clingcon=" ./model/enc_clingcon.lp " 
 
@@ -225,6 +235,8 @@ function customize_data
 function prepare_parameters { export args 
 }
 
+function check_muse { if [[ "${day}" == "" ]]; then return 1; fi; }
+
 function run_experiment
 {
     for inst in "${instance_s[@]}"; do
@@ -232,12 +244,12 @@ function run_experiment
         for horz in "${horizon_s[@]}"; do
             export horizon="${horz}"
             export day="${muse}"
-            bash "${clingo_run}"
+            check_muse && bash "${clingo_run}" execute
             for day in "${day_s[@]}"; do
                 for time in "${time_slot_s[@]}"; do
                     export day="${day}"
                     export time_slot="${time}"
-                    bash "${clingo_run}"
+                    bash "${clingo_run}" execute
                 done
             done
         done
@@ -469,17 +481,30 @@ function file_set
 function preset_options
 {
     local input
-    echo -e "digit -round for selecting Instancesv2_round/:\c "
+    echo -e "digit -heu for the heuristic version:\c "
     read -e input
-    set_standard_traffic "${input}"
+    set_options "${input}"
+}
+
+function round_choice
+{
+    local -n _input=$1
+    echo -e "digit -round for selecting Instancesv2_round/:\c "
+    read -e _input 
 }
 
 function preset_standard_traffic
+{   
+    local input
+    round_choice input
+    set_standard_traffic "${input}"
+}
+
+function preset_bound
 {
     local input
-    echo "digit -heu for the heuristic version:\c "
-    read -e input
-    set_options "${input}"
+    round_choice input
+    set_bound "${input}"
 }
 
 function exp_view
@@ -500,7 +525,8 @@ function additional_export
                         "clingo_constants"
                         "clingo_options"
                         "standard_output"
-                        "traffic_parameters")
+                        "traffic_parameters"
+                        "set_bound")
     root="./result"
     local -a std_output_s=("${root}""/out_txt/" 
                            "${root}""/out_lp/")
@@ -513,6 +539,8 @@ function additional_export
                             "./model/instance_fixed.lp "
                             "./model/enc_clingcon.lp "
                             "Instancesv2_round/ | Instancesv2/")
+    local -a bound_s=("../../Results_experiments/Task1/bounds.csv"
+                     "Instancesv2_round/ | Instancesv2/")
     local messg="Do you want to export these variables?[y/n]\c"
 
     echo "There are also these additional packages:"
@@ -522,6 +550,7 @@ function additional_export
                              preset_standard_traffic
                              additional_export;;
                              clingo_constants) 
+                             print_elements cost_s
                              exp_view const_s "${messg}" &&
                              set_constants
                              additional_export;;
@@ -530,11 +559,16 @@ function additional_export
                              preset_options
                              additional_export;;
                              standard_output) 
+                             print_elements std_output_s
                              exp_view std_output_s "${messg}" &&
                              set_standard_output
                              additional_export;;
                              traffic_parameters) 
                              customize_data
+                             additional_export;;
+                             set_bound) 
+                             exp_view bound_s "${messg}" &&
+                             preset_bound
                              additional_export;;
                              done) echo "bye";;
                                 *) echo "not valid option"
@@ -588,8 +622,13 @@ function see_services
 
 function test_run
 {
-    echo "not available yet..."
-    prepare_parameters #...
+    #echo "not available yet..."
+    prepare_parameters 
+    clingo_run="${test_run}"
+    bash "${clingo_run}" move
+    run_experiment
+    bash "${clingo_run}" delete
+
 }
 
 function total_run

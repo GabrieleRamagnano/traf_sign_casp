@@ -6,10 +6,11 @@ declare -a path1_s path2_s
 declare -a time_slot_s
 declare -a day_s
 
-declare utility="./aux0.sh"
+declare -g root
+declare test_run="tail1.sh"
 
 function set_root {
-    root="./$1/result"
+   root="./$1/result"
 }
 
 function set_paths
@@ -85,17 +86,25 @@ function file_cleaning
     set_root $1
     tree "${root}" -i -f | 
     while read -r line; do 
-      if [[ "${line}" == *".sh" ]]; then
+      if [[ "${line}" == *".txt" ]]; then
          rm -r "${line}"
       fi
     done
 
 }
 
+function test_start
+{
+    set_root $1
+    export dir="${root}/"
+    bash "${test_run}" 
+}
 
 #create_folders main_folder
 #delete_folders main_folder
 #files_cleaning main_folder
+#test_start main_folder
+
 shopt -s lastpipe
 "$@"
 

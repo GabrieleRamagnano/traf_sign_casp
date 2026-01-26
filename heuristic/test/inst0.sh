@@ -1,8 +1,6 @@
 #!/bin/bash
 
 #variable parameters
-export args
-declare -a argument_s
 declare scenario="${day}${time_slot}"
 
 declare prefix="aux"
@@ -44,8 +42,6 @@ function run_test
 function execute
 {
     run_test 
-    #echo $( export -p)
-    echo $args
     
 }
 

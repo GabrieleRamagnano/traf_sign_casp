@@ -1,0 +1,2 @@
+Name::Test_Delta
+ ./model/instance_fixed.lp ./model/enc_clingcon.lp--Test_Delta
