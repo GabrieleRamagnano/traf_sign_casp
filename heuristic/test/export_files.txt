@@ -1,8 +1,0 @@
-Name::Prova1
- ./model/constants.lp ./model/dates/activation.lp ./model/dates/capacity.lp--Prova1
-Name::Prova2
- ./model/constants.lp ./model/dates/activation.lp ./model/dates/capacity.lp--Prova2
-Name::Prova3
- ./model/constants.lp ./model/dates/activation.lp ./model/dates/capacity.lp--Prova3
-Name::Prova4
- ./model/constants.lp ./model/dates/activation.lp ./model/dates/capacity.lp ./model/dates/init_occ.lp--Prova4

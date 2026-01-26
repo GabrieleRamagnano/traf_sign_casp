@@ -3,6 +3,7 @@
 declare -a asp_outputs 
 declare -a answ_sets
 declare -a path
+declare utility="./test/aux0.sh"
 
 
 asp_outputs=()
@@ -28,7 +29,8 @@ bounds="../Results_experiments/Task1/bounds.csv"
 csv="./results_hcafe/result_det_bound_hcafe_${horizon}_${scenario}.csv"
 
 
-function set_csv { ls $csv && rm -r $csv; printf "$fst_line"$'\n' > $csv 
+function set_csv { 
+    bash "${utility}" search ".","${csv}" &&  rm -r $csv; printf "$fst_line"$'\n' > $csv 
 }
 
 function print_elements
