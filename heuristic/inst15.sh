@@ -26,7 +26,7 @@ scenario=$2
 instance_round="Instancesv2_round/"
 instance="Instancesv2/"
 bounds="../Results_experiments/Task1/bounds.csv" 
-csv="./results_hcafe/result_det_bound_hcafe_${horizon}_${scenario}.csv"
+csv="./results_delta/result_det_bound_${label}_${horizon}_${scenario}.csv"
 
 
 function set_csv { 
@@ -51,7 +51,7 @@ function select_instances
         if [[ "$PROBLEM" == *"$instance"*"$scenario"* ]]; then
            if [[ "$HORIZON" == "$horizon" ]]; then  
               idx=${#_asp_outputs[@]}
-              asp_output="${PROBLEM}_asp_bound_hcafe_$HORIZON.txt"
+              asp_output="${PROBLEM}_asp_bound_${label}_$HORIZON.txt"
               _asp_outputs[idx]=$asp_output                 
            fi 
         fi

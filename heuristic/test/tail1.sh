@@ -1,0 +1,39 @@
+#!/bin/bash
+
+#variable parameters
+declare scenario="${day}${time_slot}"
+declare to_csv="./inst4.sh"
+
+function run_csv
+{
+    export scenario
+    bash "${to_csv}" "${test_name}_csv" "${label}_bound"
+}
+
+function run_test
+{   
+    tail -n +2 "$bounds" | while IFS=',' read -r HORIZON PROBLEM MIN; do
+        if [[ "$PROBLEM" == *"$instance"*"$scenario"*"$key"* ]]; then
+            if [[ "$HORIZON" == "$horizon" ]]; then 
+                echo $HORIZON $PROBLEM
+                asp_instance="../../${PROBLEM}.lp"
+                clingcon $asp_instance \
+                         $args \
+                         $const_h$HORIZON \
+                         $const_b$MIN \
+                         > "${dir}${PROBLEM}_${label}_bound_$HORIZON.txt" 2>/dev/null
+            fi
+        fi
+    done
+
+}
+
+
+function execute
+{
+    run_test 
+    run_csv    
+}
+
+shopt -s lastpipe
+execute 
