@@ -1,0 +1,170 @@
+clingcon version 5.2.1
+Reading from .../sippv2/fixlen4/muse/p05[count=350].lp ...
+Solving...
+Answer: 1 (Time: 5.947s)
+sol(298,inter(wrec1,4),conf_wrec1_1,conf_wrec1_3) sol(418,inter(wrac1,4),conf_wrac1_1,conf_wrac1_3) sol(450,inter(wrfc1,3),conf_wrfc1_1,conf_wrfc1_3) sol(472,inter(wrdc1,4),conf_wrdc1_1,conf_wrdc1_3) sol(561,inter(wrcc1,6),conf_wrcc1_1,conf_wrcc1_3) sol(573,inter(wrbc1,5),conf_wrbc1_1,conf_wrbc1_3)
+Assignment:
+counter(720,link(wrac1,y,wrbc1))=15892599 counter(720,link(wrbc1,b,wrcc1))=15892599 counter(720,link(wrcc1,x,wrdc1))=15892599 counter(720,link(wrdc1,b,wrec1))=15892599 counter(720,link(wrec1,y,wrfc1))=15892599
+Cost: -79462995
+Answer: 2 (Time: 7.220s)
+sol(298,inter(wrec1,4),conf_wrec1_1,conf_wrec1_3) sol(418,inter(wrac1,4),conf_wrac1_1,conf_wrac1_3) sol(450,inter(wrfc1,3),conf_wrfc1_1,conf_wrfc1_3) sol(472,inter(wrdc1,4),conf_wrdc1_1,conf_wrdc1_3) sol(561,inter(wrcc1,6),conf_wrcc1_1,conf_wrcc1_3) sol(573,inter(wrbc1,5),conf_wrbc1_1,conf_wrbc1_3)
+Assignment:
+counter(720,link(wrac1,y,wrbc1))=15892599 counter(720,link(wrbc1,b,wrcc1))=15892599 counter(720,link(wrcc1,x,wrdc1))=15892599 counter(720,link(wrdc1,b,wrec1))=15892599 counter(720,link(wrec1,y,wrfc1))=15892600
+Cost: -79462996
+Answer: 3 (Time: 8.440s)
+sol(298,inter(wrec1,4),conf_wrec1_1,conf_wrec1_3) sol(418,inter(wrac1,4),conf_wrac1_1,conf_wrac1_3) sol(450,inter(wrfc1,3),conf_wrfc1_1,conf_wrfc1_3) sol(472,inter(wrdc1,4),conf_wrdc1_1,conf_wrdc1_3) sol(561,inter(wrcc1,6),conf_wrcc1_1,conf_wrcc1_3) sol(573,inter(wrbc1,5),conf_wrbc1_1,conf_wrbc1_3)
+Assignment:
+counter(720,link(wrac1,y,wrbc1))=15892599 counter(720,link(wrbc1,b,wrcc1))=15892599 counter(720,link(wrcc1,x,wrdc1))=15892599 counter(720,link(wrdc1,b,wrec1))=15892599 counter(720,link(wrec1,y,wrfc1))=15892601
+Cost: -79462997
+Answer: 4 (Time: 8.449s)
+sol(298,inter(wrec1,4),conf_wrec1_1,conf_wrec1_3) sol(418,inter(wrac1,4),conf_wrac1_1,conf_wrac1_3) sol(450,inter(wrfc1,3),conf_wrfc1_1,conf_wrfc1_3) sol(472,inter(wrdc1,4),conf_wrdc1_1,conf_wrdc1_3) sol(561,inter(wrcc1,6),conf_wrcc1_1,conf_wrcc1_3) sol(573,inter(wrbc1,5),conf_wrbc1_1,conf_wrbc1_3)
+Assignment:
+counter(720,link(wrac1,y,wrbc1))=15892599 counter(720,link(wrbc1,b,wrcc1))=15892599 counter(720,link(wrcc1,x,wrdc1))=15892599 counter(720,link(wrdc1,b,wrec1))=15892599 counter(720,link(wrec1,y,wrfc1))=15892602
+Cost: -79462998
+Answer: 5 (Time: 9.678s)
+sol(298,inter(wrec1,4),conf_wrec1_1,conf_wrec1_3) sol(418,inter(wrac1,4),conf_wrac1_1,conf_wrac1_3) sol(450,inter(wrfc1,3),conf_wrfc1_1,conf_wrfc1_3) sol(472,inter(wrdc1,4),conf_wrdc1_1,conf_wrdc1_3) sol(561,inter(wrcc1,6),conf_wrcc1_1,conf_wrcc1_3) sol(573,inter(wrbc1,5),conf_wrbc1_1,conf_wrbc1_3)
+Assignment:
+counter(720,link(wrac1,y,wrbc1))=15892599 counter(720,link(wrbc1,b,wrcc1))=15892599 counter(720,link(wrcc1,x,wrdc1))=15892599 counter(720,link(wrdc1,b,wrec1))=15892599 counter(720,link(wrec1,y,wrfc1))=15892603
+Cost: -79462999
+Answer: 6 (Time: 9.688s)
+sol(298,inter(wrec1,4),conf_wrec1_1,conf_wrec1_3) sol(418,inter(wrac1,4),conf_wrac1_1,conf_wrac1_3) sol(450,inter(wrfc1,3),conf_wrfc1_1,conf_wrfc1_3) sol(472,inter(wrdc1,4),conf_wrdc1_1,conf_wrdc1_3) sol(561,inter(wrcc1,6),conf_wrcc1_1,conf_wrcc1_3) sol(573,inter(wrbc1,5),conf_wrbc1_1,conf_wrbc1_3)
+Assignment:
+counter(720,link(wrac1,y,wrbc1))=15892599 counter(720,link(wrbc1,b,wrcc1))=15892599 counter(720,link(wrcc1,x,wrdc1))=15892599 counter(720,link(wrdc1,b,wrec1))=15892599 counter(720,link(wrec1,y,wrfc1))=15892604
+Cost: -79463000
+Answer: 7 (Time: 9.696s)
+sol(298,inter(wrec1,4),conf_wrec1_1,conf_wrec1_3) sol(418,inter(wrac1,4),conf_wrac1_1,conf_wrac1_3) sol(450,inter(wrfc1,3),conf_wrfc1_1,conf_wrfc1_3) sol(472,inter(wrdc1,4),conf_wrdc1_1,conf_wrdc1_3) sol(561,inter(wrcc1,6),conf_wrcc1_1,conf_wrcc1_3) sol(573,inter(wrbc1,5),conf_wrbc1_1,conf_wrbc1_3)
+Assignment:
+counter(720,link(wrac1,y,wrbc1))=15892599 counter(720,link(wrbc1,b,wrcc1))=15892599 counter(720,link(wrcc1,x,wrdc1))=15892599 counter(720,link(wrdc1,b,wrec1))=15892599 counter(720,link(wrec1,y,wrfc1))=15892605
+Cost: -79463001
+Answer: 8 (Time: 9.704s)
+sol(298,inter(wrec1,4),conf_wrec1_1,conf_wrec1_3) sol(418,inter(wrac1,4),conf_wrac1_1,conf_wrac1_3) sol(450,inter(wrfc1,3),conf_wrfc1_1,conf_wrfc1_3) sol(472,inter(wrdc1,4),conf_wrdc1_1,conf_wrdc1_3) sol(561,inter(wrcc1,6),conf_wrcc1_1,conf_wrcc1_3) sol(573,inter(wrbc1,5),conf_wrbc1_1,conf_wrbc1_3)
+Assignment:
+counter(720,link(wrac1,y,wrbc1))=15892599 counter(720,link(wrbc1,b,wrcc1))=15892599 counter(720,link(wrcc1,x,wrdc1))=15892599 counter(720,link(wrdc1,b,wrec1))=15892599 counter(720,link(wrec1,y,wrfc1))=15892606
+Cost: -79463002
+Answer: 9 (Time: 10.970s)
+sol(298,inter(wrec1,4),conf_wrec1_1,conf_wrec1_3) sol(418,inter(wrac1,4),conf_wrac1_1,conf_wrac1_3) sol(450,inter(wrfc1,3),conf_wrfc1_1,conf_wrfc1_3) sol(472,inter(wrdc1,4),conf_wrdc1_1,conf_wrdc1_3) sol(561,inter(wrcc1,6),conf_wrcc1_1,conf_wrcc1_3) sol(573,inter(wrbc1,5),conf_wrbc1_1,conf_wrbc1_3)
+Assignment:
+counter(720,link(wrac1,y,wrbc1))=15892599 counter(720,link(wrbc1,b,wrcc1))=15892599 counter(720,link(wrcc1,x,wrdc1))=15892599 counter(720,link(wrdc1,b,wrec1))=15892599 counter(720,link(wrec1,y,wrfc1))=15892607
+Cost: -79463003
+Answer: 10 (Time: 10.978s)
+sol(298,inter(wrec1,4),conf_wrec1_1,conf_wrec1_3) sol(418,inter(wrac1,4),conf_wrac1_1,conf_wrac1_3) sol(450,inter(wrfc1,3),conf_wrfc1_1,conf_wrfc1_3) sol(472,inter(wrdc1,4),conf_wrdc1_1,conf_wrdc1_3) sol(561,inter(wrcc1,6),conf_wrcc1_1,conf_wrcc1_3) sol(573,inter(wrbc1,5),conf_wrbc1_1,conf_wrbc1_3)
+Assignment:
+counter(720,link(wrac1,y,wrbc1))=15892599 counter(720,link(wrbc1,b,wrcc1))=15892599 counter(720,link(wrcc1,x,wrdc1))=15892599 counter(720,link(wrdc1,b,wrec1))=15892599 counter(720,link(wrec1,y,wrfc1))=15892608
+Cost: -79463004
+Answer: 11 (Time: 10.987s)
+sol(298,inter(wrec1,4),conf_wrec1_1,conf_wrec1_3) sol(418,inter(wrac1,4),conf_wrac1_1,conf_wrac1_3) sol(450,inter(wrfc1,3),conf_wrfc1_1,conf_wrfc1_3) sol(472,inter(wrdc1,4),conf_wrdc1_1,conf_wrdc1_3) sol(561,inter(wrcc1,6),conf_wrcc1_1,conf_wrcc1_3) sol(573,inter(wrbc1,5),conf_wrbc1_1,conf_wrbc1_3)
+Assignment:
+counter(720,link(wrac1,y,wrbc1))=15892599 counter(720,link(wrbc1,b,wrcc1))=15892599 counter(720,link(wrcc1,x,wrdc1))=15892599 counter(720,link(wrdc1,b,wrec1))=15892599 counter(720,link(wrec1,y,wrfc1))=15892609
+Cost: -79463005
+Answer: 12 (Time: 10.995s)
+sol(298,inter(wrec1,4),conf_wrec1_1,conf_wrec1_3) sol(418,inter(wrac1,4),conf_wrac1_1,conf_wrac1_3) sol(450,inter(wrfc1,3),conf_wrfc1_1,conf_wrfc1_3) sol(472,inter(wrdc1,4),conf_wrdc1_1,conf_wrdc1_3) sol(561,inter(wrcc1,6),conf_wrcc1_1,conf_wrcc1_3) sol(573,inter(wrbc1,5),conf_wrbc1_1,conf_wrbc1_3)
+Assignment:
+counter(720,link(wrac1,y,wrbc1))=15892599 counter(720,link(wrbc1,b,wrcc1))=15892599 counter(720,link(wrcc1,x,wrdc1))=15892599 counter(720,link(wrdc1,b,wrec1))=15892599 counter(720,link(wrec1,y,wrfc1))=15892610
+Cost: -79463006
+Answer: 13 (Time: 11.004s)
+sol(298,inter(wrec1,4),conf_wrec1_1,conf_wrec1_3) sol(418,inter(wrac1,4),conf_wrac1_1,conf_wrac1_3) sol(450,inter(wrfc1,3),conf_wrfc1_1,conf_wrfc1_3) sol(472,inter(wrdc1,4),conf_wrdc1_1,conf_wrdc1_3) sol(561,inter(wrcc1,6),conf_wrcc1_1,conf_wrcc1_3) sol(573,inter(wrbc1,5),conf_wrbc1_1,conf_wrbc1_3)
+Assignment:
+counter(720,link(wrac1,y,wrbc1))=15892599 counter(720,link(wrbc1,b,wrcc1))=15892599 counter(720,link(wrcc1,x,wrdc1))=15892599 counter(720,link(wrdc1,b,wrec1))=15892599 counter(720,link(wrec1,y,wrfc1))=15892611
+Cost: -79463007
+Answer: 14 (Time: 11.012s)
+sol(298,inter(wrec1,4),conf_wrec1_1,conf_wrec1_3) sol(418,inter(wrac1,4),conf_wrac1_1,conf_wrac1_3) sol(450,inter(wrfc1,3),conf_wrfc1_1,conf_wrfc1_3) sol(472,inter(wrdc1,4),conf_wrdc1_1,conf_wrdc1_3) sol(561,inter(wrcc1,6),conf_wrcc1_1,conf_wrcc1_3) sol(573,inter(wrbc1,5),conf_wrbc1_1,conf_wrbc1_3)
+Assignment:
+counter(720,link(wrac1,y,wrbc1))=15892599 counter(720,link(wrbc1,b,wrcc1))=15892599 counter(720,link(wrcc1,x,wrdc1))=15892599 counter(720,link(wrdc1,b,wrec1))=15892599 counter(720,link(wrec1,y,wrfc1))=15892612
+Cost: -79463008
+Answer: 15 (Time: 11.020s)
+sol(298,inter(wrec1,4),conf_wrec1_1,conf_wrec1_3) sol(418,inter(wrac1,4),conf_wrac1_1,conf_wrac1_3) sol(450,inter(wrfc1,3),conf_wrfc1_1,conf_wrfc1_3) sol(472,inter(wrdc1,4),conf_wrdc1_1,conf_wrdc1_3) sol(561,inter(wrcc1,6),conf_wrcc1_1,conf_wrcc1_3) sol(573,inter(wrbc1,5),conf_wrbc1_1,conf_wrbc1_3)
+Assignment:
+counter(720,link(wrac1,y,wrbc1))=15892599 counter(720,link(wrbc1,b,wrcc1))=15892599 counter(720,link(wrcc1,x,wrdc1))=15892599 counter(720,link(wrdc1,b,wrec1))=15892599 counter(720,link(wrec1,y,wrfc1))=15892613
+Cost: -79463009
+Answer: 16 (Time: 11.029s)
+sol(298,inter(wrec1,4),conf_wrec1_1,conf_wrec1_3) sol(418,inter(wrac1,4),conf_wrac1_1,conf_wrac1_3) sol(450,inter(wrfc1,3),conf_wrfc1_1,conf_wrfc1_3) sol(472,inter(wrdc1,4),conf_wrdc1_1,conf_wrdc1_3) sol(561,inter(wrcc1,6),conf_wrcc1_1,conf_wrcc1_3) sol(573,inter(wrbc1,5),conf_wrbc1_1,conf_wrbc1_3)
+Assignment:
+counter(720,link(wrac1,y,wrbc1))=15892599 counter(720,link(wrbc1,b,wrcc1))=15892599 counter(720,link(wrcc1,x,wrdc1))=15892599 counter(720,link(wrdc1,b,wrec1))=15892599 counter(720,link(wrec1,y,wrfc1))=15892614
+Cost: -79463010
+Answer: 17 (Time: 12.927s)
+sol(298,inter(wrec1,4),conf_wrec1_1,conf_wrec1_3) sol(418,inter(wrac1,4),conf_wrac1_1,conf_wrac1_3) sol(450,inter(wrfc1,3),conf_wrfc1_1,conf_wrfc1_3) sol(472,inter(wrdc1,4),conf_wrdc1_1,conf_wrdc1_3) sol(561,inter(wrcc1,6),conf_wrcc1_1,conf_wrcc1_3) sol(573,inter(wrbc1,5),conf_wrbc1_1,conf_wrbc1_3)
+Assignment:
+counter(720,link(wrac1,y,wrbc1))=15892599 counter(720,link(wrbc1,b,wrcc1))=15892599 counter(720,link(wrcc1,x,wrdc1))=15892599 counter(720,link(wrdc1,b,wrec1))=15892599 counter(720,link(wrec1,y,wrfc1))=15892615
+Cost: -79463011
+Answer: 18 (Time: 12.940s)
+sol(298,inter(wrec1,4),conf_wrec1_1,conf_wrec1_3) sol(418,inter(wrac1,4),conf_wrac1_1,conf_wrac1_3) sol(450,inter(wrfc1,3),conf_wrfc1_1,conf_wrfc1_3) sol(472,inter(wrdc1,4),conf_wrdc1_1,conf_wrdc1_3) sol(561,inter(wrcc1,6),conf_wrcc1_1,conf_wrcc1_3) sol(573,inter(wrbc1,5),conf_wrbc1_1,conf_wrbc1_3)
+Assignment:
+counter(720,link(wrac1,y,wrbc1))=15892599 counter(720,link(wrbc1,b,wrcc1))=15892599 counter(720,link(wrcc1,x,wrdc1))=15892599 counter(720,link(wrdc1,b,wrec1))=15892599 counter(720,link(wrec1,y,wrfc1))=15892616
+Cost: -79463012
+Answer: 19 (Time: 12.948s)
+sol(298,inter(wrec1,4),conf_wrec1_1,conf_wrec1_3) sol(418,inter(wrac1,4),conf_wrac1_1,conf_wrac1_3) sol(450,inter(wrfc1,3),conf_wrfc1_1,conf_wrfc1_3) sol(472,inter(wrdc1,4),conf_wrdc1_1,conf_wrdc1_3) sol(561,inter(wrcc1,6),conf_wrcc1_1,conf_wrcc1_3) sol(573,inter(wrbc1,5),conf_wrbc1_1,conf_wrbc1_3)
+Assignment:
+counter(720,link(wrac1,y,wrbc1))=15892599 counter(720,link(wrbc1,b,wrcc1))=15892599 counter(720,link(wrcc1,x,wrdc1))=15892599 counter(720,link(wrdc1,b,wrec1))=15892599 counter(720,link(wrec1,y,wrfc1))=15892617
+Cost: -79463013
+Answer: 20 (Time: 12.957s)
+sol(298,inter(wrec1,4),conf_wrec1_1,conf_wrec1_3) sol(418,inter(wrac1,4),conf_wrac1_1,conf_wrac1_3) sol(450,inter(wrfc1,3),conf_wrfc1_1,conf_wrfc1_3) sol(472,inter(wrdc1,4),conf_wrdc1_1,conf_wrdc1_3) sol(561,inter(wrcc1,6),conf_wrcc1_1,conf_wrcc1_3) sol(573,inter(wrbc1,5),conf_wrbc1_1,conf_wrbc1_3)
+Assignment:
+counter(720,link(wrac1,y,wrbc1))=15892599 counter(720,link(wrbc1,b,wrcc1))=15892599 counter(720,link(wrcc1,x,wrdc1))=15892599 counter(720,link(wrdc1,b,wrec1))=15892599 counter(720,link(wrec1,y,wrfc1))=15892618
+Cost: -79463014
+Answer: 21 (Time: 12.965s)
+sol(298,inter(wrec1,4),conf_wrec1_1,conf_wrec1_3) sol(418,inter(wrac1,4),conf_wrac1_1,conf_wrac1_3) sol(450,inter(wrfc1,3),conf_wrfc1_1,conf_wrfc1_3) sol(472,inter(wrdc1,4),conf_wrdc1_1,conf_wrdc1_3) sol(561,inter(wrcc1,6),conf_wrcc1_1,conf_wrcc1_3) sol(573,inter(wrbc1,5),conf_wrbc1_1,conf_wrbc1_3)
+Assignment:
+counter(720,link(wrac1,y,wrbc1))=15892599 counter(720,link(wrbc1,b,wrcc1))=15892599 counter(720,link(wrcc1,x,wrdc1))=15892599 counter(720,link(wrdc1,b,wrec1))=15892599 counter(720,link(wrec1,y,wrfc1))=15892619
+Cost: -79463015
+Answer: 22 (Time: 12.973s)
+sol(298,inter(wrec1,4),conf_wrec1_1,conf_wrec1_3) sol(418,inter(wrac1,4),conf_wrac1_1,conf_wrac1_3) sol(450,inter(wrfc1,3),conf_wrfc1_1,conf_wrfc1_3) sol(472,inter(wrdc1,4),conf_wrdc1_1,conf_wrdc1_3) sol(561,inter(wrcc1,6),conf_wrcc1_1,conf_wrcc1_3) sol(573,inter(wrbc1,5),conf_wrbc1_1,conf_wrbc1_3)
+Assignment:
+counter(720,link(wrac1,y,wrbc1))=15892599 counter(720,link(wrbc1,b,wrcc1))=15892599 counter(720,link(wrcc1,x,wrdc1))=15892599 counter(720,link(wrdc1,b,wrec1))=15892599 counter(720,link(wrec1,y,wrfc1))=15892620
+Cost: -79463016
+Answer: 23 (Time: 12.981s)
+sol(298,inter(wrec1,4),conf_wrec1_1,conf_wrec1_3) sol(418,inter(wrac1,4),conf_wrac1_1,conf_wrac1_3) sol(450,inter(wrfc1,3),conf_wrfc1_1,conf_wrfc1_3) sol(472,inter(wrdc1,4),conf_wrdc1_1,conf_wrdc1_3) sol(561,inter(wrcc1,6),conf_wrcc1_1,conf_wrcc1_3) sol(573,inter(wrbc1,5),conf_wrbc1_1,conf_wrbc1_3)
+Assignment:
+counter(720,link(wrac1,y,wrbc1))=15892599 counter(720,link(wrbc1,b,wrcc1))=15892599 counter(720,link(wrcc1,x,wrdc1))=15892599 counter(720,link(wrdc1,b,wrec1))=15892599 counter(720,link(wrec1,y,wrfc1))=15892621
+Cost: -79463017
+Answer: 24 (Time: 12.989s)
+sol(298,inter(wrec1,4),conf_wrec1_1,conf_wrec1_3) sol(418,inter(wrac1,4),conf_wrac1_1,conf_wrac1_3) sol(450,inter(wrfc1,3),conf_wrfc1_1,conf_wrfc1_3) sol(472,inter(wrdc1,4),conf_wrdc1_1,conf_wrdc1_3) sol(561,inter(wrcc1,6),conf_wrcc1_1,conf_wrcc1_3) sol(573,inter(wrbc1,5),conf_wrbc1_1,conf_wrbc1_3)
+Assignment:
+counter(720,link(wrac1,y,wrbc1))=15892599 counter(720,link(wrbc1,b,wrcc1))=15892599 counter(720,link(wrcc1,x,wrdc1))=15892599 counter(720,link(wrdc1,b,wrec1))=15892599 counter(720,link(wrec1,y,wrfc1))=15892622
+Cost: -79463018
+Answer: 25 (Time: 12.997s)
+sol(298,inter(wrec1,4),conf_wrec1_1,conf_wrec1_3) sol(418,inter(wrac1,4),conf_wrac1_1,conf_wrac1_3) sol(450,inter(wrfc1,3),conf_wrfc1_1,conf_wrfc1_3) sol(472,inter(wrdc1,4),conf_wrdc1_1,conf_wrdc1_3) sol(561,inter(wrcc1,6),conf_wrcc1_1,conf_wrcc1_3) sol(573,inter(wrbc1,5),conf_wrbc1_1,conf_wrbc1_3)
+Assignment:
+counter(720,link(wrac1,y,wrbc1))=15892599 counter(720,link(wrbc1,b,wrcc1))=15892599 counter(720,link(wrcc1,x,wrdc1))=15892599 counter(720,link(wrdc1,b,wrec1))=15892599 counter(720,link(wrec1,y,wrfc1))=15892623
+Cost: -79463019
+Answer: 26 (Time: 13.005s)
+sol(298,inter(wrec1,4),conf_wrec1_1,conf_wrec1_3) sol(418,inter(wrac1,4),conf_wrac1_1,conf_wrac1_3) sol(450,inter(wrfc1,3),conf_wrfc1_1,conf_wrfc1_3) sol(472,inter(wrdc1,4),conf_wrdc1_1,conf_wrdc1_3) sol(561,inter(wrcc1,6),conf_wrcc1_1,conf_wrcc1_3) sol(573,inter(wrbc1,5),conf_wrbc1_1,conf_wrbc1_3)
+Assignment:
+counter(720,link(wrac1,y,wrbc1))=15892599 counter(720,link(wrbc1,b,wrcc1))=15892599 counter(720,link(wrcc1,x,wrdc1))=15892599 counter(720,link(wrdc1,b,wrec1))=15892599 counter(720,link(wrec1,y,wrfc1))=15892624
+Cost: -79463020
+Answer: 27 (Time: 13.013s)
+sol(298,inter(wrec1,4),conf_wrec1_1,conf_wrec1_3) sol(418,inter(wrac1,4),conf_wrac1_1,conf_wrac1_3) sol(450,inter(wrfc1,3),conf_wrfc1_1,conf_wrfc1_3) sol(472,inter(wrdc1,4),conf_wrdc1_1,conf_wrdc1_3) sol(561,inter(wrcc1,6),conf_wrcc1_1,conf_wrcc1_3) sol(573,inter(wrbc1,5),conf_wrbc1_1,conf_wrbc1_3)
+Assignment:
+counter(720,link(wrac1,y,wrbc1))=15892599 counter(720,link(wrbc1,b,wrcc1))=15892599 counter(720,link(wrcc1,x,wrdc1))=15892599 counter(720,link(wrdc1,b,wrec1))=15892599 counter(720,link(wrec1,y,wrfc1))=15892625
+Cost: -79463021
+Answer: 28 (Time: 13.021s)
+sol(298,inter(wrec1,4),conf_wrec1_1,conf_wrec1_3) sol(418,inter(wrac1,4),conf_wrac1_1,conf_wrac1_3) sol(450,inter(wrfc1,3),conf_wrfc1_1,conf_wrfc1_3) sol(472,inter(wrdc1,4),conf_wrdc1_1,conf_wrdc1_3) sol(561,inter(wrcc1,6),conf_wrcc1_1,conf_wrcc1_3) sol(573,inter(wrbc1,5),conf_wrbc1_1,conf_wrbc1_3)
+Assignment:
+counter(720,link(wrac1,y,wrbc1))=15892599 counter(720,link(wrbc1,b,wrcc1))=15892599 counter(720,link(wrcc1,x,wrdc1))=15892599 counter(720,link(wrdc1,b,wrec1))=15892599 counter(720,link(wrec1,y,wrfc1))=15892626
+Cost: -79463022
+Answer: 29 (Time: 13.029s)
+sol(298,inter(wrec1,4),conf_wrec1_1,conf_wrec1_3) sol(418,inter(wrac1,4),conf_wrac1_1,conf_wrac1_3) sol(450,inter(wrfc1,3),conf_wrfc1_1,conf_wrfc1_3) sol(472,inter(wrdc1,4),conf_wrdc1_1,conf_wrdc1_3) sol(561,inter(wrcc1,6),conf_wrcc1_1,conf_wrcc1_3) sol(573,inter(wrbc1,5),conf_wrbc1_1,conf_wrbc1_3)
+Assignment:
+counter(720,link(wrac1,y,wrbc1))=15892599 counter(720,link(wrbc1,b,wrcc1))=15892599 counter(720,link(wrcc1,x,wrdc1))=15892599 counter(720,link(wrdc1,b,wrec1))=15892599 counter(720,link(wrec1,y,wrfc1))=15892627
+Cost: -79463023
+Answer: 30 (Time: 13.037s)
+sol(298,inter(wrec1,4),conf_wrec1_1,conf_wrec1_3) sol(418,inter(wrac1,4),conf_wrac1_1,conf_wrac1_3) sol(450,inter(wrfc1,3),conf_wrfc1_1,conf_wrfc1_3) sol(472,inter(wrdc1,4),conf_wrdc1_1,conf_wrdc1_3) sol(561,inter(wrcc1,6),conf_wrcc1_1,conf_wrcc1_3) sol(573,inter(wrbc1,5),conf_wrbc1_1,conf_wrbc1_3)
+Assignment:
+counter(720,link(wrac1,y,wrbc1))=15892599 counter(720,link(wrbc1,b,wrcc1))=15892599 counter(720,link(wrcc1,x,wrdc1))=15892599 counter(720,link(wrdc1,b,wrec1))=15892599 counter(720,link(wrec1,y,wrfc1))=15892628
+Cost: -79463024
+Answer: 31 (Time: 13.045s)
+sol(298,inter(wrec1,4),conf_wrec1_1,conf_wrec1_3) sol(418,inter(wrac1,4),conf_wrac1_1,conf_wrac1_3) sol(450,inter(wrfc1,3),conf_wrfc1_1,conf_wrfc1_3) sol(472,inter(wrdc1,4),conf_wrdc1_1,conf_wrdc1_3) sol(561,inter(wrcc1,6),conf_wrcc1_1,conf_wrcc1_3) sol(573,inter(wrbc1,5),conf_wrbc1_1,conf_wrbc1_3)
+Assignment:
+counter(720,link(wrac1,y,wrbc1))=15892599 counter(720,link(wrbc1,b,wrcc1))=15892599 counter(720,link(wrcc1,x,wrdc1))=15892599 counter(720,link(wrdc1,b,wrec1))=15892599 counter(720,link(wrec1,y,wrfc1))=15892629
+Cost: -79463025
+Answer: 32 (Time: 13.054s)
+sol(298,inter(wrec1,4),conf_wrec1_1,conf_wrec1_3) sol(418,inter(wrac1,4),conf_wrac1_1,conf_wrac1_3) sol(450,inter(wrfc1,3),conf_wrfc1_1,conf_wrfc1_3) sol(472,inter(wrdc1,4),conf_wrdc1_1,conf_wrdc1_3) sol(561,inter(wrcc1,6),conf_wrcc1_1,conf_wrcc1_3) sol(573,inter(wrbc1,5),conf_wrbc1_1,conf_wrbc1_3)
+Assignment:
+counter(720,link(wrac1,y,wrbc1))=15892599 counter(720,link(wrbc1,b,wrcc1))=15892599 counter(720,link(wrcc1,x,wrdc1))=15892599 counter(720,link(wrdc1,b,wrec1))=15892599 counter(720,link(wrec1,y,wrfc1))=15892630
+Cost: -79463026
+SATISFIABLE
+
+INTERRUPTED  : 1
+Models       : 32+
+Calls        : 1
+Time         : 14.416s (Solving: 8.94s 1st Model: 0.46s Unsat: 0.00s)
+CPU Time     : 13.366s

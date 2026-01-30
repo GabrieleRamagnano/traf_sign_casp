@@ -1,7 +1,7 @@
 #!/bin/bash
 
 declare pack_test="theory_delta"
-declare label="sum"
+declare label="delta"
 declare prefix="tail"
 declare tail="/${prefix}0.sh"
 declare test_run="./tail1.sh"
@@ -19,7 +19,6 @@ function delete
     echo "$(ls "./${prefix}"*.sh)"
     echo -e "\rDo you want to remove these files?[y/n] "
     bash "${utility}" general_answer && rm -r "./${prefix}"*.sh
-    
 }
 
 function execute

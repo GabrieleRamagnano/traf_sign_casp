@@ -5,9 +5,12 @@
 declare -a path1_s path2_s
 declare -a time_slot_s
 declare -a day_s
-
 declare -g root
-declare test_run="tail1.sh"
+
+declare group_csv="./inst5.sh"
+declare utility="./aux0.sh"
+export test_name="delta"
+export fst_line="Encoding,Horizon,Problem,counter wrac1_y_wrbc1,counter wrbc1_b_wrcc1,counter wrcc1_x_wrdc1,counter wrdc1_b_wrec1,counter wrec1_y_wrfc1,Total"
 
 function set_root {
    root="./$1/result"
@@ -93,11 +96,19 @@ function file_cleaning
 
 }
 
+
 function test_start
 {
     set_root $1
     export dir="${root}/"
     bash "${test_run}" 
+}
+
+function test_end
+{
+    set_root $1
+    export dir="${root}/"
+    bash "${group_csv}" group_all 
 }
 
 #create_folders main_folder

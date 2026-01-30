@@ -2,6 +2,13 @@
 
 #variable parameters
 declare scenario="${day}${time_slot}"
+declare to_csv="./inst4.sh"
+
+function run_csv
+{
+    export scenario
+    bash "${to_csv}" "${test_name}_csv" "${label}_bound"
+}
 
 function run_test
 {   
@@ -14,17 +21,19 @@ function run_test
                          $args \
                          $const_h$HORIZON \
                          $const_b$MIN \
-                         > "${dir}${PROBLEM}.txt" 2>/dev/null
+                         > "${dir}${PROBLEM}_${label}_bound_$HORIZON.txt" 2>/dev/null
             fi
         fi
     done
+
 }
 
 
 function execute
 {
-    run_test     
+    run_test 
+    run_csv    
 }
 
 shopt -s lastpipe
-execute
+execute 
