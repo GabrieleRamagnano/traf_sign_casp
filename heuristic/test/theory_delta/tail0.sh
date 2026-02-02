@@ -99,7 +99,7 @@ function file_cleaning
 
 function test_start
 {
-    set_root $1
+    create_folders $1
     export dir="${root}/"
     bash "${test_run}" 
 }

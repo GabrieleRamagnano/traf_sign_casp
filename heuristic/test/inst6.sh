@@ -17,7 +17,7 @@ function delete
     export label
     bash "./${tail}" test_end "${pack_test}"
     echo "$(ls "./${prefix}"*.sh)"
-    echo -e "\rDo you want to remove these files?[y/n] "
+    echo -e "\rDo you want to remove these files?[y/n]\c"
     bash "${utility}" general_answer && rm -r "./${prefix}"*.sh
 }
 

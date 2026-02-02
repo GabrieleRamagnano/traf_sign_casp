@@ -1,8 +1,13 @@
 #!/bin/bash
 
 #variable parameters
-declare scenario="${day}${time_slot}"
+declare scenario
 declare to_csv="./inst4.sh"
+
+function set_scenario
+{
+    [[ "${day}" == "muse" ]] && scenario="${day}" || scenario="${day}${time_slot}"  
+}
 
 function run_csv
 {
@@ -28,9 +33,9 @@ function run_test
 
 }
 
-
 function execute
 {
+    set_scenario
     run_test 
     run_csv    
 }

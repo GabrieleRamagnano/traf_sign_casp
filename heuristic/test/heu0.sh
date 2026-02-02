@@ -1,5 +1,7 @@
 #!/bin/bash
 
+#!/bin/bash
+
 ### Directory management
 
 declare -a path1_s path2_s
@@ -9,7 +11,7 @@ declare -g root
 
 declare group_csv="./inst5.sh"
 declare utility="./aux0.sh"
-export test_name="delta"
+export test_name="heurate"
 export fst_line="Encoding,Horizon,Problem,counter wrac1_y_wrbc1,counter wrbc1_b_wrcc1,counter wrcc1_x_wrdc1,counter wrdc1_b_wrec1,counter wrec1_y_wrfc1,Total"
 
 function set_root {
@@ -99,7 +101,7 @@ function file_cleaning
 
 function test_start
 {
-    set_root $1
+    create_folders $1
     export dir="${root}/"
     bash "${test_run}" 
 }
