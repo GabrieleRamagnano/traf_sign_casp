@@ -1,7 +1,7 @@
 #!/bin/bash
 
 declare pack_test="theory_delta"
-declare label="aggregate"
+declare label="aggregatel1"
 declare prefix="tail"
 declare tail="/${prefix}0.sh"
 declare test_run="./tail1.sh"
@@ -14,8 +14,11 @@ function move
 
 function delete
 {
+    local only_print=$1
+
     export label
     bash "./${tail}" test_end "${pack_test}"
+    "${only_print}"
     echo "$(ls "./${prefix}"*.sh)"
     echo -e "\rDo you want to remove these files?[y/n] "
     bash "${utility}" general_answer && rm -r "./${prefix}"*.sh

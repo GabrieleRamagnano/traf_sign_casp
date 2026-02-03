@@ -92,7 +92,7 @@ function file_cleaning
       if [[ "${line}" == *".txt" ]]; then
          rm -r "${line}"
       fi
-    done
+     done
 
 }
 
@@ -100,7 +100,8 @@ function file_cleaning
 function test_start
 {
     set_root $1
-    export dir="${root}/"
+    create_folders $1
+    export dir="${root}/" 
     bash "${test_run}" 
 }
 

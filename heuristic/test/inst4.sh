@@ -69,10 +69,8 @@ function select_instances
     local asp_output
 
     tail -n +2 $bounds | while IFS=',' read -r HORIZON PROBLEM MIN; do
-        if [[ "$PROBLEM" == *"$instance"*"$scenario"* ]]; then
-           if [[ "$HORIZON" == "$horizon" ]]; then  
-              is_there asp_output "${dir}${PROBLEM}_${label}_$HORIZON.txt"               
-           fi 
+        if [[ "$PROBLEM" == *"$scenario"*  && "$HORIZON" == "$horizon" ]]; then
+           is_there asp_output "${dir}${PROBLEM}_${label}_$HORIZON.txt"               
         fi
     done  
     #print_elements _asp_outputs 
@@ -180,7 +178,7 @@ function go_ahaed
     local -i start  
 
     start=${#_prefix}
-    until [[ "$_key" == "${_elem:$start:1}" ]]; do ((start++)) done
+    until [[ "$_key" == "${_elem:$start:1}" ]]; do ((start++)); done
     get_num_link "${_elem:${#_prefix}:$(($start - ${#_prefix}))}" link_n_ 
 
     ((start++))
