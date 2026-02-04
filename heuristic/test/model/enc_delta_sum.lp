@@ -70,14 +70,14 @@ domain(L,-O,C+I) :- capacity(L,C), max_in(L,I), max_out(L,O).
 &sum{occupancy(T-1,L); I+O} = occupancy(T,L) :- 
 time(T),
 link(L),
-I = #sum{R*E*F : precedes(J,L), status(J,S), active(T-1,S), in_ord(L,L1,N), turnrate_gez(S,L1,L,R), empty_link(T-1,L1,E), full_link(T-1,L,F)},
-O = #sum{-R*E*F : follows(J,L), status(J,S), active(T-1,S), out_ord(L,L1,N), turnrate_gez(S,L,L1,R), empty_link(T-1,L,E), full_link(T-1,L1,F)}.
+I = #sum{R*E*F,L1 : precedes(J,L), status(J,S), active(T-1,S), in_ord(L,L1,N), turnrate_gez(S,L1,L,R), empty_link(T-1,L1,E), full_link(T-1,L,F)},
+O = #sum{-R*E*F,L1 : follows(J,L), status(J,S), active(T-1,S), out_ord(L,L1,N), turnrate_gez(S,L,L1,R), empty_link(T-1,L,E), full_link(T-1,L1,F)}.
 
 &sum{ D} = counter(0,L) :- counter(0,L,D).
 &sum{counter(T-1,L) ; I} = counter(T,L) :- 
 time(T),
 link(L),
-I = #sum{R*E*F : precedes(J,L), status(J,S), active(T-1,S), in_ord(L,L1,N), turnrate_gez(S,L1,L,R), empty_link(T-1,L1,E), full_link(T-1,L,F)}.
+I = #sum{R*E*F,L1 : precedes(J,L), status(J,S), active(T-1,S), in_ord(L,L1,N), turnrate_gez(S,L1,L,R), empty_link(T-1,L1,E), full_link(T-1,L,F)}.
 
 :- &sum{counter(horizon,L) } < B, counter(0,L,_), goal(B), B>0.
 %:- &sum{counter(horizon,L) : pddl_solution(L,_)} <= S, S=#sum{B,L : pddl_solution(L,B)}, pddl_solution(_,_).

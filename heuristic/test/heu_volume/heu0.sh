@@ -9,6 +9,7 @@ declare -a time_slot_s
 declare -a day_s
 declare -g root
 
+declare unknown="./inst11.sh"
 declare group_csv="./inst5.sh"
 declare utility="./aux0.sh"
 export test_name="heurate"
@@ -98,6 +99,12 @@ function file_cleaning
 
 }
 
+function unknown_results
+{
+    set_root $1
+    export dir="${root}/" 
+    bash "${unknown}" unknown
+}
 
 function test_start
 {

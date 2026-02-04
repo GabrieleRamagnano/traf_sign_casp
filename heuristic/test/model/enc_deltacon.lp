@@ -141,49 +141,19 @@ last_delta_in(N,L) :- link(L), N=#count{L1 : in_ord(L,L1,M)}.
 % for the link L, there are N outgoing link
 last_delta_out(N,L) :- link(L), N=#count{L1 : out_ord(L,L1,M)}.
 
-% delta(T,N,L,D):
-%   for every link L, there is a set of ordered atoms delta/4 that incrementally compute the delta at time T
-%   the Nth delta contains the number D.
-delta(T,0,L,0) :- time(T), link(L).
-%   from 1 to last_delta_in -> incremets
-delta(T,N,L,D+R*E*F) :- time(T), precedes(J,L), status(J,S), active(T-1,S), delta(T,N-1,L,D), in_ord(L,L1,N), turnrate_gez(S,L1,L,R), empty_link(T-1,L1,E), full_link(T-1,L,F).
-%   from last_delta_in to last_delta_in + last_delta_out -> increments - decrements
-delta(T,M+N,L,D-R*E*F) :- time(T), follows(J,L), status(J,S), active(T-1,S), delta(T,M+N-1,L,D), last_delta_in(M,L),out_ord(L,L1,N), turnrate_gez(S,L,L1,R), empty_link(T-1,L,E), full_link(T-1,L1,F).
-
-
 &sum{D} = delta(T,L,0) :-
-time(T),
-link(L),
-D = 0.
+time(T), link(L), D = 0.
 
 &sum{delta(T,L,N-1); R*E*F} = delta(T,L,N) :-
-time(T),
-precedes(J,L), 
-status(J,S), 
-active(T-1,S), 
-in_ord(L,L1,N), 
-turnrate_gez(S,L1,L,R), 
-empty_link(T-1,L1,E), 
-full_link(T-1,L,F).
+time(T), 
+precedes(J,L), status(J,S), active(T-1,S), 
+in_ord(L,L1,N), turnrate_gez(S,L1,L,R), empty_link(T-1,L1,E), full_link(T-1,L,F).
 
 &sum{delta(T,L,M+N-1); -R*E*F} = delta(T,L,M+N) :-
 time(T),
-follows(J,L), 
-status(J,S), 
-active(T-1,S),  
-last_delta_in(M,L),
-out_ord(L,L1,N), 
-turnrate_gez(S,L,L1,R), 
-empty_link(T-1,L,E), 
-full_link(T-1,L1,F).
+follows(J,L), status(J,S), active(T-1,S),  
+last_delta_in(M,L), out_ord(L,L1,N), turnrate_gez(S,L,L1,R), empty_link(T-1,L,E), full_link(T-1,L1,F).
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Alternative order for delta (fist subtract then add)
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%delta(T,N,L,D-R*E*F) :- time(T), follows(J,L), status(J,S), active(T-1,S), delta(T,N-1,L,D),out_ord(L,L1,N), turnrate_gez(S,L,L1,R), empty_link(T-1,L,E), full_link(T-1,L1,F).
-%delta(T,M+N,L,D+R*E*F) :- time(T), precedes(J,L), status(J,S), active(T-1,S), delta(T,M+N-1,L,D), last_delta_out(M,L), in_ord(L,L1,N), turnrate_gez(S,L1,L,R), empty_link(T-1,L1,E), full_link(T-1,L,F).
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 sum_in(L,0..M) :- status(J,S), precedes(J,L), M=#sum{T,L1 : turnrate(S,L1,L,T)}.
 sum_out(L,0..M) :- status(J,S), follows(J,L), M=#sum{T,L1 : turnrate(S,L,L1,T)}.
 
@@ -196,12 +166,6 @@ domain(L,-O,C+I) :- capacity(L,C), max_in(L,I), max_out(L,O).
 
 
 &sum{ D} = occupancy(0,L) :- initial_occ(L,D).
-%*
-&sum{occupancy(T-1,L) ; D} = occupancy(T,L) :- 
-delta(T,I+O,L,D), 
-last_delta_out(O,L), 
-last_delta_in(I,L).
-*%
 
 &sum{occupancy(T-1,L); delta(T,I+O,L)} = occupancy(T,L) :- 
 last_delta_out(O,L), 

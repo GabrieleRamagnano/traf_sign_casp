@@ -30,6 +30,12 @@ function execute
     bash "./${tail}" test_start "${pack_test}" 
 }
 
+function print
+{
+    export label
+    bash "./${tail}" print_all "${pack_test}"
+}
+
 "$@"
 
 shopt -s lastpipe

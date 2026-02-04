@@ -96,7 +96,6 @@ function file_cleaning
 
 }
 
-
 function test_start
 {
     create_folders $1
