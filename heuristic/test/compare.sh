@@ -1,6 +1,6 @@
 #!/bin/bash 
 horizon_s=("600" "660" "720" "780" "840" "900")
-label="aggregate"
+label="heurate"
 csv=" ./result/result_det_bound_${label}.csv "
 py=" ./inst0.py "
 py_=" ./inst1.py "

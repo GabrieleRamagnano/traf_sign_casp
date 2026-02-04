@@ -8,10 +8,7 @@ declare -a day_s
 declare -g root
 
 declare unknown="./inst11.sh"
-<<<<<<< HEAD
-=======
 declare csv="./inst12.sh"
->>>>>>> 393f2e78d5b741b3d3bb9a36f1fdd11b8945d64d
 declare group_csv="./inst5.sh"
 declare utility="./aux0.sh"
 export test_name="heurate"
