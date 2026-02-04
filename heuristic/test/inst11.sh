@@ -1,6 +1,5 @@
 #!/bin/bash
 declare bounds="../../Results_experiments/Task1/bounds.csv" 
-declare label="heuphase"
 declare utility="./aux0.sh"
 declare unknown_inst="${dir}unknown_${label}.txt"
 
@@ -8,11 +7,11 @@ function search
 {
     local place=$1
     local item=$2
-   
+
     tree "${place}" -i -f | 
     while read -r line; do
           if [[ "${line}" == *"${item}"* ]]; then
-             return 0  
+             return 0   
           fi
     done
     return 1
@@ -44,17 +43,14 @@ function unknown
 
     clean_file
     tail -n +2 $bounds | while IFS=',' read -r HORIZON PROBLEM MIN; do
-        
            is_there asp_output "${dir}${PROBLEM}_${label}_bound_$HORIZON.txt" &&
            tail -n +1 "${asp_output}" | while read -r line; do    
                    if [[ "${line}" == *"UNKNOWN"* ]]; then
                       echo "${asp_output}" >> "${unknown_inst}"
                    fi
-           done
+           done         
         
     done  
-
-    tail -n +1 "${unknown_inst}" | while read -r line; do cat "${line}"; done
  
 }
 

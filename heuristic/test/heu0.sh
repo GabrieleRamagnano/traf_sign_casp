@@ -1,7 +1,5 @@
 #!/bin/bash
 
-#!/bin/bash
-
 ### Directory management
 
 declare -a path1_s path2_s
@@ -10,6 +8,7 @@ declare -a day_s
 declare -g root
 
 declare unknown="./inst11.sh"
+declare csv="./inst12.sh"
 declare group_csv="./inst5.sh"
 declare csv="./inst12.sh"
 declare utility="./aux0.sh"
@@ -98,6 +97,13 @@ function file_cleaning
       fi
     done
 
+}
+
+function unknown_results
+{
+    set_root $1
+    export dir="${root}/" 
+    bash "${unknown}" unknown
 }
 
 function unknown_results
