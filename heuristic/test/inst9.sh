@@ -1,7 +1,5 @@
 #!/bin/bash
 
-#!/bin/bash
-
 declare pack_test="heu_volume"
 declare label="heurate"
 declare prefix="heu"
@@ -16,8 +14,11 @@ function move
 
 function delete
 {
+    local only_print=$1
+
     export label
-    bash "./${tail}" test_end "${pack_test}"
+    bash "./${tail}" test_end "${pack_test}" 
+    "${only_print}"
     echo "$(ls "./${prefix}"*.sh)"
     echo -e "\rDo you want to remove these files?[y/n]\c"
     bash "${utility}" general_answer && rm -r "./${prefix}"*.sh
@@ -28,6 +29,19 @@ function execute
     export label
     export test_run
     bash "./${tail}" test_start "${pack_test}" 
+}
+
+function unknown
+{
+  export label
+  bash "./${tail}" unknown_results "${pack_test}"       
+
+}
+
+function print
+{
+    export label
+    bash "./${tail}" print_all "${pack_test}"
 }
 
 "$@"
