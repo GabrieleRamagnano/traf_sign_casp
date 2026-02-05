@@ -20,3 +20,5 @@ Name::QuickPrint2
  ./model/constants.lp ./model/enc_conf.lp ./model/heu/min_volume.lp ./model/instance_fixed.lp--QuickPrint2
 Name::LongRate
  ./model/instance_fixed.lp ./model/enc_clingcon.lp ./model/heu/max_volume.lp--LongRate
+Name::Delta#_and_HighRate
+ ./model/constants.lp ./model/enc_conf.lp ./model/enc_delta_sum.lp ./model/instance_fixed.lp ./model/heu/conf_value.lp--Delta#_and_HighRate

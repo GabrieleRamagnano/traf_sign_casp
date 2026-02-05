@@ -94,7 +94,7 @@ function file_cleaning
       if [[ "${line}" == *".txt" ]]; then
          rm -r "${line}"
       fi
-     done
+    done
 
 }
 
@@ -133,5 +133,4 @@ function print_all
 
 shopt -s lastpipe
 "$@"
-
 
