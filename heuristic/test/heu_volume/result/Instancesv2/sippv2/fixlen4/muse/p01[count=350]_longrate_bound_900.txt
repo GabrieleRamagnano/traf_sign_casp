@@ -11,3 +11,10 @@ optimal_conf_in(conf_wrac1_2,link(wrac1,y,wrbc1)) optimal_conf_in(conf_wrac1_3,l
 Assignment:
 counter(900,link(wrac1,y,wrbc1))=29026200
 Cost: -29026200
+SATISFIABLE
+
+TIME LIMIT   : 1
+Models       : 2+
+Calls        : 1
+Time         : 602.477s (Solving: 589.57s 1st Model: 8.46s Unsat: 0.00s)
+CPU Time     : 541.287s
