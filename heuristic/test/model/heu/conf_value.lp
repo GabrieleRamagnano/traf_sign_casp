@@ -1,41 +1,110 @@
-%stage_value= stage_length * turnrate   
+%%% version without max_phase 
+
+%%% entry_confinguration
+high_rate_in(stage(J1,N),C,L*S) :-
+phase_limit(stage(J1,N),C,L),
+goal_count(link(J1,GL,J2),_),
+S = #sum{R : turnrate_gez(stage(J1,N),L2,link(J1,GL,J2),R)}.
+
+max_rate_in(stage(J,N),C,M) :-
+high_rate_in(stage(J,N),C,M),
+M = #max{V : high_rate_in(stage(J,N),_,V)}.
+
+optimal_conf_in(C,link(J1,GL,J2)) :- 
+goal_count(link(J1,GL,J2),_),
+max_rate_in(stage(J1,N),C,M),
+#count{C1 : max_rate_in(stage(J1,N),C1,M)} = 1. 
+
+promising_conf_1(J,C,A) :- 
+change_in(L),
+configuration(J,C,_,A), 
+optimal_conf_in(A,L).
+
+%% exit_configuration
+high_rate_out(stage(J2,N),C,L*S) :-
+phase_limit(stage(J2,N),C,L),
+goal_count(link(J1,GL,J2),_),
+S = #sum{R : turnrate_gez(stage(J2,N),link(J1,GL,J2),L2,R)}.
+
+max_rate_out(stage(J,N),C,M) :-
+high_rate_out(stage(J,N),C,M),
+M = #max{V : high_rate_out(stage(J,N),_,V)}.
+
+optimal_conf_out(C,link(J1,GL,J2)) :- 
+goal_count(link(J1,GL,J2),_),
+max_rate_out(stage(J2,N),C,M),
+#count{C1 : max_rate_out(stage(J2,N),C1,M)} = 1. 
+
+promising_conf_2(J,C,A) :- 
+change_out(L),
+configuration(J,C,_,A), 
+optimal_conf_out(A,L).
+
+
+%the occupancy is less than 10% of link's capacity
+change_in(L) :- &sum{occupancy(horizon/2,L)} < (C*10/100),
+%time(T),
+capacity(L,C),
+goal_count(L,_).
+
+%&sum{occupancy(T,L)}
+%the occupancy is greater than 90% of link's capacity
+change_out(L) :- &sum{occupancy(horizon/2,L)} > (C*90/100),
+%time(T),
+capacity(L,C),
+goal_count(L,_).
+
+change_1 :- change_in(L).
+change_2 :- change_out(L).
+
+#heuristic promising_conf_1(J,C,A) : change_1.[1, true]
+#heuristic promising_conf_2(J,C,A) : change_2.[1, true]
+
+#heuristic promising_conf_1(J,C,A) : not change_1.[1, false]
+#heuristic promising_conf_2(J,C,A) : not change_2.[1, false]
+
+%-------------------------------------------------------------
+%#show max_phase_limit/2.
+%#show turn_in/2.
+%#show high_rate_in/3.
+%#show max_rate_in/3.
+#show optimal_conf_in/2.
+#show promising_conf_1/3.
+
+%#show high_rate_out/3.
+%#show max_rate_out/3.
+#show optimal_conf_out/2.
+#show promising_conf_2/3.
+
+#show change_in/1.
+#show change_out/1.
+
+%#show goalcapacity(L,C) : goal_count(L,_), capacity(L,C) .
+%&show {occupancy(0,L) : goal_count(L,_)}.
+
+%---------------------------------------------------------------
+%stage_value= stage_length * turnrate  
+%* 
 max_phase_limit(stage(J,N),M) :- 
 stage(J,N), 
 M = #max{L : phase_limit(stage(J,N),_,L)}.
 
-turn_in(J1,S,M) :- 
+turn_in(stage(J1,N),S) :- 
+stage(J1,N),
 goal_count(link(J1,GL,J2),_),
-S = stage(J1,_),
-M = #sum{R,L2 : turnrate_gez(S,L2,link(J1,GL,J2),R)}.
+S = #sum{R : turnrate_gez(stage(J1,N),L2,link(J1,GL,J2),R)}.
+*%
+%*
+%%% reduced version
+high_rate_in(stage(J1,N),M*S) :-
+stage(J1,N),
+goal_count(link(J1,GL,J2),_),
+M = #max{L : phase_limit(stage(J1,N),_,L)},
+S = #sum{R : turnrate_gez(stage(J1,N),L2,link(J1,GL,J2),R)}.
+*%
 
-exp_in(J1,S,E) :- 
-turn_in(J1,S,M),
+%*
+high_rate_in(S,L*R) :- 
 max_phase_limit(S,L),
-E = M*L. 
-
-max_stage_value(J1,C,S,M) :-
-available_conf(_,C),
-phase_limit(S,C,_),
-exp_in(J1,S,_),
-M = #max{N : exp_in(J1,S,N)}.
-
-optimal_conf(J1,C,stage(J,N)) :- 
-max_stage_value(J1,C,stage(J,N),_),
-#count{C1 : max_stage_value(C1,stage(J,N),M)}=1. 
-
-optimal_conf_empty(C,L) :- 
-counter(0,link(J1,_,_),_),
-optimal_conf(J1,C,S).
-
-promising_conf_2(J,C,A) :- configuration(J,C,_,A), 
-                           optimal_conf_empty(A,L).
-
-
-%do the same thing for the outgoung link...
-
-optimal_conf_fill(C,L) :- counter(0,L,_), 
-                          stage_fill(S,L), 
-                          optimal_conf(C,S).
-
-promising_conf_1(J,C,A) :- configuration(J,C,_,A),
-                           optimal_conf_fill(A,L).
+turn_in(S,R).
+*%

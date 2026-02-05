@@ -15,12 +15,12 @@ function move
 function delete
 {
     local only_print=$1
-
+    
     export label
-    bash "./${tail}" test_end "${pack_test}"
+    bash "./${tail}" test_end "${pack_test}" 
     "${only_print}"
     echo "$(ls "./${prefix}"*.sh)"
-    echo -e "\rDo you want to remove these files?[y/n] "
+    echo -e "\rDo you want to remove these files?[y/n]\c"
     bash "${utility}" general_answer && rm -r "./${prefix}"*.sh
     
 }

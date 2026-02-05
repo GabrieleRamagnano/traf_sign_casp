@@ -4,7 +4,6 @@
 declare scenario
 declare to_csv="./inst4.sh"
 
-
 function set_scenario
 {
     [[ "${day}" == "muse" ]] && scenario="${day}" || scenario="${day}${time_slot}"  
@@ -33,7 +32,6 @@ function run_test
     done
 
 }
-
 
 function execute
 {

@@ -71,8 +71,7 @@ function select_instances
            is_there "${dir}${PROBLEM}_${label}_$HORIZON.txt"               
         fi
     done  
-    #print_elements _asp_outputs 
-    #*"$instance"*"$scenario"*
+
 }
 
 function calculate_position
