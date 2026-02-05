@@ -52,28 +52,27 @@ function search
 
 function is_there
 {
-    local -n _asp_output=$1
-    local inst_=$2
+    local inst_=$1
     local -i len
 
     len="${#dir}"
     if  search "." "${dir}${inst_:len+2}"; then
-        idx=${#_asp_outputs[@]}
-        _asp_outputs[idx]="${dir}${inst_:len+2}"
+        idx=${#asp_outputs[@]}
+        asp_outputs[idx]="${dir}${inst_:len+2}"
     fi
 }
 
 function select_instances
 {
     local -n _asp_outputs=$1
-    local asp_output
 
     tail -n +2 $bounds | while IFS=',' read -r HORIZON PROBLEM MIN; do
         if [[ "$PROBLEM" == *"$scenario"*  && "$HORIZON" == "$horizon" ]]; then
-           is_there asp_output "${dir}${PROBLEM}_${label}_$HORIZON.txt"               
+           is_there "${dir}${PROBLEM}_${label}_$HORIZON.txt"               
         fi
     done  
     #print_elements _asp_outputs 
+    #*"$instance"*"$scenario"*
 }
 
 function calculate_position
@@ -265,4 +264,3 @@ set_csv
 select_instances asp_outputs
 read_instances
 calculate_tot_counter
-
