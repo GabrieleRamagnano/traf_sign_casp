@@ -9,7 +9,7 @@ declare utility="./aux0.sh"
 
 function move
 {
-    cp -r "./${pack_test}/"*.sh "."
+    cp -r "./${pack_test}/${prefix}"*.sh "."
 }
 
 function delete
