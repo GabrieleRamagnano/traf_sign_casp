@@ -564,7 +564,7 @@ function additional_export
                              set_standard_output
                              additional_export;;
                              traffic_parameters) 
-                             customize_data
+                             customize_data #aggiungere opzione complete_data
                              additional_export;;
                              set_bound) 
                              exp_view bound_s "${messg}" &&
