@@ -66,7 +66,7 @@ function select_instances
 {
     local -n _asp_outputs=$1
 
-    tail -n +2 $bounds | while IFS=',' read -r HORIZON PROBLEM MIN; do
+    tail -n +2 $task | while IFS=',' read -r HORIZON PROBLEM MIN; do
         if [[ "$PROBLEM" == *"$scenario"*  && "$HORIZON" == "$horizon" ]]; then
            is_there "${dir}${PROBLEM}_${label}_$HORIZON.txt"               
         fi

@@ -17,7 +17,7 @@ function run_csv
 
 function run_test
 {   
-    tail -n +2 "$bounds" | while IFS=',' read -r HORIZON PROBLEM MIN; do
+    tail -n +2 "$task" | while IFS=',' read -r HORIZON PROBLEM MIN; do
         if [[ "$PROBLEM" == *"$instance"*"$scenario"*"$key"* ]]; then
             if [[ "$HORIZON" == "$horizon" ]]; then 
                 echo $HORIZON $PROBLEM

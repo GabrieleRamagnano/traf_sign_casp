@@ -1,0 +1,20 @@
+Encoding,Horizon,Problem,counter wrac1_y_wrbc1,counter wrbc1_b_wrcc1,counter wrcc1_x_wrdc1,counter wrdc1_b_wrec1,counter wrec1_y_wrfc1,Total
+clingcon,600,./heu_volume/result/Instancesv2/sippv2/fixlen4/26eve/p01[count=350]_NotOpt_quickrate_bound_600.txt,21973260,,,,,21973260
+clingcon,600,./heu_volume/result/Instancesv2/sippv2/fixlen4/26morn/p01[count=350]_NotOpt_quickrate_bound_600.txt,16315700,,,,,16315700
+clingcon,600,./heu_volume/result/Instancesv2/sippv2/fixlen4/26noon/p01[count=350]_NotOpt_quickrate_bound_600.txt,20791720,,,,,20791720
+clingcon,600,./heu_volume/result/Instancesv2_round/sippv2/fixlen4/26noon/p01[count=350]_NotOpt_quickrate_bound_600.txt,19948480,,,,,19948480
+clingcon,600,./heu_volume/result/Instancesv2/sippv2/fixlen4/30eve/p01[count=350]_NotOpt_quickrate_bound_600.txt,14067220,,,,,14067220
+clingcon,600,./heu_volume/result/Instancesv2/sippv2/fixlen4/30morn/p01[count=350]_NotOpt_quickrate_bound_600.txt,7170300,,,,,7170300
+clingcon,600,./heu_volume/result/Instancesv2_round/sippv2/fixlen4/30morn/p01[count=350]_NotOpt_quickrate_bound_600.txt,7041480,,,,,7041480
+clingcon,600,./heu_volume/result/Instancesv2/sippv2/fixlen4/30noon/p01[count=350]_NotOpt_quickrate_bound_600.txt,20860020,,,,,20860020
+clingcon,660,./heu_volume/result/Instancesv2/sippv2/fixlen4/26morn/p01[count=350]_NotOpt_quickrate_bound_660.txt,17323940,,,,,17323940
+clingcon,660,./heu_volume/result/Instancesv2/sippv2/fixlen4/26noon/p01[count=350]_NotOpt_quickrate_bound_660.txt,22785400,,,,,22785400
+clingcon,660,./heu_volume/result/Instancesv2/sippv2/fixlen4/30eve/p01[count=350]_NotOpt_quickrate_bound_660.txt,14691880,,,,,14691880
+clingcon,660,./heu_volume/result/Instancesv2/sippv2/fixlen4/30morn/p01[count=350]_NotOpt_quickrate_bound_660.txt,7555000,,,,,7555000
+clingcon,660,./heu_volume/result/Instancesv2/sippv2/fixlen4/30noon/p01[count=350]_NotOpt_quickrate_bound_660.txt,23477980,,,,,23477980
+clingcon,660,./heu_volume/result/Instancesv2/sippv2/fixlen4/muse/p01[count=350]_NotOpt_quickrate_bound_660.txt,20965400,,,,,20965400
+clingcon,660,./heu_volume/result/Instancesv2_round/sippv2/fixlen4/muse/p02[count=350]_NotOpt_quickrate_bound_660.txt,19147700,12275900,,,,31423600
+clingcon,720,./heu_volume/result/Instancesv2/sippv2/fixlen4/26morn/p01[count=350]_NotOpt_quickrate_bound_720.txt,19220300,,,,,19220300
+clingcon,720,./heu_volume/result/Instancesv2/sippv2/fixlen4/30morn/p01[count=350]_NotOpt_quickrate_bound_720.txt,8411820,,,,,8411820
+clingcon,720,./heu_volume/result/Instancesv2/sippv2/fixlen4/muse/p01[count=350]_NotOpt_quickrate_bound_720.txt,22967800,,,,,22967800
+clingcon,900,./heu_volume/result/Instancesv2/sippv2/fixlen4/muse/p04[count=350]_NotOpt_quickrate_bound_900.txt,28961700,20929800,24949800,33203100,,108044400

@@ -3,7 +3,6 @@
 #variable parameters
 declare scenario
 declare to_csv="./inst4.sh"
-declare task2="../../Results_experiments/Task2"
 
 function set_scenario
 {
@@ -31,7 +30,7 @@ function run_test
     local asp_output
     local -i zero=0
 
-    find "${task2}" -type f -name "*.pddl" | while read -r problem; do
+    find "${task}" -type f -name "*.pddl" | while read -r problem; do
         if [[ "$problem" == *"$instance"*"$scenario"*"$key"* ]]; then
            asp_instance="${problem%.pddl}.lp"
            set_output

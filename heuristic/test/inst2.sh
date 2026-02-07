@@ -13,89 +13,47 @@ declare -a -g day_s
 declare -a -g instance_s
 declare -g muse
 declare -g args
+declare -g parallel
 
 declare -a prefix_s=("inst"
                      "aux")
-declare clingo_run="./${prefix_s[0]}0.sh"
-declare test_run=""
+declare clingo_run
 declare utility="./${prefix_s[1]}0.sh"
+declare classic=" --config=crafty --time-limit=600 "
+declare -a -g option_s=("${classic}" "${classic} --heuristic=Domain ")
+declare -a -g cost_s=("--const horizon=" "--const bound=")
+declare -a -g instv2_s=("Instancesv2_round/" "Instancesv2/")
+declare -a -g task_s=("../../Results_experiments/Task1/bounds.csv" "../../Results_experiments/Task2")
 
-function set_test_traffic
-{
-    export phase_limit=" ./model/data/phase_limit.lp "
-    export turnrate=" ./model/data/turnrate.lp "
-    export capacity=" ./model/data/capacity.lp "
-    export occupancy=" ./model/data/init_occ.lp "
-    export activation=" ./model/data/activation.lp "
-    export instance_fixed=" ./model/instance_fixed.lp "
-    export constants=" ./model/constants.lp "
-    export configuration=" ./model/enc_conf.lp "
-    export counter=" ./model/enc_counter.lp " 
-
+function set_options
+{    
+    case $1 in -heu) export options="${option_s[1]}"; echo $options;;
+                  *) export options="${option_s[0]}"; echo $options;;
+    esac  
     #compose
-    args="${phase_limit}${turnrate}${capacity}${occupancy}${activation}"
-    args="${args}${instance_fixed}${constants}${configuration}${counter}"
-}
-
-function set_instancev2
-{
-    case $1 in -round) export instance="Instancesv2_round/";;
-                    *) export instance="Instancesv2/";;
-    esac
-}
-
-function set_bound
-{
-    set_instancev2 $1
-    export bounds="../../Results_experiments/Task1/bounds.csv"
-}
-
-function set_standard_traffic
-{
-    set_bound $1
-    export instance_fixed=" ./model/instance_fixed.lp "
-    export enc_clingcon=" ./model/enc_clingcon.lp " 
-
-    #compose
-    args="${args}${instance_fixed}${enc_clingcon}"
-    
+    [[ "$args" != *"${options}"* ]] && args="${args}${options}"
 }
 
 function set_constants
 { 
-    export const_h=" --const horizon="
-    export const_b=" --const bound="
+    export const_h=" ${cost_s[0]}"
+    export const_b=" ${cost_s[1]}"
 }
 
-function set_options
+function set_instancev2
 {
-    local classic=" --config=crafty --time-limit=600 "
-    local opt_heu=" --heuristic=Domain "
-    
-    case $1 in -heu) export options="${classic}${opt_heu}";;
-                  *) export options="${classic}";;
-    esac  
-
-    #compose
-    args="${args}${options}"
-}
-
-function set_standard_output
-{
-    export root="./result"
-    export dir_txt="${root}""/out_txt/"
-    export dir_lp="${root}""/out_lp/"
+    case $1 in -parallel) parallel="ok";;
+               -round) export instance="${instv2_s[0]}"; echo $instance;;
+                    *) export instance="${instv2_s[1]}"; echo $instance;;
+    esac
 }
 
 function set_task
 {
-    local round=$1
-    local heuristic=$2
 
-    set_standard_traffic "${round}"
-    set_constants
-    set_options "${heuristic}"
-    set_standard_output
+    case $1 in -bound) export task="${task_s[0]}" ; echo $task;;
+                    *) export task="${task_s[1]}"; echo $task;;
+    esac
 }
 
 function complete_data
@@ -105,6 +63,7 @@ function complete_data
     day_s=("26" "30")
     muse="muse"
     instance_s=("p01" "p02" "p03" "p04" "p05")
+    resume
 }
 
 function add
@@ -478,33 +437,15 @@ function file_set
 
 }
 
-function preset_options
+function preset
 {
     local input
-    echo -e "digit -heu for the heuristic version:\c "
+    echo -e "digit $1 for selecting $2:\c "
     read -e input
-    set_options "${input}"
-}
-
-function round_choice
-{
-    local -n _input=$1
-    echo -e "digit -round for selecting Instancesv2_round/:\c "
-    read -e _input 
-}
-
-function preset_standard_traffic
-{   
-    local input
-    round_choice input
-    set_standard_traffic "${input}"
-}
-
-function preset_bound
-{
-    local input
-    round_choice input
-    set_bound "${input}"
+    case $3 in  set_options) set_options "${input}";;
+                set_instancev2) set_instancev2 "${input}";;
+                set_task) set_task "${input}";;
+    esac
 }
 
 function exp_view
@@ -521,54 +462,34 @@ function exp_view
 
 function additional_export
 {
-    local -a package_s=("standard_traffic_instance"
-                        "clingo_constants"
+    local -a package_s=("clingo_constants"
                         "clingo_options"
-                        "standard_output"
                         "traffic_parameters"
-                        "set_bound")
-    root="./result"
-    local -a std_output_s=("${root}""/out_txt/" 
-                           "${root}""/out_lp/")
-    classic=" --config=crafty --time-limit=600 "
-    local -a option_s=("${classic}"
-                       "${classic} --heuristic=Domain ")
-    local -a cost_s=("--const horizon="
-                     "--const bound=")
-    local -a std_traffic_s=("../../Results_experiments/Task1/bounds.csv"
-                            "./model/instance_fixed.lp "
-                            "./model/enc_clingcon.lp "
-                            "Instancesv2_round/ | Instancesv2/")
-    local -a bound_s=("../../Results_experiments/Task1/bounds.csv"
-                     "Instancesv2_round/ | Instancesv2/")
+                        "set_instance"
+                        "set_task")
     local messg="Do you want to export these variables?[y/n]\c"
 
     echo "There are also these additional packages:"
     select pack in "${package_s[@]}" "done"; do
-           case "${pack}" in standard_traffic_instance) 
-                             exp_view std_traffic_s "${messg}" &&
-                             preset_standard_traffic
-                             additional_export;;
-                             clingo_constants) 
+           case "${pack}" in clingo_constants) 
                              print_elements cost_s
                              exp_view const_s "${messg}" &&
                              set_constants
                              additional_export;;
                              clingo_options) 
                              exp_view option_s "${messg}" && 
-                             preset_options
-                             additional_export;;
-                             standard_output) 
-                             print_elements std_output_s
-                             exp_view std_output_s "${messg}" &&
-                             set_standard_output
+                             preset "-heu" "heuristic version" set_options
                              additional_export;;
                              traffic_parameters) 
-                             customize_data #aggiungere opzione complete_data
+                             [[ "${traffic}" == "customize_data" ]] && customize_data || complete_data
                              additional_export;;
-                             set_bound) 
-                             exp_view bound_s "${messg}" &&
-                             preset_bound
+                             set_instance)
+                             exp_view instv2_s "${messg}" && 
+                             preset "-round|-parallel" "${instv2_s[0]}|both" set_instancev2
+                             additional_export;;
+                             set_task) 
+                             exp_view task_s "${messg}" &&
+                             preset "-bound" "${task_s[0]}" set_task
                              additional_export;;
                              done) echo "bye";;
                                 *) echo "not valid option"
@@ -598,17 +519,19 @@ function set_script
 
 function see_services
 {
-    local -a service_s=("customize_run"
-                        "total_run"
+    local -a service_s=("total_run"
                         "test_run")
+    local traffic
     
     select srv in "${service_s[@]}" "done"; do
-           case "${srv}" in customize_run) service="customize_run"
-                                           see_services;;
-                            total_run) service="total_run"
+           case "${srv}" in total_run) file_set #;traffic="complete_data"
+                                       additional_export
+                                       set_script
+                                       service="total_run"
                                        see_services;;
                             test_run) file_set
-                                      additional_export
+                                      traffic="customize_data"
+                                      additional_export 
                                       set_script
                                       service="test_run"
                                       see_services;;
@@ -620,40 +543,30 @@ function see_services
     done 
 }
 
+function single_run
+{   
+    run_experiment
+    bash "${clingo_run}" delete
+}
+
 function test_run
 {
-    #echo "not available yet..."
     prepare_parameters 
     clingo_run="${test_run}"
     bash "${clingo_run}" move
-    run_experiment
-    bash "${clingo_run}" delete
-
-}
-
-function total_run
-{
-    set_task
-    complete_data
-    prepare_parameters
-    run_experiment
-}
-
-function customize_run
-{
-    set_task
-    customize_data
-    prepare_parameters
-    run_experiment
+    if [[ "${parallel}" == "ok" ]]; then 
+        { export instance="${instv2_s[0]}"; single_run; } &
+        { export instance="${instv2_s[1]}"; single_run; } &
+    else
+       single_run
+    fi
 }
 
 function execute
 {
     local svr=$1
-    case "${svr}" in customize_run) customize_run;;
-                     total_run) total_run;;
-                     test_run) test_run;;
-                     *) echo "error";;
+    case "${svr}" in test_run | total_run) test_run;;
+                     *) echo "error"; return 1;;
     esac
 }
 
@@ -686,13 +599,10 @@ function fast_run
     local -a init_export_s
     local service
 
-    #echo "bash filename [prefix] [suffix] [-f foldername]"
-    #echo -e "bash ./create_scripts.sh\c"
     collect_exp init_export_s
     see_services
     #run program
-    execute "${service}"
-    data_loaded
+    execute "${service}" && data_loaded
 
 }
 
@@ -730,4 +640,73 @@ function prompt
 }
 
 shopt -s lastpipe
+
 prompt
+
+#function run_time
+#{
+#   [[ ${#day_s} -gt 0 && ${#time_slot_s} -eq 0 ]] && bash "${clingo_run}" execute ||
+#   for time in "${time_slot_s[@]}"; do
+#       export time_slot="${time}"
+#       bash "${clingo_run}" execute
+#   done
+#
+#}
+#
+#function run_day
+#{
+#    [[ ${#day_s} -eq 0 ]] && run_time || 
+#    for day in "${day_s[@]}";do 
+#        export day="${day}"
+#        run_time
+#    done  
+#}
+#
+#function run_horizon
+#{
+#    [[ ${#horizon_s} -eq 0 ]] && run_day || 
+#    for horz in "${horizon_s[@]}";do 
+#        export horizon="${horz}"
+#        export day="${muse}"
+#        check_muse && bash "${clingo_run}" execute
+#        run_day; 
+#    done  
+#}
+#
+#function run_instance
+#{
+#    [[ ${#instance_s} -eq 0 ]] && run_horizon || 
+#    for inst in "${instance_s[@]}";do 
+#        export key="${inst}"
+#        run_horizon 
+#    done
+#}
+#
+#function run_experiment { run_instance; }
+#function choice
+#{
+#    local -n _input=$1
+#    echo -e "digit $2 for selecting $3:\c "
+#    read -e _input 
+#}
+#
+#function preset_options
+#{
+#    local input
+#    choice input "-heu" "heuristic version"  
+#    set_options "${input}"
+#}
+#
+#function preset_standard_traffic
+#{   
+#    local input
+#    choice input "-round" "Instancesv2_round/"
+#    set_standard_traffic "${input}"
+#}
+#
+#function preset_task
+#{
+#    local input
+#    choice input "-bound" "${task_s[0]}"
+#    set_task "${input}"
+#}

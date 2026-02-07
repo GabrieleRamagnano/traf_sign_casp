@@ -13,7 +13,7 @@ function run_test
 {   
     local root="./heu_volume/result/"
 
-    tail -n +2 "$bounds" | 
+    tail -n +2 "$task" | 
     while IFS=',' read -r HORIZON PROBLEM MIN; do
           if [[ "$PROBLEM" == *"$instance"*"$scenario"*"$key"* && 
                 "$HORIZON" == "$horizon" ]]; then 

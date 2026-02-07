@@ -1,7 +1,7 @@
 #!/bin/bash
 
 declare pack_test="heu_volume"
-declare label="NotOpt_quickrate"
+declare label="quickrate"
 declare prefix="heu"
 declare tail="/${prefix}0.sh"
 declare test_run="./${prefix}1.sh"
@@ -14,13 +14,15 @@ function move
 
 function delete
 {
+    local only_print=$1
     local exit
 
     export label
     bash "./${tail}" test_end "${pack_test}" 
-    #echo "$(ls "./${prefix}"*.sh)"
-    #echo -e "\rDo you want to remove these files?[y/n]\c"
-    #bash "${utility}" general_answer && rm -r "./${prefix}"*.sh
+    "${exit:+$only_print}"
+    echo "$(ls "./${prefix}"*.sh)"
+    echo -e "\rDo you want to remove these files?[y/n]\c"
+    bash "${utility}" general_answer && rm -r "./${prefix}"*.sh
 }
 
 function execute
@@ -43,8 +45,6 @@ function print
     bash "./${tail}" print_all "${pack_test}"
 }
 
-shopt -s lastpipe
-
 "$@"
 
-
+shopt -s lastpipe
