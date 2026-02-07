@@ -1,5 +1,5 @@
 #!/bin/bash
-declare bounds="../../Results_experiments/Task1/bounds.csv" 
+declare task="../../Results_experiments/Task1/bounds.csv" 
 declare utility="./aux0.sh"
 declare unknown_inst="${dir}unknown_${label}.txt"
 
@@ -42,8 +42,8 @@ function unknown
     local asp_output
 
     clean_file
-    tail -n +2 $bounds | while IFS=',' read -r HORIZON PROBLEM MIN; do
-           is_there asp_output "${dir}${PROBLEM}_${label}_bound_$HORIZON.txt" &&
+    tail -n +2 $task | while IFS=',' read -r HORIZON PROBLEM MIN; do
+           is_there asp_output "${dir}${PROBLEM}_${label}_$HORIZON.txt" &&
            tail -n +1 "${asp_output}" | while read -r line; do    
                    if [[ "${line}" == *"UNKNOWN"* ]]; then
                       echo "${asp_output}" >> "${unknown_inst}"

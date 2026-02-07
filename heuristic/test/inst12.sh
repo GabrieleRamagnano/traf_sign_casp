@@ -1,5 +1,5 @@
 #!/bin/bash
-export bounds="../../Results_experiments/Task1/bounds.csv" 
+export task="../../Results_experiments/Task1/bounds.csv" 
 declare get_result="./inst4.sh"
 
 horizon_s=("600" "660" "720" "780" "840" "900")
@@ -11,11 +11,11 @@ function print_all
     for hrz in "${horizon_s[@]}"; do
         export horizon="${hrz}"
         export scenario="muse"
-        bash "${get_result}" "${test_name}_csv" "${label}_bound"
+        bash "${get_result}" "${test_name}_csv" "${label}"
         for day in "${day_s[@]}"; do
             for time_slot in "${time_slot_s[@]}"; do
                 export scenario="${day}""${time_slot}"
-                bash "${get_result}" "${test_name}_csv" "${label}_bound"
+                bash "${get_result}" "${test_name}_csv" "${label}"
             done
         done
     done

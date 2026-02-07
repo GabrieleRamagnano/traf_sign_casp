@@ -1,26 +1,18 @@
 #!/bin/bash
 
-declare pack_test="heu_volume"
-declare label="NotOpt_quickrate"
-declare prefix="heu"
-declare tail="/${prefix}0.sh"
-declare test_run="./${prefix}1.sh"
+declare test_list="packgs0.csv"
 declare utility="./aux0.sh"
 
 function move
 {
-    cp -r "./${pack_test}/${prefix}"*.sh "."
+    cp -r "./${pack_test}/${tail}" "."
+    cp -r "./${pack_test}/${test_run}" "."
 }
 
 function delete
 {
-    local exit
-
     export label
     bash "./${tail}" test_end "${pack_test}" 
-    #echo "$(ls "./${prefix}"*.sh)"
-    #echo -e "\rDo you want to remove these files?[y/n]\c"
-    #bash "${utility}" general_answer && rm -r "./${prefix}"*.sh
 }
 
 function execute
@@ -43,8 +35,22 @@ function print
     bash "./${tail}" print_all "${pack_test}"
 }
 
-shopt -s lastpipe
 
-"$@"
+function parallel
+{
+    tail -n +2 "${test_list}" | 
+    while IFS=',' read -r name package _label _tail runtail; do
+          if [[ "${tag}" == "${name}" ]]; then
+             pack_test="${package}"
+             label="${_label}"
+             tail="${_tail}"
+             test_run="${runtail}"
+             "$@"
+          fi
+    done
+}
+
+shopt -s lastpipe
+parallel "$@"
 
 

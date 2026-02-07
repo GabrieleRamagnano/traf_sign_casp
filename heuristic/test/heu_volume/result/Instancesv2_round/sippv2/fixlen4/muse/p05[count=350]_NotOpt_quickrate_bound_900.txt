@@ -3,8 +3,8 @@ Reading from .../sippv2/fixlen4/muse/p05[count=350].lp ...
 Solving...
 UNKNOWN
 
-INTERRUPTED  : 1
+TIME LIMIT   : 1
 Models       : 0+
 Calls        : 1
-Time         : 21.468s (Solving: 4.43s 1st Model: 0.00s Unsat: 0.00s)
-CPU Time     : 20.382s
+Time         : 652.052s (Solving: 635.84s 1st Model: 0.00s Unsat: 0.00s)
+CPU Time     : 487.060s

@@ -324,6 +324,8 @@ function menu_saved_exp
                                 recover_ "_files" "--${lb:2}"
                                 print_elements exp_list "${lb}...\n" 
                                 load_files
+                                export tag="${lb:2}"
+                                echo $tag
                                 menu_saved_exp "${exp_files}";;
                           done) echo "bye";;
                              *) echo "not valid option"
@@ -399,6 +401,7 @@ function name_file_set
     echo -e "\rThe name is: ${name}"
     echo -e "\rAre you sure of your choice[y/n]?\c"
     bash "${utility}" general_answer || name_file_set
+    export tag="${name}"
 }
 
 function save_file_set
@@ -442,10 +445,7 @@ function preset
     local input
     echo -e "digit $1 for selecting $2:\c "
     read -e input
-    case $3 in  set_options) set_options "${input}";;
-                set_instancev2) set_instancev2 "${input}";;
-                set_task) set_task "${input}";;
-    esac
+    $3 "${input}"
 }
 
 function exp_view
@@ -640,73 +640,4 @@ function prompt
 }
 
 shopt -s lastpipe
-
 prompt
-
-#function run_time
-#{
-#   [[ ${#day_s} -gt 0 && ${#time_slot_s} -eq 0 ]] && bash "${clingo_run}" execute ||
-#   for time in "${time_slot_s[@]}"; do
-#       export time_slot="${time}"
-#       bash "${clingo_run}" execute
-#   done
-#
-#}
-#
-#function run_day
-#{
-#    [[ ${#day_s} -eq 0 ]] && run_time || 
-#    for day in "${day_s[@]}";do 
-#        export day="${day}"
-#        run_time
-#    done  
-#}
-#
-#function run_horizon
-#{
-#    [[ ${#horizon_s} -eq 0 ]] && run_day || 
-#    for horz in "${horizon_s[@]}";do 
-#        export horizon="${horz}"
-#        export day="${muse}"
-#        check_muse && bash "${clingo_run}" execute
-#        run_day; 
-#    done  
-#}
-#
-#function run_instance
-#{
-#    [[ ${#instance_s} -eq 0 ]] && run_horizon || 
-#    for inst in "${instance_s[@]}";do 
-#        export key="${inst}"
-#        run_horizon 
-#    done
-#}
-#
-#function run_experiment { run_instance; }
-#function choice
-#{
-#    local -n _input=$1
-#    echo -e "digit $2 for selecting $3:\c "
-#    read -e _input 
-#}
-#
-#function preset_options
-#{
-#    local input
-#    choice input "-heu" "heuristic version"  
-#    set_options "${input}"
-#}
-#
-#function preset_standard_traffic
-#{   
-#    local input
-#    choice input "-round" "Instancesv2_round/"
-#    set_standard_traffic "${input}"
-#}
-#
-#function preset_task
-#{
-#    local input
-#    choice input "-bound" "${task_s[0]}"
-#    set_task "${input}"
-#}
