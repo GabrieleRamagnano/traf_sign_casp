@@ -1,7 +1,7 @@
 #!/bin/bash
 
 declare pack_test="theory_delta"
-declare label="aggregatel1"
+declare label="NotOpt_aggregatel1"
 declare prefix="tail"
 declare tail="/${prefix}0.sh"
 declare test_run="./tail1.sh"
