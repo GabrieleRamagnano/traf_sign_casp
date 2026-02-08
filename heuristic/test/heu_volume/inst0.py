@@ -6,7 +6,8 @@ from pathlib import Path
 def clean(_res,
           inst):
     
-    pattern = r"_heuphase_bound_(\d+).(\w+)"
+
+    pattern = r"#dhighrate_bound_(\d+).(\w+)"
     _res.append(re.sub(pattern,"",inst))
         
 def assemble(list,

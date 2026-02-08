@@ -6,7 +6,7 @@ from pathlib import Path
 def clean(_res,
           inst):
 
-    pattern = r"_aggregatel1_bound_(\d+).(\w+)"
+    pattern = r"_NotOpt_aggregatel1_bound_(\d+).(\w+)"
     _res.append(re.sub(pattern,"",inst))
         
 def assemble(list,

@@ -26,3 +26,10 @@ Name::NotOptTest
  ./model/instance_fixed.lp ./model/enc_clingcon_not_opt.lp--NotOptTest
 Name::NotOptQuickrate
  ./model/instance_fixed.lp ./model/enc_clingcon_not_opt.lp ./model/heu/min_volume.lp--NotOptQuickrate
+Name::NotOpt_Delta_#sum
+ ./model/constants.lp ./model/enc_conf.lp ./model/enc_delta_sum_NotOpt.lp ./model/instance_fixed.lp--NotOpt_Delta_#sum
+Name::NotOpt_HeuTest1(or NotOpt_HighRate)
+ ./model/instance_fixed.lp ./model/enc_clingcon_not_opt.lp ./model/heu/conf_value.lp--NotOpt_HeuTest1(or NotOpt_HighRate)
+Name::NotOpt_Heuristics
+ ./model/instance_fixed.lp ./model/enc_clingcon_not_opt.lp ./model/heu/heuristics.lp--NotOpt_Heuristics
+

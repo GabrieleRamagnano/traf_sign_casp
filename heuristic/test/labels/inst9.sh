@@ -1,7 +1,7 @@
 #!/bin/bash
 
 declare pack_test="heu_volume"
-declare label="heurate"
+declare label="NotOpt_heurate"
 declare prefix="heu"
 declare tail="/${prefix}0.sh"
 declare test_run="./${prefix}1.sh"

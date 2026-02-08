@@ -30,7 +30,7 @@ def comparison(csv_clingcon,
          sum_tot_values("clingcon",f,horizon)
 
     with open(csv_second,'r') as f:
-         sum_tot_values("heuphase",f,horizon)
+         sum_tot_values("#dhighrate",f,horizon)
 
 def main():
     if len(sys.argv) != 4:
