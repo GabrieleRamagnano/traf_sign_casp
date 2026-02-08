@@ -91,7 +91,7 @@ function file_cleaning
     set_root $1
     tree "${root}" -i -f | 
     while read -r line; do 
-      if [[ "${line}" == *".txt" ]]; then
+      if [[ "${line}" == *$2*".txt" ]]; then
          rm -r "${line}"
       fi
     done

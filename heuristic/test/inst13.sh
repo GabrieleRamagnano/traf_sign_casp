@@ -36,7 +36,7 @@ function print
 }
 
 
-function parallel
+function get_tails
 {
     tail -n +2 "${test_list}" | 
     while IFS=',' read -r name package _label _tail runtail; do
@@ -51,6 +51,6 @@ function parallel
 }
 
 shopt -s lastpipe
-parallel "$@"
+get_tails "$@"
 
 

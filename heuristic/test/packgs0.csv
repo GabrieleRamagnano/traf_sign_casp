@@ -1,3 +1,3 @@
 name,package_test,label,tail,run_tail
 NotOptQuickrate,heu_volume,NotOpt_quickrate,./heu0.sh,./heu1.sh
-QuickRate,heu_volume,OPT_quickrate,./heu0.sh,./heu1.sh
+QuickRate,heu_volume,OPT_quickrate,./heu0.sh,./heu2.sh
