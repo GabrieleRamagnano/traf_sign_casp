@@ -4,9 +4,11 @@ from pathlib import Path
 
 
 def clean(_res,
-          inst):
-
-    pattern = r"_NotOpt_aggregatel1_bound_(\d+).(\w+)"
+          inst,
+	  label):
+    
+  
+    pattern = "_"+label+r"_(\d+).(\w+)"
     _res.append(re.sub(pattern,"",inst))
         
 def assemble(list,
@@ -27,7 +29,8 @@ def dot(list,
         _list.append('')
 
 def number_conversion(csv,
-                      csv_dot):
+                      csv_dot,
+		      label):
      
     results=[]
     with open(csv, 'r') as f:
@@ -45,7 +48,7 @@ def number_conversion(csv,
              results.append(assemble(list,_list))
              
     _res = []
-    c = lambda inst: clean(_res,inst)
+    c = lambda inst: clean(_res,inst,label)
     [c(inst) for inst in results]
     ###TEST###
     #p = lambda x: print(x)
@@ -56,14 +59,16 @@ def number_conversion(csv,
             f.write(line + '\n')         
 
 def main():
-    if len(sys.argv) != 2:
+    if len(sys.argv) != 3:
         print("Missed: file.csv")
         sys.exit(1)
     csv_file = sys.argv[1]
     input_path = Path(csv_file)
+    label = sys.argv[2]
     csv_dot_file = input_path.with_name(f"{input_path.stem}_dot{input_path.suffix}")
     number_conversion(csv_file,
-                      csv_dot_file)
+                      csv_dot_file,
+                      label)
 
 
 

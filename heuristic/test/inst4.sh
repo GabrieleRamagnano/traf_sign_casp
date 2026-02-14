@@ -19,7 +19,7 @@ path=("wrac1,y,wrbc1"
       "wrdc1,b,wrec1" 
       "wrec1,y,wrfc1")
 csv="${dir}${home}/${label}_${horizon}_${scenario}.csv"
-task1="../../Results_experiments/Task1/result_det_bound.csv " 
+task1="../../Results_experiments/Task1/bounds.csv"  
 
 function set_csv { 
     bash "${utility}" search "${dir}","${home}" || mkdir "${dir}${home}"

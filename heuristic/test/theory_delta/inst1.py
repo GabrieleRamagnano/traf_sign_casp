@@ -24,23 +24,26 @@ def sum_tot_values(name,
 
 def comparison(csv_clingcon,
                csv_second,
+	       name,
                horizon):
     
     with open(csv_clingcon,'r') as f:
          sum_tot_values("clingcon",f,horizon)
 
     with open(csv_second,'r') as f:
-         sum_tot_values("delta",f,horizon)
+         sum_tot_values(name,f,horizon)
 
 def main():
-    if len(sys.argv) != 4:
+    if len(sys.argv) != 5:
        print("Missed: clingo.csv other.csv")
        sys.exit(1)
     csv_clingcon = Path(sys.argv[1])
     csv_second = Path(sys.argv[2])
-    horizon = sys.argv[3]
+    name = sys.argv[3]
+    horizon = sys.argv[4]
     comparison(csv_clingcon,
                csv_second,
+	       name,
                horizon)
 
 
