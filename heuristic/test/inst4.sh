@@ -19,6 +19,7 @@ path=("wrac1,y,wrbc1"
       "wrdc1,b,wrec1" 
       "wrec1,y,wrfc1")
 csv="${dir}${home}/${label}_${horizon}_${scenario}.csv"
+task1="../../Results_experiments/Task1/bounds.csv"  
 
 function set_csv { 
     bash "${utility}" search "${dir}","${home}" || mkdir "${dir}${home}"
@@ -66,7 +67,7 @@ function select_instances
 {
     local -n _asp_outputs=$1
 
-    tail -n +2 $task | while IFS=',' read -r HORIZON PROBLEM MIN; do
+    tail -n +2 $task1 | while IFS=',' read -r HORIZON PROBLEM MIN; do
         if [[ "$PROBLEM" == *"$scenario"*  && "$HORIZON" == "$horizon" ]]; then
            is_there "${dir}${PROBLEM}_${label}_$HORIZON.txt"               
         fi

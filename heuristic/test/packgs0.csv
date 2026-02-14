@@ -2,3 +2,7 @@ name,package_test,label,tail,run_tail
 OPT_Aggrel1,theory_delta,OPT_aggrel1,./tail0.sh,./tail2.sh
 OPT_Heurate,heu_volume,OPT_heurate,./heu0.sh,./heu2.sh
 OPT_Heuphase,heu_volume,OPT_heuphase,./heu0.sh,./heu2.sh
+BND_DHphase,heu_volume,BND_dhphase,./heu0.sh,./heu1.sh
+BND_Longrate,heu_volume,BND_longrate,./heu0.sh,./heu1.sh
+BND_PhLngrate,heu_volume,BND_phlongr,./heu0.sh,./heu1.sh
+OPT_DHphase,heu_volume,OPT_dhphase,./heu0.sh,./heu2.sh

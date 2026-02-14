@@ -5,13 +5,14 @@ from pathlib import Path
 
 def sum_tot_values(name,
                    file,
-                   horizon):
+                   horizon,
+		   key):
     
     sum = 0
     file.readline()
     n_instances=0
     for line in file:
-        if line.find('clingcon,'+horizon) >= 0: 
+        if line.find('clingcon,'+horizon) >=0 and line.find(key) >= 0: 
            #and line.find('Instancesv2_round') < 0:
            n_instances+=1
            aggr = line.split(',')
@@ -19,31 +20,40 @@ def sum_tot_values(name,
            h = lambda elem: list.append(elem.removesuffix('\n'))
            [h(elem) for elem in aggr]
            sum += float(list.pop())
-    print(name+'['+str(n_instances)+']'+'('+horizon+')'+": "+str(sum))
+    if key != "":
+       key = "|"+key
+    print(name+'['+str(n_instances)+']'+'('+horizon+key+')'+": "+str(sum))
         
 
 def comparison(csv_clingcon,
                csv_second,
-               horizon):
+	       name,
+               horizon,
+	       key):
     
     with open(csv_clingcon,'r') as f:
-         sum_tot_values("clingcon",f,horizon)
+         sum_tot_values("clingcon",f,horizon,key)
 
     with open(csv_second,'r') as f:
-         sum_tot_values("#dhighrate",f,horizon)
+         sum_tot_values(name,f,horizon,key)
 
 def main():
-    if len(sys.argv) != 4:
+    if len(sys.argv) != 6:
        print("Missed: clingo.csv other.csv")
        sys.exit(1)
     csv_clingcon = Path(sys.argv[1])
     csv_second = Path(sys.argv[2])
-    horizon = sys.argv[3]
+    name = sys.argv[3]
+    horizon = sys.argv[4]
+    key = sys.argv[5]
     comparison(csv_clingcon,
                csv_second,
-               horizon)
+	       name,
+               horizon,
+	       key)
 
 
 
 if __name__ == "__main__":
     main()
+

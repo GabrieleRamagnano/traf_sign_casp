@@ -33,3 +33,17 @@ Name::NotOpt_HeuTest1(or NotOpt_HighRate)
 Name::NotOpt_Heuristics
  ./model/instance_fixed.lp ./model/enc_clingcon_not_opt.lp ./model/heu/heuristics.lp--NotOpt_Heuristics
 
+Name::OPT_Aggrel1
+ ./model/constants.lp ./model/instance_fixed.lp ./model/enc_conf.lp ./model/enc_delta_sum.lp--OPT_Aggrel1
+Name::OPT_Heurate
+ ./model/instance_fixed.lp ./model/enc_clingcon.lp ./model/heu/conf_value.lp--OPT_Heurate
+Name::OPT_Heuphase
+ ./model/instance_fixed.lp ./model/enc_clingcon.lp ./model/heu/heuristics.lp--OPT_Heuphase
+Name::BND_DHphase
+ ./model/constants.lp ./model/enc_conf.lp ./model/enc_delta_sum_NotOpt.lp ./model/heu/heuristics.lp ./model/instance_fixed.lp--BND_DHphase
+Name::BND_Longrate
+ ./model/instance_fixed.lp ./model/enc_clingcon_not_opt.lp ./model/heu/max_volume.lp--BND_Longrate
+Name::BND_PhLngrate
+ ./model/instance_fixed.lp ./model/enc_clingcon_not_opt.lp ./model/heu/phmax_volume.lp--BND_PhLngrate
+Name::OPT_DHphase
+ ./model/constants.lp ./model/instance_fixed.lp ./model/enc_conf.lp ./model/enc_delta_sum.lp ./model/heu/heuristics.lp--OPT_DHphase
