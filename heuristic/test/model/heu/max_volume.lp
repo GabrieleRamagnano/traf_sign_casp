@@ -62,8 +62,8 @@ change_2 :- change_out(L).
 #heuristic promising_conf_1(J,C,A) : change_1.[1, true]
 #heuristic promising_conf_2(J,C,A) : change_2.[1, true]
 
-#heuristic promising_conf_1(J,C,A) : not change_1.[1, false]
-#heuristic promising_conf_2(J,C,A) : not change_2.[1, false]
+%#heuristic promising_conf_1(J,C,A) : not change_1.[1, false]
+%#heuristic promising_conf_2(J,C,A) : not change_2.[1, false]
 
 %-------------------------------------------------------------
 
