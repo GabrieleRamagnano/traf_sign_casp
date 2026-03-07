@@ -2,12 +2,11 @@ import re
 import sys
 from pathlib import Path
 
-
 def sum_tot_values(name,
                    file,
                    horizon,
-		   key):
-    
+		             key):
+  
     sum = 0
     file.readline()
     n_instances=0
@@ -22,21 +21,22 @@ def sum_tot_values(name,
            sum += float(list.pop())
     if key != "":
        key = "|"+key
+   
     print(name+'['+str(n_instances)+']'+'('+horizon+key+')'+": "+str(sum))
         
 
 def comparison(csv_clingcon,
                csv_second,
-	       name,
+	            name,
                horizon,
-	       key):
+	            key):
     
     with open(csv_clingcon,'r') as f:
          sum_tot_values("clingcon",f,horizon,key)
 
     with open(csv_second,'r') as f:
          sum_tot_values(name,f,horizon,key)
-
+         
 def main():
     if len(sys.argv) != 6:
        print("Missed: clingo.csv other.csv")
@@ -48,11 +48,9 @@ def main():
     key = sys.argv[5]
     comparison(csv_clingcon,
                csv_second,
-	       name,
+	            name,
                horizon,
-	       key)
-
-
+	            key)
 
 if __name__ == "__main__":
     main()

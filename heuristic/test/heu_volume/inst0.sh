@@ -1,14 +1,18 @@
 #!/bin/bash
-bash ./compare.sh heurate- OPT_heurate
+rm -r results.txt
 echo "--------------------------------------------"
-bash ./compare.sh heuphase OPT_heuphase
+bash ./compare.sh heurate- OPT_heurate "900" 
 echo "--------------------------------------------"
-bash ./compare.sh bddhphse BND_dhphase
+bash ./compare.sh heuphase OPT_heuphase "900" 
 echo "--------------------------------------------"
-bash ./compare.sh longrate BND_longrate
+bash ./compare.sh bddhphse BND_dhphase 
 echo "--------------------------------------------"
-bash ./compare.sh bdheuphs NotOpt_heuphase_bound
+bash ./compare.sh longrate BND_longrate 
 echo "--------------------------------------------"
-bash ./compare.sh bdphlngr BND_phlongr
+bash ./compare.sh bdheuphs NotOpt_heuphase_bound 
 echo "--------------------------------------------"
-bash ./compare.sh opdhphse OPT_dhphase 
+bash ./compare.sh bdphlngr BND_phlongr 
+echo "--------------------------------------------"
+bash ./compare.sh opdhphse OPT_dhphase "900" 
+echo "--------------------------------------------"
+#bash ./compare2.sh fire "" ""

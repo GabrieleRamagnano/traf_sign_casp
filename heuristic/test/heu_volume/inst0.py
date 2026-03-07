@@ -5,7 +5,7 @@ from pathlib import Path
 
 def clean(_res,
           inst,
-	  label):
+	      label):
     
   
     pattern = "_"+label+r"_(\d+).(\w+)"
