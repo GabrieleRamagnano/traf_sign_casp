@@ -32,7 +32,7 @@ done
 echo "-------------------------" >> "${out}"
 tag=$4
 plot="./inst3.py"
-python3 "${plot}" "${out}" $name target
+#python3 "${plot}" "${out}" $name target
 
 if [[ $3 == "900" ]]; then
    echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
