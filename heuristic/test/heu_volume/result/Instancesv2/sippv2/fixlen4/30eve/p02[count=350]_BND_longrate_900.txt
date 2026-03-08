@@ -6,5 +6,5 @@ UNKNOWN
 TIME LIMIT   : 1
 Models       : 0+
 Calls        : 1
-Time         : 608.341s (Solving: 561.75s 1st Model: 0.00s Unsat: 0.00s)
-CPU Time     : 267.147s
+Time         : 642.398s (Solving: 621.27s 1st Model: 0.00s Unsat: 0.00s)
+CPU Time     : 613.271s

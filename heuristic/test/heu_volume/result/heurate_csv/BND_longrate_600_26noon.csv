@@ -3,3 +3,4 @@ clingcon,600,./heu_volume/result/Instancesv2/sippv2/fixlen4/26noon/p04[count=350
 clingcon,600,./heu_volume/result/Instancesv2/sippv2/fixlen4/26noon/p05[count=350]_BND_longrate_600.txt,20614980,15206400,14703880,14707600,16679600,81912460
 clingcon,600,./heu_volume/result/Instancesv2/sippv2/fixlen4/26noon/p01[count=350]_BND_longrate_600.txt,20791720,,,,,20791720
 clingcon,600,./heu_volume/result/Instancesv2_round/sippv2/fixlen4/26noon/p03[count=350]_BND_longrate_600.txt,19551060,12384000,12442520,,,44377580
+clingcon,600,./heu_volume/result/Instancesv2_round/sippv2/fixlen4/26noon/p02[count=350]_BND_longrate_600.txt,19582600,12211200,,,,31793800
