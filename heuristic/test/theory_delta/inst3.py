@@ -83,11 +83,8 @@ def collect_data(file,target,name,opt):
                  hrz = re.search(r'\(\d\d\d',line).group()
                  data = re.search(r'\: \d+\.\d+',line).group()
                  horizon.append(hrz[1:]+' ('+n_inst[1:]+')')
-                 #horizon.append(hrz)
                  exp_data.append(float(data[2:]))
             if re.search(r'\-{10}',line) != None and len(exp_data) > 0:
-               #print(exp_data)
-               #print(cli_data)
                plot(horizon,target,'clingcon',exp_data,cli_data,opt) if str(name) == "target" else \
                plot(horizon,name,'clingcon',exp_data,cli_data,opt) 
                horizon.clear()

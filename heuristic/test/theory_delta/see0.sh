@@ -1,4 +1,5 @@
 #!/bin/bash
-bash ./compare0.sh delta--- OPT_aggrel1
+rm -r results.txt
+bash ./compare0.sh opdelta OPT_aggrel1
 echo "--------------------------------------------"
-bash ./compare0.sh deltabnd det_bound_NotOpt_aggregatel1
+bash ./compare0.sh bndelta det_bound_NotOpt_aggregatel1

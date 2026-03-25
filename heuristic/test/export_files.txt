@@ -47,3 +47,4 @@ Name::BND_PhLngrate
  ./model/instance_fixed.lp ./model/enc_clingcon_not_opt.lp ./model/heu/phmax_volume.lp--BND_PhLngrate
 Name::OPT_DHphase
  ./model/constants.lp ./model/instance_fixed.lp ./model/enc_conf.lp ./model/enc_delta_sum.lp ./model/heu/heuristics.lp--OPT_DHphase
+

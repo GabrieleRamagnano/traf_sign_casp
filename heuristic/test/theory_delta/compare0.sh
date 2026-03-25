@@ -27,9 +27,14 @@ function set_args
 set_args
 python3 $args $label
 
+out="./results.txt"
 for horizon in "${horizon_s[@]}"; do 
-    python3 $args_ $name $horizon #""
+    python3 $args_ $name $horizon  >> "${out}"
 done
+echo "-------------------------" >> "${out}"
+tag=$4
+plot="./inst3.py"
+python3 "${plot}" "${out}" $name target "${label}"
 
 if [[ $3 == "900" ]]; then
    echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
