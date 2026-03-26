@@ -1,0 +1,13 @@
+clingcon[6](600): 1596.5532
+opdhphse[6](600): 1596.5532
+clingcon[2](660): 685.4734000000001
+opdhphse[2](660): 685.4734000000001
+clingcon[0](720): 0
+opdhphse[0](720): 0
+clingcon[0](780): 0
+opdhphse[0](780): 0
+clingcon[0](840): 0
+opdhphse[0](840): 0
+clingcon[0](900): 0
+opdhphse[0](900): 0
+-------------------------

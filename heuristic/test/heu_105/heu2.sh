@@ -3,7 +3,7 @@
 #variable parameters
 declare task="../Instancesv2_round"
 declare scenario
-declare to_csv="./inst4.sh"
+declare to_csv="./inst15.sh"
 
 function set_scenario
 {
