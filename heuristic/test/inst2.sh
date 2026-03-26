@@ -22,7 +22,7 @@ declare utility="./${prefix_s[1]}0.sh"
 declare classic=" --config=crafty --time-limit=600 "
 declare -a -g option_s=("${classic}" "${classic} --heuristic=Domain ")
 declare -a -g cost_s=("--const horizon=" "--const bound=")
-declare -a -g instv2_s=("Instancesv2_round/" "Instancesv2/")
+declare -a -g instv2_s=("Instancesv2_round/" "Instancesv2/" "Instancesv2_round/random" "Instancesv2_round/sipp" "Instancesv2_round/sippv2")
 declare -a -g task_s=("../../Results_experiments/Task1/bounds.csv" "../../Results_experiments/Task2")
 
 function set_options
@@ -42,7 +42,8 @@ function set_constants
 
 function set_instancev2
 {
-    case $1 in -parallel) parallel="ok";;
+    case $1 in -parall3l) parall3l="ok";;
+               -parallel) parallel="ok";;
                -round) export instance="${instv2_s[0]}"; echo $instance;;
                     *) export instance="${instv2_s[1]}"; echo $instance;;
     esac
@@ -485,7 +486,7 @@ function additional_export
                              additional_export;;
                              set_instance)
                              exp_view instv2_s "${messg}" && 
-                             preset "-round|-parallel" "${instv2_s[0]}|both" set_instancev2
+                             preset "-round|-parallel|-parall3l" "${instv2_s[0]}|both|three105" set_instancev2
                              additional_export;;
                              set_task) 
                              exp_view task_s "${messg}" &&
@@ -557,6 +558,10 @@ function test_run
     if [[ "${parallel}" == "ok" ]]; then 
         { export instance="${instv2_s[0]}"; single_run; } &
         { export instance="${instv2_s[1]}"; single_run; } &
+    elif [[ "${parall3l}" == "ok" ]]; then 
+        { export instance="${instv2_s[2]}"; single_run; } &
+        { export instance="${instv2_s[3]}"; single_run; } &
+        { export instance="${instv2_s[4]}"; single_run; } &
     else
        single_run
     fi

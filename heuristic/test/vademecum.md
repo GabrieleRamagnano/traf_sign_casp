@@ -20,7 +20,7 @@ following API:
 - *move*: copy your scripts from their own directory to the current one.
 - *execute*: run the code with the options set with **manager** script.
 - *delete*: allow to do some other operations once the tests are finished. DO NOT USE IT TO DELETE 
-THE PREVIOUS MOVED SCRIPTS...otherwise there will be when multiple experiments run a the same time.
+THE PREVIOUS MOVED SCRIPTS...otherwise problems will occur when multiple experiments are run simultaneously.
 
 In the current setting the **Tail** is structured as follow:
 

@@ -45,7 +45,7 @@ function get_tails
              label="${_label}"
              tail="${_tail}"
              test_run="${runtail}"
-             "$@"
+             "$@"  
           fi
     done
 }
