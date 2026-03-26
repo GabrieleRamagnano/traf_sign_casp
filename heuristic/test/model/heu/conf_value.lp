@@ -41,7 +41,22 @@ configuration(J,C,_,A),
 optimal_conf_out(A,L).
 
 
+%the occupancy is less than 10% of link's capacity
+change_in(L) :- &sum{occupancy(horizon/2,L)} < (C*10/100),
+capacity(L,C),
+goal_count(L,_).
 
+
+%the occupancy is greater than 90% of link's capacity
+change_out(L) :- &sum{occupancy(horizon/2,L)} > (C*90/100),
+capacity(L,C),
+goal_count(L,_).
+
+change_1 :- change_in(L).
+change_2 :- change_out(L).
+
+#heuristic promising_conf_1(J,C,A) : change_1.[1, true]
+#heuristic promising_conf_2(J,C,A) : change_2.[1, true]
 
 %-------------------------------------------------------------
 %#show max_phase_limit/2.

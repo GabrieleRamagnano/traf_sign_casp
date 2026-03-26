@@ -72,7 +72,7 @@ function select_instances
            is_there "${dir}${PROBLEM}_${label}_$HORIZON.txt"               
         fi
     done  
-
+    #to modify for 105 instances!!!
 }
 
 function calculate_position

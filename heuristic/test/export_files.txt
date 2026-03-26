@@ -48,3 +48,5 @@ Name::OPT_DHphase
  ./model/constants.lp ./model/instance_fixed.lp ./model/enc_conf.lp ./model/enc_delta_sum.lp ./model/heu/heuristics.lp--OPT_DHphase
 Name::OPT_DHphase105
  ./model/constants.lp ./model/instance_fixed.lp ./model/enc_conf.lp ./model/enc_delta_sum.lp ./model/heu/heuristics.lp--OPT_DHphase105
+Name::OPT_Heurate105
+ ./model/instance_fixed.lp ./model/enc_clingcon.lp ./model/heu/conf_value.lp--OPT_Heurate105
