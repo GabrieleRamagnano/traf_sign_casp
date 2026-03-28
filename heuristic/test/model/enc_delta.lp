@@ -59,17 +59,29 @@ last_delta_out(N,L) :- link(L), N=#count{L1 : out_ord(L,L1,M)}.
 
 &sum{D} = delta(T,L,0) :-
 time(T),
-link(L), D = 0.
+link(L), 
+D = 0.
 
 &sum{delta(T,L,N-1); R*E*F} = delta(T,L,N) :- 
 time(T), 
-precedes(J,L), status(J,S), active(T-1,S), in_ord(L,L1,N), 
-turnrate_gez(S,L1,L,R), empty_link(T-1,L1,E), full_link(T-1,L,F).
+precedes(J,L), 
+status(J,S), 
+active(T-1,S), 
+in_ord(L,L1,N), 
+turnrate_gez(S,L1,L,R), 
+empty_link(T-1,L1,E), 
+full_link(T-1,L,F).
 
 &sum{delta(T,L,M+N-1); -R*E*F} = delta(T,L,M+N) :-
 time(T),
-follows(J,L), status(J,S), active(T-1,S), last_delta_in(M,L), out_ord(L,L1,N), 
-turnrate_gez(S,L,L1,R), empty_link(T-1,L,E), full_link(T-1,L1,F).
+follows(J,L), 
+status(J,S), 
+active(T-1,S), 
+last_delta_in(M,L),
+out_ord(L,L1,N), 
+turnrate_gez(S,L,L1,R), 
+empty_link(T-1,L,E), 
+full_link(T-1,L1,F).
 
 sum_in(L,0..M) :- status(J,S), precedes(J,L), M=#sum{T,L1 : turnrate(S,L1,L,T)}.
 sum_out(L,0..M) :- status(J,S), follows(J,L), M=#sum{T,L1 : turnrate(S,L,L1,T)}.

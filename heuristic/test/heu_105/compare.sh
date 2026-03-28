@@ -26,7 +26,7 @@ declare horizon_s=("600" "660" "720" "780" "840" "900")
 declare -g data_plot="./results.txt" # data for the plotter
 
 ### -- DOT CONVERSION -- ###
-function set_csv_host()
+function set_csv_host
 {
     csv_host=" ./result/result_${label}.csv "
     csv_host_dot=" ./result/result_${label}_dot.csv "
@@ -37,7 +37,7 @@ function set_csv_host()
     
 }
 
-function set_csv_reference()
+function set_csv_reference
 {
     csv_ref=" ./result/result_${label_ref}.csv "
     csv_ref_dot=" ./result/result_${label_ref}_dot.csv "
@@ -48,7 +48,7 @@ function set_csv_reference()
 }
 
 ### -- AGGREGATION PROCESS -- ###
-function aggregate()
+function aggregate
 {
     # horizon aggregation
     args="${py_aggr}""${csv_ref_dot}""${csv_host_dot}" 
@@ -68,7 +68,7 @@ function aggregate()
     echo "-------------------------" 
 }
 
-function plot()
+function plot
 {
     python3 "${py_plot}" "${data_plot}" $name target "${label}"
 }
