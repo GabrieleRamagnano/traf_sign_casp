@@ -562,11 +562,10 @@ function test_run
         { export instance="${instv2_s[0]}"; single_run; } &
         { export instance="${instv2_s[1]}"; single_run; } &
     elif [[ "${parall3l}" == "ok" ]]; then 
-        { export instance="${instv2_s[2]}"; single_run; } &
         { export instance="${instv2_s[3]}"; single_run; } &
         { export instance="${instv2_s[4]}"; single_run; } &
     else
-       single_run
+       single_run &
     fi
 }
 

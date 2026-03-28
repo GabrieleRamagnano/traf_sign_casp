@@ -9,4 +9,6 @@ OPT_DHphase,heu_volume,OPT_dhphase,./heu0.sh,./heu2.sh
 OPT_DHphase105,heu_105,OPT_dhphase,./heu0.sh,./heu2.sh
 OPT_Clingcon105,heu_105,OPT_clingcon,./heu0.sh,./heu2.sh
 OPT_Heurate105,heu_105,OPT_heurate,./heu0.sh,./heu2.sh
+OPT_DHphaseRnd,heu_105,OPT_dhphase,./heu0.sh,./heu2.sh
+OPT_ClingconRnd,heu_105,OPT_clingcon,./heu0.sh,./heu2.sh
 BND_Heurate,heu_volume,BND_heurate,./heu0.sh,./heu1.sh
