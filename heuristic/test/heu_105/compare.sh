@@ -12,7 +12,7 @@ declare tag=$5
 ## -- python utilities -- ##
 declare -g py_dot="  ./inst0.py "   # dot-convertitor
 declare -g py_aggr=" ./inst1.py "   # results aggregator
-declare -g py_plot=" ./inst3.py "   # plotter
+declare -g py_plot="./inst3.py"     # plotter
 
 ## -- csv files -- ##
 declare -g csv_host     # host: experiment
@@ -77,7 +77,7 @@ set_csv_host
 set_csv_reference
 aggregate
 cat "${data_plot}"
-#plot
+plot
 
 
 
