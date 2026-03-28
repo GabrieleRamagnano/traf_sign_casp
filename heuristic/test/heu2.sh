@@ -23,7 +23,7 @@ function set_output
     len="${#task}"
     asp_output="${problem%.pddl}"
     asp_output="${dir}Instancesv2_round/${asp_output:len+1}_${label}_$horizon.txt"
-    echo $asp_output
+    #echo $asp_output
 }
 
 function run_test
