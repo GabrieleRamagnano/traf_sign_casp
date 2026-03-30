@@ -62,7 +62,7 @@ function aggregate
     if [[ $inst900 == "900" ]]; then
       echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
       for k in "p01" "p02" "p03" "p04" "p05"; do
-          python3 $args $name "900" $k  
+          python3 $args $name "900" $k  >> "${data_plot}"
       done
     fi
     echo "-------------------------" 

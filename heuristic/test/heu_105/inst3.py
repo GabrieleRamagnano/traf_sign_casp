@@ -60,7 +60,7 @@ def plot(horizons, name1, name2, data1, data2,opt):
     #ax.set_title('Penguin attributes by species')
     ax.set_xticks(x + width, horizons)
     #ax.legend(loc='upper left',title='Encoding', ncols=2,alignment='left')
-    ax.set_ylim(0, 50000)
+    ax.set_ylim(0, 70000)
     plt.xticks(fontsize=13.5,weight='bold')
     plt.yticks(fontsize=13.5,weight='bold') 
     plt.legend(loc='upper left',title='Encoding',fontsize=14.5)
@@ -79,7 +79,7 @@ def collect_data(file,target,name,opt):
                data = re.search(r'\: \d+\.\d+',line).group()
                cli_data.append(float(data[2:]))
             elif line.find(str(target)) >= 0:
-                 n_inst = re.search(r'\[\d\d?',line).group()
+                 n_inst = re.search(r'\[\d+',line).group()
                  hrz = re.search(r'\(\d\d\d',line).group()
                  data = re.search(r'\: \d+\.\d+',line).group()
                  horizon.append(hrz[1:]+' ('+n_inst[1:]+')')
