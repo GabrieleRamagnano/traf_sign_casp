@@ -13,4 +13,12 @@ tail -n +2 "${pkg}" | while IFS=',' read -r name package label _tail _runtl ;do
 done
 
 
+tail -n +2 "${pkg}" | while IFS=',' read -r name package label _tail _runtl ;do
+    if [[ "${name}" == "OPT_Clingcon105" ]]; then
+	  { export tag="${name}" 
+	    bash "${inst}" move
+	    bash "${inst}" print 
+        bash "${inst}" delete; } & 
+	fi
+done
 

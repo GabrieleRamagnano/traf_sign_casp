@@ -56,3 +56,5 @@ Name::OPT_DHphaseRnd
 ./model/constants.lp ./model/instance_random.lp ./model/enc_conf.lp ./model/enc_delta_sum.lp ./model/heu/heuristics.lp--OPT_DHphaseRnd
 Name::OPT_ClingconRnd
  ./model/instance_random.lp ./model/enc_clingcon.lp--OPT_ClingconRnd
+Name::OPT_DHctrphs
+ ./model/constants.lp ./model/instance_fixed.lp ./model/enc_conf.lp ./model/enc_delta_sum.lp ./model/heu/careful_heu.lp--OPT_DHctrphs

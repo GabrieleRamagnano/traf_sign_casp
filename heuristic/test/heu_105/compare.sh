@@ -65,7 +65,7 @@ function aggregate
           python3 $args $name "900" $k  >> "${data_plot}"
       done
     fi
-    echo "-------------------------" 
+    echo "-------------------------"
 }
 
 function plot
