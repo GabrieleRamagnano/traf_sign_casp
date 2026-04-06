@@ -13,3 +13,6 @@ OPT_DHphaseRnd,heu_105,OPT_dhphase,./heu0.sh,./heu2.sh
 OPT_ClingconRnd,heu_105,OPT_clingcon,./heu0.sh,./heu2.sh
 BND_Heurate,heu_volume,BND_heurate,./heu0.sh,./heu1.sh
 OPT_DHctrphs,heu_105,OPT_dhctrphs,./heu0.sh,./heu2.sh
+OPT_DHctrphsRnd,heu_105,OPT_dhctrphs,./heu0.sh,./heu2.sh
+OPT_DHextphs,heu_105,OPT_dhextphs,./heu0.sh,./heu2.sh
+OPT_DHextphsRnd,heu_105,OPT_dhextphs,./heu0.sh,./heu2.sh

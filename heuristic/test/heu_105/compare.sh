@@ -5,7 +5,8 @@ declare name=$1
 declare label=$2
 declare label_ref=$3
 declare inst900=$4
-declare tag=$5
+#declare tag=$5
+declare go=$5
 
 #variable parameters
 
@@ -65,7 +66,7 @@ function aggregate
           python3 $args $name "900" $k  >> "${data_plot}"
       done
     fi
-    echo "-------------------------"
+    echo "-------------------------" >> "${data_plot}"
 }
 
 function plot
@@ -73,11 +74,17 @@ function plot
     python3 "${py_plot}" "${data_plot}" $name target "${label}"
 }
 
+function print
+{
+  if [[ $go == *"ok"* ]];then cat "${data_plot}"; fi 
+  
+}
+
 set_csv_host
 set_csv_reference
 aggregate
-cat "${data_plot}"
-plot
+print
+#plot
 
 
 

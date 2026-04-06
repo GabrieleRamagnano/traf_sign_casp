@@ -40,7 +40,7 @@ function run_test
                     $args --q=1 \
                     $const_h$horizon \
                     $const_b$zero \
-                    > "${asp_output}" #2>/dev/null 
+                    > "${asp_output}" 2>/dev/null 
         fi
     done
     
