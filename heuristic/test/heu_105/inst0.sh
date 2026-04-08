@@ -1,13 +1,14 @@
 #!/bin/bash
 rm -r results.txt
+rm -r results_inst.txt
 echo "--------------------------------------------"
 bash ./compare.sh opdhphse OPT_dhphase OPT_clingcon "900" 
 echo "--------------------------------------------"
 bash ./compare.sh opdhctrphs OPT_dhctrphs OPT_clingcon "900"
 echo "--------------------------------------------"
-bash ./compare.sh opdhextphs OPT_dhextphs OPT_clingcon "900"  
+bash ./compare.sh opdhextphs OPT_dhextphs OPT_clingcon "900"  "ok"
 echo "--------------------------------------------"
-bash ./compare.sh opdhctrphs OPT_dhctrphs OPT_dhphase "900"
-echo "--------------------------------------------"
-bash ./compare.sh opdhextphs OPT_dhextphs OPT_dhphase "900" "ok"
-echo "--------------------------------------------"
+#bash ./compare.sh opdhctrphs OPT_dhctrphs OPT_dhphase "900"
+#echo "--------------------------------------------"
+#bash ./compare.sh opdhextphs OPT_dhextphs OPT_dhphase "900" "ok"
+#echo "--------------------------------------------"

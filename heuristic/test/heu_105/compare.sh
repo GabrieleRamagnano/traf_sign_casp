@@ -25,6 +25,7 @@ declare -g csv_ref_dot  # dot-reference: after dot-conversion
 # aggregate over horizons
 declare horizon_s=("600" "660" "720" "780" "840" "900")
 declare -g data_plot="./results.txt" # data for the plotter
+declare -g data_plot_inst="./results_inst.txt" # data for the plotter
 
 ### -- DOT CONVERSION -- ###
 function set_csv_host
@@ -63,10 +64,10 @@ function aggregate
     if [[ $inst900 == "900" ]]; then
       echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
       for k in "p01" "p02" "p03" "p04" "p05"; do
-          python3 $args $name "900" $k  >> "${data_plot}"
+          python3 $args $name "900" $k  >> "${data_plot_inst}"
       done
     fi
-    echo "-------------------------" >> "${data_plot}"
+    echo "-------------------------" >> "${data_plot_inst}"
 }
 
 function plot
@@ -84,7 +85,7 @@ set_csv_host
 set_csv_reference
 aggregate
 print
-#plot
+plot
 
 
 
