@@ -82,7 +82,7 @@ def collect_data(file,target,name,opt):
                  n_inst = re.search(r'\[\d+',line).group()
                  hrz = re.search(r'\(\d\d\d',line).group()
                  data = re.search(r'\: \d+\.\d+',line).group()
-                 horizon.append(hrz[1:-1]+' ('+n_inst[1:]+')')
+                 horizon.append(hrz[1:]+' ('+n_inst[1:]+')')
                  #horizon.append(hrz)
                  exp_data.append(float(data[2:]))
             if re.search(r'\-{10}',line) != None and len(exp_data) > 0:
