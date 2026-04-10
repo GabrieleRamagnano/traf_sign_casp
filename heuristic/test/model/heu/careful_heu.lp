@@ -26,20 +26,20 @@ counter(0,L,_),
 stage_fill(S,L), 
 optimal_conf(C,S).
 
-promising_conf_2(J,C,A) :- 
+promising_conf_2(J,T,C,A) :- 
 configuration(J,C,_,A), 
-change_out(L,_,_),
+change_out(L,T,_),
 optimal_conf_empty(A,L).
 
-promising_conf_1(J,C,A) :- 
+promising_conf_1(J,T,C,A) :- 
 configuration(J,C,_,A), 
-change_in(L,_,_),
+change_in(L,T,_),
 optimal_conf_fill(A,L).
 
 
 change_in(L,T,J) :- 
 &sum{occupancy(T,L1)} > (C*80/100),
-time(T),
+time_step(J,CF,T),
 capacity(L1,C),
 link(J,L,_),
 link(_,L1,J),
@@ -48,7 +48,7 @@ goal_count(L1,_).
 
 change_out(L,T,J) :- 
 &sum{occupancy(T,L2)} < (C*20/100),
-time(T),
+time_step(J,CF,T),
 capacity(L2,C),
 link(_,L,J),
 link(J,L2,_),
@@ -56,9 +56,11 @@ goal_count(L,_),
 goal_count(L2,_).
 
 #heuristic change(J,C,T,A). [3, false]
-#heuristic promising_conf_1(J,C,A) : change_in(_,_,J). [1, true]
-#heuristic promising_conf_2(J,C,A) : change_out(_,_,J). [1, true]
+#heuristic promising_conf_1(J,T,C,A) : change_in(_,T,J). [1, true]
+#heuristic promising_conf_2(J,T,C,A) : change_out(_,T,J). [1, true]
 
 #show change/4.
 #show promising_conf_1/3.
 #show promising_conf_2/3.
+#show change_in/3.
+#show change_out/3.
