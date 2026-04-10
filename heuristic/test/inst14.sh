@@ -4,7 +4,7 @@ declare pkg="./packgs0.csv"
 declare inst="./inst13.sh"
 
 tail -n +2 "${pkg}" | while IFS=',' read -r name package label _tail _runtl ;do
-    if [[ "${name}" == "OPT_DHctrphs" ]]; then
+    if [[ "${name}" == "OPT_hphase105" ]]; then
 	echo "${name}"
 	  { export tag="${name}" 
 	    bash "${inst}" move
@@ -15,7 +15,7 @@ done
 
 
 tail -n +2 "${pkg}" | while IFS=',' read -r name package label _tail _runtl ;do
-    if [[ "${name}" == "OPT_DHextphs" ]]; then
+    if [[ "${name}" == "OPT_" ]]; then
        echo "${name}"
 	  { export tag="${name}" 
 	    bash "${inst}" move
