@@ -66,3 +66,7 @@ Name::OPT_DHextphsRnd
  ./model/constants.lp ./model/instance_random.lp ./model/enc_conf.lp ./model/enc_delta_sum.lp ./model/heu/extreme_heu.lp--OPT_DHextphsRnd
 Name::OPT_DHctrsingle
  ./model/constants.lp ./model/instance_fixed.lp ./model/enc_conf.lp ./model/enc_delta_sum.lp ./model/heu/careful_heu.lp--OPT_DHctrsingle
+Name::OPT_hphase105
+ ./model/instance_fixed.lp ./model/enc_clingcon.lp ./model/heu/heuristics.lp--OPT_hphase105
+Name::OPT_hphaseRnd
+ ./model/instance_random.lp ./model/enc_clingcon.lp ./model/heu/heuristics.lp--OPT_hphaseRnd

@@ -17,3 +17,5 @@ OPT_DHctrphsRnd,heu_105,OPT_dhctrphs,./heu0.sh,./heu2.sh
 OPT_DHextphs,heu_105,OPT_dhextphs,./heu0.sh,./heu2.sh
 OPT_DHextphsRnd,heu_105,OPT_dhextphs,./heu0.sh,./heu2.sh
 OPT_DHctrsingle,heu_105,OPT_dhctrsingle,./heu0.sh,./heu2.sh
+OPT_hphase105,heu_105,OPT_hphase,./heu0.sh,./heu2.sh
+OPT_hphaseRnd,heu_105,OPT_hphase,./heu0.sh,./heu2.sh
