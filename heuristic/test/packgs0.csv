@@ -19,3 +19,7 @@ OPT_DHextphsRnd,heu_105,OPT_dhextphs,./heu0.sh,./heu2.sh
 OPT_DHctrsingle,heu_105,OPT_dhctrsingle,./heu0.sh,./heu2.sh
 OPT_hphase105,heu_105,OPT_hphase,./heu0.sh,./heu2.sh
 OPT_hphaseRnd,heu_105,OPT_hphase,./heu0.sh,./heu2.sh
+OPT_DHplink105,heu_105,OPT_dhplink,./heu0.sh,./heu2.sh
+OPT_DHplinkRnd,heu_105,OPT_dhplink,./heu0.sh,./heu2.sh
+OPT_Hplink105,heu_105,OPT_hplink,./heu0.sh,./heu2.sh
+OPT_HplinkRnd,heu_105,OPT_hplink,./heu0.sh,./heu2.sh
