@@ -78,3 +78,7 @@ Name::OPT_DHplink105
  ./model/constants.lp ./model/instance_fixed.lp ./model/enc_conf.lp ./model/enc_delta_sum.lp ./model/heu/doria_encoding.lp--OPT_DHplink105
 Name::OPT_DHplinkRnd
  ./model/constants.lp ./model/instance_random.lp ./model/enc_conf.lp ./model/enc_delta_sum.lp ./model/heu/doria_encoding.lp--OPT_DHplinkRnd
+Name::OPT_DHchange105
+ ./model/constants.lp ./model/instance_fixed.lp ./model/enc_conf.lp ./model/enc_delta_sum.lp ./model/heu/change.lp--OPT_DHchange105
+Name::OPT_DHchangeRnd
+ ./model/constants.lp ./model/instance_random.lp ./model/enc_conf.lp ./model/enc_delta_sum.lp ./model/heu/change.lp--OPT_DHchangeRnd
