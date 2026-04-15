@@ -71,10 +71,10 @@ Name::OPT_hphase105
 Name::OPT_hphaseRnd
  ./model/instance_random.lp ./model/enc_clingcon.lp ./model/heu/heuristics.lp--OPT_hphaseRnd
 Name::OPT_Hplink105
- ./model/instance_fixed.lp ./model/enc_clingcon.lp ./model/heu/doria_encoding.lp--OPT_DHplink105
+ ./model/instance_fixed.lp ./model/enc_clingcon.lp ./model/doria_encoding.lp--OPT_Hplink105
 Name::OPT_HplinkRnd
- ./model/instance_random.lp ./model/enc_clingcon.lp ./model/heu/doria_encoding.lp--OPT_DHplinkRnd
+ ./model/instance_random.lp ./model/enc_clingcon.lp ./model/doria_encoding.lp--OPT_HplinkRnd
 Name::OPT_DHplink105
- ./model/constants.lp ./model/instance_fixed.lp ./model/enc_conf.lp ./model/enc_delta_sum.lp ./model/heu/doria_encoding.lp--OPT_DHplink105
+ ./model/constants.lp ./model/instance_fixed.lp ./model/enc_conf.lp ./model/enc_delta_sum.lp ./model/doria_encoding.lp--OPT_DHplink105
 Name::OPT_DHplinkRnd
- ./model/constants.lp ./model/instance_random.lp ./model/enc_conf.lp ./model/enc_delta_sum.lp ./model/heu/doria_encoding.lp--OPT_DHplinkRnd
+ ./model/constants.lp ./model/instance_random.lp ./model/enc_conf.lp ./model/enc_delta_sum.lp ./model/doria_encoding.lp--OPT_DHplinkRnd
