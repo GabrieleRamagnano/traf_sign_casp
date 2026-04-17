@@ -23,5 +23,5 @@ OPT_DHplink105,heu_105,OPT_dhplink,./heu0.sh,./heu2.sh
 OPT_DHplinkRnd,heu_105,OPT_dhplink,./heu0.sh,./heu2.sh
 OPT_Hplink105,heu_105,OPT_hplink,./heu0.sh,./heu2.sh
 OPT_HplinkRnd,heu_105,OPT_hplink,./heu0.sh,./heu2.sh
-OPT_DHchnage105,heu_105,OPT_dhchange,./heu0.sh,./heu2.sh
+OPT_DHchange105,heu_105,OPT_dhchange,./heu0.sh,./heu2.sh
 OPT_DHchangeRnd,heu_105,OPT_dhchange,./heu0.sh,./heu2.sh
