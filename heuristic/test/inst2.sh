@@ -10,6 +10,7 @@ declare help=$* # -h option about the script
 declare -a -g horizon_s
 declare -a -g time_slot_s
 declare -a -g day_s
+declare -a -g fixed_test_s
 declare -a -g instance_s
 declare -g muse
 declare -g args
@@ -22,7 +23,7 @@ declare utility="./${prefix_s[1]}0.sh"
 declare classic=" --config=crafty --time-limit=600 "
 declare -a -g option_s=("${classic}" "${classic} --heuristic=Domain ")
 declare -a -g cost_s=("--const horizon=" "--const bound=")
-declare -a -g instv2_s=("Instancesv2_round/" "Instancesv2/" "Instancesv2_round/random/" "Instancesv2_round/sipp/" "Instancesv2_round/sippv2/")
+declare -a -g instv2_s=("Instancesv2_round/" "Instancesv2/" "Instancesv2_round/random/" "Instancesv2_round/sipp/" "Instancesv2_round/sippv2/" "hull/")
 declare -a -g task_s=("../../Results_experiments/Task1/bounds.csv" "../../Results_experiments/Task2")
 
 function set_options
@@ -48,6 +49,7 @@ function set_instancev2
                -sipp)   export instance="${instv2_s[3]}"; echo $instance;;
                -sippv2) export instance="${instv2_s[4]}"; echo $instance;;
                -round) export instance="${instv2_s[0]}"; echo $instance;;
+               -hull)  export instance="${instv2_s[5]}"; echo $instance;;
                     *) export instance="${instv2_s[1]}"; echo $instance;;
     esac
 }
@@ -62,11 +64,18 @@ function set_task
 
 function complete_data
 {
+    
     horizon_s=("600" "660" "720" "780" "840" "900")
-    time_slot_s=("morn" "noon" "eve")
-    day_s=("26" "30")
-    muse="muse"
-    instance_s=("p01" "p02" "p03" "p04" "p05")
+    if [[ "${traffic}" == "time_division" ]]; then
+        time_slot_s=("morn" "noon" "eve")
+        day_s=("26" "30")
+        muse="muse"
+        instance_s=("p01" "p02" "p03" "p04" "p05")
+    else
+        ft="fixed-test-"
+        fixed_test_s=("${ft}5" "${ft}10" "${ft}14" "${ft}15" "${ft}17" "${ft}18")
+        instance_s=("p01" "p02" "p03" "p04" "p05" "p06" "p07")
+    fi
     resume
 }
 
@@ -148,13 +157,14 @@ function resume
     echo -e "\r${time_slot_s[@]:+time::}""${time_slot_s[@]:-time-empty}"
     echo -e "\r${day_s[@]:+day::}""${day_s[@]:-day-empty}"    
     echo -e "\r${muse:+muse::}""${muse:-muse-empty}"
+    echo -e "\r${fixed_test_s[@]:+fixed_test::}""${fixed_test_s[@]:-fixed_test-empty}"
     echo -e "\r${instance_s[@]:+instance::}""${instance_s[@]:-instance-empty}"
 }
 
 function set_parameters
 {
     resume
-    select opt in "horizon" "time" "day" "muse" "instance" "done"; do
+    select opt in "horizon" "time" "day" "muse" "fxd-test" "instance" "done"; do
            case "${opt}" in horizon) horizon_s=()
                                      insert "${opt}" horizon_s horz_s
                                      set_parameters;;
@@ -167,6 +177,9 @@ function set_parameters
                             muse) muse=""
                                   set_var muse "muse"
                                   set_parameters;; 
+                            fxd-test) fixed_test_s=()
+                                      insert "${opt}" fixed_test_s ftest_s
+                                      set_parameters;;
                             instance) instance_s=()
                                       insert "${opt}" instance_s inst_s
                                       set_parameters;;
@@ -185,12 +198,13 @@ function set_parameters
 
 function customize_data
 {
-
+    ft="fixed-test-"
     local -a horz_s=("600" "660" "720" "780" "840" "900")
     local -a time_s=("morn" "noon" "eve")
     local -a days=("26" "30")
     local ms="muse"
-    local -a inst_s=("p01" "p02" "p03" "p04" "p05")
+    local -a ftest_s=("${ft}5" "${ft}10" "${ft}14" "${ft}15" "${ft}17" "${ft}18")
+    local -a inst_s=("p01" "p02" "p03" "p04" "p05" "p06" "p07")
     set_parameters
 
 }
@@ -199,6 +213,15 @@ function prepare_parameters { export args
 }
 
 function check_muse { if [[ "${day}" == "" ]]; then return 1; fi; }
+function check_hull { if [[ "${instance}" != "hull"* ]]; then return 1; fi; }
+
+function run_hull_test
+{
+    for ft_n in "${fixed_test_s[@]}"; do
+        export fixtest="${ft_n}"
+        bash "${clingo_run}" execute
+    done
+}
 
 function run_experiment
 {
@@ -208,6 +231,7 @@ function run_experiment
             export horizon="${horz}"
             export day="${muse}"
             check_muse && bash "${clingo_run}" execute
+            check_hull && run_hull_test
             for day in "${day_s[@]}"; do
                 for time in "${time_slot_s[@]}"; do
                     export day="${day}"
@@ -489,7 +513,7 @@ function additional_export
                              additional_export;;
                              set_instance)
                              exp_view instv2_s "${messg}" && 
-                             preset "-round|-random|-sipp|-sippv2|-parallel|-parall3l" "${instv2_s[0]}|${instv2_s[2]}|${instv2_s[3]}|${instv2_s[4]}|both|three105" set_instancev2
+                             preset "-round|-random|-sipp|-sippv2|-hull|-parallel|-parall3l" "${instv2_s[0]}|${instv2_s[2]}|${instv2_s[3]}|${instv2_s[4]}|${instv2_s[5]}|both|three105" set_instancev2
                              additional_export;;
                              set_task) 
                              exp_view task_s "${messg}" &&
@@ -524,11 +548,13 @@ function set_script
 function see_services
 {
     local -a service_s=("total_run"
-                        "test_run")
+                        "test_run"
+                        "fhull_run")
     local traffic
     
     select srv in "${service_s[@]}" "done"; do
-           case "${srv}" in total_run) file_set #;traffic="complete_data"
+           case "${srv}" in total_run) file_set 
+                                       traffic="time_division"
                                        additional_export
                                        set_script
                                        service="total_run"
@@ -539,6 +565,11 @@ function see_services
                                       set_script
                                       service="test_run"
                                       see_services;;
+                            fhull_run) file_set
+                                       additional_export 
+                                       set_script
+                                       service="fhull_run"
+                                       see_services;;
                             done) echo "bye";;
                                *) echo "input not correct"
                                   see_services;;
@@ -572,7 +603,7 @@ function test_run
 function execute
 {
     local svr=$1
-    case "${svr}" in test_run | total_run) test_run;;
+    case "${svr}" in test_run | total_run | fhull_run) test_run;;
                      *) echo "error"; return 1;;
     esac
 }

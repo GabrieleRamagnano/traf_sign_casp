@@ -82,3 +82,9 @@ Name::OPT_DHchange105
  ./model/constants.lp ./model/instance_fixed.lp ./model/enc_conf.lp ./model/enc_delta_sum.lp ./model/heu/change.lp--OPT_DHchange105
 Name::OPT_DHchangeRnd
  ./model/constants.lp ./model/instance_random.lp ./model/enc_conf.lp ./model/enc_delta_sum.lp ./model/heu/change.lp--OPT_DHchangeRnd
+Name::OPT_ClingconHull
+ ./model/instance_fixed_hull.lp ./model/enc_clingcon.lp--OPT_ClingconHull
+Name::OPT_HphaseHull
+ ./model/instance_fixed_hull.lp ./model/enc_clingcon.lp ./model/heu/heuristics.lp--OPT_HphaseHull
+Name::OPT_HplinkHull
+ ./model/instance_fixed_hull.lp ./model/enc_clingcon.lp ./model/heu/doria_encoding.lp--OPT_HplinkHull

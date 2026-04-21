@@ -63,7 +63,7 @@ function aggregate
     # instance aggregation
     if [[ $inst900 == "900" ]]; then
       echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-      for k in "p01" "p02" "p03" "p04" "p05"; do
+      for k in "p01" "p02" "p03" "p04" "p05" "p06" "p07"; do
           python3 $args $name "900" $k  >> "${data_plot_inst}"
       done
     fi
