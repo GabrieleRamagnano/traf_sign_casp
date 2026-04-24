@@ -7,14 +7,12 @@ declare -a time_slot_s
 declare -a day_s
 declare -g root
 
-declare unknown="./inst20.sh"
-declare csv="./inst19.sh"
+declare unknown="./inst11.sh"
+declare csv="./inst17.sh"
 declare group_csv="./inst5.sh"
 declare utility="./aux0.sh"
 export test_name="heurate"
-### -- modified -- ###
-#export fst_line="Encoding,Horizon,Problem,counter wrac1_y_wrbc1,counter wrbc1_b_wrcc1,counter wrcc1_x_wrdc1,counter wrdc1_b_wrec1,counter wrec1_y_wrfc1,Total"
-export fst_line="Encoding,Horizon,Problem,counter n43121_d_n43221,counter n43221_d_n42111,counter n42111_d_n44121,counter n44121_h_n44131,counter n44131_h_n44151,counter n44151_h_n44211,counter n44211_d_n44221,Total"
+export fst_line="Encoding,Horizon,Problem,counter wrac1_y_wrbc1,counter wrbc1_b_wrcc1,counter wrcc1_x_wrdc1,counter wrdc1_b_wrec1,counter wrec1_y_wrfc1,Total"
 
 function set_root {
    root="./$1/result"
@@ -23,26 +21,30 @@ function set_root {
 function set_paths
 {
     set_root $1
+    dir1="/Instancesv2_round/random/fixlen4"
+    dir2="/Instancesv2_round/sipp/fixlen4"
+    dir3="/Instancesv2_round/sippv2/fixlen4"
 
     path1_s=("$root"
-             "/hull"
-             "/fixed-test-5")
+             "/Instancesv2_round"
+             "/random"
+             "/fixlen4")
     path2_s=("$root"
-             "/hull"
-             "/fixed-test-10")
+             "/Instancesv2_round"
+             "/sipp"
+             "/fixlen4")
     path3_s=("$root"
-             "/hull"
-             "/fixed-test-14")
-    path4_s=("$root"
-             "/hull"
-             "/fixed-test-15")
-    path5_s=("$root"
-             "/hull"
-             "/fixed-test-17")
-    path6_s=("$root"
-             "/hull"
-             "/fixed-test-18")
+             "/Instancesv2_round"
+             "/sippv2"
+             "/fixlen4")
 
+    time_slot_s=("morn" 
+                 "noon" 
+                 "eve")
+    day_s=("26" 
+           "30")
+
+    muse="/muse"
 }
 
 function search
@@ -67,20 +69,24 @@ function check_folder {
 function create_folders
 {
     local path1="" 
-    local path2="" 
-    local path3="" 
-    local path4="" 
-    local path5="" 
-    local path6="" 
+    local path2=""
+    local path3=""
 
     set_paths $1
     for dir in "${path1_s[@]}"; do path1="$path1""$dir"; check_folder $path1; done
     for dir in "${path2_s[@]}"; do path2="$path2""$dir"; check_folder $path2; done
     for dir in "${path3_s[@]}"; do path3="$path3""$dir"; check_folder $path3; done
-    for dir in "${path4_s[@]}"; do path4="$path4""$dir"; check_folder $path4; done
-    for dir in "${path5_s[@]}"; do path5="$path5""$dir"; check_folder $path5; done
-    for dir in "${path6_s[@]}"; do path6="$path6""$dir"; check_folder $path6; done
 
+    for scenario in {/26,/30}{morn,noon,eve}; do
+        check_folder "$path1""$scenario"
+        check_folder "$path2""$scenario"  
+        check_folder "$path3""$scenario"     
+    done
+
+    #muse
+    check_folder "$path1""$muse"
+    check_folder "$path2""$muse"
+    check_folder "$path3""$muse"
 }
 
 function delete_folders
@@ -129,6 +135,10 @@ function print_all
     bash "${csv}" print_all
 }
 
+#create_folders main_folder
+#delete_folders main_folder
+#files_cleaning main_folder
+#test_start main_folder
 
 shopt -s lastpipe
 "$@"

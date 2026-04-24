@@ -1,11 +1,18 @@
 #!/bin/bash
 
 #variable parameters
-declare task="../hull"
-declare to_csv="./inst18.sh"
+declare task="../Instancesv2_round"
+declare scenario
+declare to_csv="./inst15.sh"
+
+function set_scenario
+{
+    [[ "${day}" == "muse" ]] && scenario="${day}" || scenario="${day}${time_slot}"  
+}
 
 function run_csv
 {
+    export scenario
     bash "${to_csv}" "${test_name}_csv" "${label}"
 }
 
@@ -15,7 +22,7 @@ function set_output
 
     len="${#task}"
     asp_output="${problem%.pddl}"
-    asp_output="${dir}hull/${asp_output:len+1}_${label}_$horizon.txt"
+    asp_output="${dir}Instancesv2_round/${asp_output:len+1}_${label}_$horizon.txt"
     #echo $asp_output
 }
 
@@ -25,7 +32,7 @@ function run_test
     local -i zero=0
 
     find "${task}" -type f -name "*.pddl" | while read -r problem; do
-        if [[ "$problem" == *"$instance"*"$fixtest"*"$key"* ]]; then
+        if [[ "$problem" == *"$instance"*"$scenario"*"$key"* ]]; then
            asp_instance="${problem%.pddl}.lp"
            set_output
            #echo $horizon $asp_instance
@@ -42,6 +49,7 @@ function run_test
 
 function execute
 {
+    set_scenario
     run_test 
     run_csv    
 }
