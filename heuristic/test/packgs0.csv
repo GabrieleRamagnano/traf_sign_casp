@@ -31,4 +31,4 @@ OPT_HplinkHull,heu_hull,OPT_hplinkhull,./heu0.sh,./heu2.sh
 OPT_DHXplink105,heu_105,OPT_dhxplink,./heu0.sh,./heu2.sh
 OPT_DHXplinkRnd,heu_105,OPT_dhxplink,./heu0.sh,./heu2.sh
 OPT_DHXphase105,heu_105,OPT_dhxphase,./heu0.sh,./heu2.sh
-OPT_DHXphaseRnd,heu_105,OPT_dhphase,./heu0.sh,./heu2.sh
+OPT_DHXphaseRnd,heu_105,OPT_dhxphase,./heu0.sh,./heu2.sh
