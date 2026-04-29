@@ -32,3 +32,5 @@ OPT_DHXplink105,heu_105,OPT_dhxplink,./heu0.sh,./heu2.sh
 OPT_DHXplinkRnd,heu_105,OPT_dhxplink,./heu0.sh,./heu2.sh
 OPT_DHXphase105,heu_105,OPT_dhxphase,./heu0.sh,./heu2.sh
 OPT_DHXphaseRnd,heu_105,OPT_dhxphase,./heu0.sh,./heu2.sh
+OPT_CliNoTime105,heu_105,OPT_clinotime,./heu0.sh,./heu2.sh
+OPT_CliNoTimeRnd,heu_105,OPT_clinotime,./heu0.sh,./heu2.sh
