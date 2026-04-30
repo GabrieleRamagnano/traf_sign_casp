@@ -57,11 +57,12 @@ function calculate_improvement
               if [[ "$PROBLEM" == "$problem" && "$HOR" == "$hor" ]]; then
                  tot2=$(echo "$tot" | bc -l)
                  diff=$(echo "($tot2 - $tot1)*100/$tot1" | bc -l) ;echo $diff
+                 #diff=$(echo "$tot2 - $tot1" | bc -l) ;echo $diff
                  if (( $(echo "$diff > 0" | bc -l) )); then 
-                    echo "${enc},${hor},${PROBLEM},${l1},${l2},${l3},${l4},${l5},${TOT},${diff}" >> "${improv_inst2}"
+                    echo "${enc},${hor},${problem},${l1},${l2},${l3},${l4},${l5},${tot},${diff}" >> "${improv_inst2}"
                  elif (( $(echo "$diff < 0" | bc -l) )); then 
                       diff=$(echo "- $diff" | bc -l)
-                      echo "${enc},${hor},${problem},${l1},${l2},${l3},${l4},${l5},${tot},${diff}" >> "${improv_inst1}"
+                      echo "${enc},${hor},${PROBLEM},${l1},${l2},${l3},${l4},${l5},${TOT},${diff}" >> "${improv_inst1}"
                  fi
              fi
         done

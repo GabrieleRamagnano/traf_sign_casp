@@ -33,7 +33,7 @@ def plot(horizons, name1, name2, data1, data2,opt):
     
     print("tot: ",tot)
     
-
+    
     tmp1 = []
     tmp2 = []
 
