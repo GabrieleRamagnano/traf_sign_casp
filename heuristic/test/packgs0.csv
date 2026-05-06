@@ -34,3 +34,4 @@ OPT_DHXphase105,heu_105,OPT_dhxphase,./heu0.sh,./heu2.sh
 OPT_DHXphaseRnd,heu_105,OPT_dhxphase,./heu0.sh,./heu2.sh
 OPT_CliNoTime105,heu_105,OPT_clinotime,./heu0.sh,./heu2.sh
 OPT_CliNoTimeRnd,heu_105,OPT_clinotime,./heu0.sh,./heu2.sh
+OPT_Deltime,theory_delta,OPT_deltime,./tail0.sh,./tail2.sh
