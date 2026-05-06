@@ -13,7 +13,7 @@ declare go=$5
 ## -- python utilities -- ##
 declare -g py_dot="  ./inst0.py "   # dot-convertitor
 declare -g py_aggr=" ./inst1.py "   # results aggregator
-declare -g py_plot="./inst3.py"     # plotter
+declare -g py_plot="./inst6.py"     # plotter
 
 ## -- csv files -- ##
 declare -g csv_host     # host: experiment
@@ -46,7 +46,7 @@ function set_csv_reference
 
     # dot-conversion
     args="${py_dot}""${csv_ref}" 
-    python3 $args $label
+    python3 $args $label_ref
 }
 
 ### -- AGGREGATION PROCESS -- ###
@@ -85,7 +85,7 @@ set_csv_host
 set_csv_reference
 aggregate
 print
-#plot
+plot
 
 
 
