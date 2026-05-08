@@ -94,7 +94,6 @@ Name::OPT_DHXplinkRnd
  ./model/constants.lp ./model/instance_random.lp ./model/enc_conf.lp ./model/enc_delta_sum_extra.lp ./model/heu/doria_encoding.lp--OPT_DHXplinkRnd
 Name::OPT_DHXphase105
  ./model/constants.lp ./model/instance_fixed.lp ./model/enc_conf.lp ./model/enc_delta_sum_extra.lp ./model/heu/heuristics.lp--OPT_DHXphase105
-
 Name::OPT_DHXphaseRnd
  ./model/constants.lp ./model/instance_random.lp ./model/enc_conf.lp ./model/enc_delta_sum_extra.lp ./model/heu/heuristics.lp--OPT_DHXphaseRnd
 Name::OPT_CliNoTimeRnd
@@ -103,3 +102,7 @@ Name::OPT_CliNoTime105
  ./model/instance_fixed.lp ./model/enc_clingcon_outTime.lp--OPT_CliNoTime105
 Name::OPT_Deltime
  ./model/constants.lp ./model/enc_conf_time.lp ./model/enc_delta_sum.lp ./model/instance_fixed.lp--OPT_Deltime
+Name::OPT_DHXphs+105
+ ./model/constants.lp ./model/instance_fixed.lp ./model/enc_conf.lp ./model/enc_delta_sum_extra.lp ./model/heu/heuristics_countless.lp--OPT_DHXphs+105
+Name::OPT_DHXphs+Rnd
+ ./model/constants.lp ./model/instance_random.lp ./model/enc_conf.lp ./model/enc_delta_sum_extra.lp ./model/heu/heuristics_countless.lp--OPT_DHXphs+Rnd
