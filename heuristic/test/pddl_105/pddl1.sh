@@ -3,10 +3,10 @@
 #variable parameters
 declare task="../Instancesv2_round"
 declare scenario
-declare to_csv="./inst15.sh"
-declare ENHSP="../../../bin/enhsp-20.jar"
-declare PPS="../../../bin/pps.jar"
-declare DOMAIN="../../../pddl_encoding.pddl"
+declare to_csv="./inst21.sh"
+declare ENHSP="./../../bin/enhsp-20.jar"
+declare PPS="./../../bin/pps.jar"
+declare DOMAIN="./../../pddl_encoding.pddl"
 
 function set_scenario
 {
@@ -97,7 +97,7 @@ function run_test
 
     find "${task}" -type f -name "*.pddl" | \
     while read -r pddl_instance; do
-         if [[ "$pddl_instance" == *"$instance"*"$scenario"*"$key"* ]]; then
+        if [[ "$pddl_instance" == *"$instance"*"$scenario"*"$key"* ]]; then
             # Find links in goal
             links=()
             while IFS= read -r link; do
@@ -136,7 +136,7 @@ function run_test
                                        $args --q=1 \
                                        $const_h$horizon \
                                        $const_b$zero \
-                                       > "${asp_output}" 2>/dev/null 
+                                       >> "${asp_output}" 2>/dev/null 
         fi
     done    
 }
