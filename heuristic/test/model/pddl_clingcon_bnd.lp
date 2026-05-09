@@ -67,22 +67,6 @@ active(1..E-M,S) :- configuration(J,0,0,A), sub(J,M), range(S,A,M,E).
 % case 4: following cycles
 active(T+B..T+E,S) :- configuration(J,C,T,A), C>0, range(S,A,B,E).
 
-% time(T,J,TS):
-%    at time T the junction J is active from TS seconds
-% case 1: first cycle, no sub
-time(X,J,X-B) :- configuration(J,0,0,A), sub(J,0), range(S,A,B,E), X=B..E.
-% case 2: first cycle     ___.__.__.___
-%                            B  M  E
-time(X,J,M-B+X) :- configuration(J,0,0,A), sub(J,M), range(S,A,B,E), M>B, M<E, X=1..E-M.
-% case 3: first cycle     ___.__.__.___
-%                            M  B  E
-time(X,J,X+M-B) :- configuration(J,0,0,A), sub(J,M), range(S,A,B,E), M>0, M<B, X=B-M..E-M.
-% case 4: (first cycle)   ___|_____|___
-%                           B/M    E       begin=B-M+1 since time 0 is given in input
-time(X,J,X) :- configuration(J,0,0,A), sub(J,M), range(S,A,M,E), M>0, X=1..E-M.
-% case 5: following cycles
-time(T+X,J,X-B) :- configuration(J,C,T,A), C>0, range(S,A,B,E), X=B..E.
-
 
 turnrate_gez(S,L1,L2,R) :- turnrate(S,L1,L2,R).
 % add atoms for connections with missing turnrate 
@@ -177,9 +161,9 @@ domain(L,-O,C+I) :- capacity(L,C), max_in(L,I), max_out(L,O).
 &sum{counter(T-1,L) ; D} = counter(T,L) :- delta(T,O,L,D), last_delta_in(O,L).
 
 :- &sum{counter(horizon,L) } < B, counter(0,L,_), goal(B), B>0.
-%:- &sum{counter(horizon,L) : pddl_solution(L,_)} <= S, S=#sum{B,L : pddl_solution(L,B)}, pddl_solution(_,_).
+:- &sum{counter(horizon,L) : pddl_solution(L,_)} <= S, S=#sum{B,L : pddl_solution(L,B)}, pddl_solution(_,_).
 
-&maximize{counter(horizon,L) : counter(0,L,_)}.
+%&maximize{counter(horizon,L) : counter(0,L,_)}.
 
 #show.
 #show  sol(T-1,S,A1,A) : change(J,C,T,A), configuration(J,C-1,_,A1), active(T-1,S), status(J,S).
