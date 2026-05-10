@@ -66,7 +66,8 @@ def plot(horizons, name1, name2, data1, data2,opt):
     ax.spines['right'].set_visible(False)
     ax.spines['left'].set_visible(False)
     #ax.spines['bottom'].set_color("#DDDDDD")
-    ax.set_ylabel('PCUs',fontsize=13.5)
+    #ax.set_ylabel('PCUs',fontsize=13.5)
+    ax.set_ylabel('aggregated counter',fontsize=13.5)
     ax.set_xlabel('Horizon (# of instances)',fontsize=13.5)
     ax.set_axisbelow(True)
     ax.yaxis.grid(True, color="#CEC9C9",linestyle='--') 
@@ -90,7 +91,7 @@ def collect_data(file,target,name,opt):
 
     with open(file,'r') as f:
         for line in f:
-            if line.find('pddlplan') >= 0:
+            if line.find('pddl') >= 0:
                data = re.search(r'\: \d+\.\d+',line).group()
                cli_data.append(float(data[2:]))
             elif line.find(str(target)) >= 0:
@@ -103,8 +104,8 @@ def collect_data(file,target,name,opt):
             if re.search(r'\-{10}',line) != None and len(exp_data) > 0:
                #print(exp_data)
                #print(cli_data)
-               plot(horizon,target,'pddlplan',exp_data,cli_data,opt) if str(name) == "target" else \
-               plot(horizon,name,'pddlplan',exp_data,cli_data,opt) 
+               plot(horizon,target,'pddl',exp_data,cli_data,opt) if str(name) == "target" else \
+               plot(horizon,name,'pddl',exp_data,cli_data,opt) 
                horizon.clear()
                cli_data.clear()
                exp_data.clear()
