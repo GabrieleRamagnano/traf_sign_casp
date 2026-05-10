@@ -106,3 +106,11 @@ Name::OPT_DHXphs+105
  ./model/constants.lp ./model/instance_fixed.lp ./model/enc_conf.lp ./model/enc_delta_sum_extra.lp ./model/heu/heuristics_countless.lp--OPT_DHXphs+105
 Name::OPT_DHXphs+Rnd
  ./model/constants.lp ./model/instance_random.lp ./model/enc_conf.lp ./model/enc_delta_sum_extra.lp ./model/heu/heuristics_countless.lp--OPT_DHXphs+Rnd
+Name::PDDL_Clingcon105
+ ./model/instance_fixed.lp ./model/pddl_clingcon_bnd.lp--PDDL_Clingcon105
+Name::PDDL_ClingconRnd
+ ./model/instance_random.lp ./model/pddl_clingcon_bnd.lp--PDDL_ClingconRnd
+Name::PDDL_DHXplink105
+ ./model/constants.lp ./model/instance_fixed.lp ./model/enc_conf.lp ./model/pddl_delta_sum_extra_bnd.lp ./model/heu/doria_encoding.lp--PDDL_DHXplink105
+Name::PDDL_DHXplinkRnd
+ ./model/constants.lp ./model/instance_random.lp ./model/enc_conf.lp ./model/pddl_delta_sum_extra_bnd.lp ./model/heu/doria_encoding.lp--PDDL_DHXplinkRnd

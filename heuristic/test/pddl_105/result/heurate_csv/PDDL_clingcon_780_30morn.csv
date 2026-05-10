@@ -1,0 +1,6 @@
+Encoding,Horizon,Problem,counter wrac1_y_wrbc1,counter wrbc1_b_wrcc1,counter wrcc1_x_wrdc1,counter wrdc1_b_wrec1,counter wrec1_y_wrfc1,Total
+clingcon,780,./pddl_105/result/Instancesv2_round/sipp/fixlen4/30morn/p03[count=350]_PDDL_clingcon_780.txt,8620080,7084800,7965680,,,23670560
+clingcon,780,./pddl_105/result/Instancesv2_round/sipp/fixlen4/30morn/p04[count=350]_PDDL_clingcon_780.txt,8620080,7084800,7965680,7432500,,31103060
+clingcon,780,./pddl_105/result/Instancesv2_round/sipp/fixlen4/30morn/p05[count=350]_PDDL_clingcon_780.txt,8620080,7084800,7965680,7432500,7769100,38872160
+clingcon,780,./pddl_105/result/Instancesv2_round/sipp/fixlen4/30morn/p02[count=350]_PDDL_clingcon_780.txt,8620080,7084800,,,,15704880
+clingcon,780,./pddl_105/result/Instancesv2_round/sipp/fixlen4/30morn/p01[count=350]_PDDL_clingcon_780.txt,8620080,,,,,8620080

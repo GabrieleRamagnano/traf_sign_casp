@@ -1,0 +1,11 @@
+Encoding,Horizon,Problem,counter wrac1_y_wrbc1,counter wrbc1_b_wrcc1,counter wrcc1_x_wrdc1,counter wrdc1_b_wrec1,counter wrec1_y_wrfc1,Total
+clingcon,840,./pddl_105/result/Instancesv2_round/sipp/fixlen4/30noon/p03[count=350]_PDDL_clingcon_840.txt,25643820,17337600,17847740,,,60829160
+clingcon,840,./pddl_105/result/Instancesv2_round/sipp/fixlen4/30noon/p04[count=350]_PDDL_clingcon_840.txt,25643820,17337600,17847740,18075100,,78904260
+clingcon,840,./pddl_105/result/Instancesv2_round/sipp/fixlen4/30noon/p05[count=350]_PDDL_clingcon_840.txt,25643820,17337600,17847740,18075100,19963900,98868160
+clingcon,840,./pddl_105/result/Instancesv2_round/sipp/fixlen4/30noon/p02[count=350]_PDDL_clingcon_840.txt,25643820,17337600,,,,42981420
+clingcon,840,./pddl_105/result/Instancesv2_round/sipp/fixlen4/30noon/p01[count=350]_PDDL_clingcon_840.txt,25643820,,,,,25643820
+clingcon,840,./pddl_105/result/Instancesv2_round/sippv2/fixlen4/30noon/p03[count=350]_PDDL_clingcon_840.txt,25477760,17164800,17624240,,,60266800
+clingcon,840,./pddl_105/result/Instancesv2_round/sippv2/fixlen4/30noon/p04[count=350]_PDDL_clingcon_840.txt,25477760,17164800,17624240,17768800,,78035600
+clingcon,840,./pddl_105/result/Instancesv2_round/sippv2/fixlen4/30noon/p05[count=350]_PDDL_clingcon_840.txt,25477760,17164800,17624240,17768800,19634300,97669900
+clingcon,840,./pddl_105/result/Instancesv2_round/sippv2/fixlen4/30noon/p02[count=350]_PDDL_clingcon_840.txt,25477760,17164800,,,,42642560
+clingcon,840,./pddl_105/result/Instancesv2_round/sippv2/fixlen4/30noon/p01[count=350]_PDDL_clingcon_840.txt,25477760,,,,,25477760

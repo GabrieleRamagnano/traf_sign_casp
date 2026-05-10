@@ -1,0 +1,16 @@
+Encoding,Horizon,Problem,counter wrac1_y_wrbc1,counter wrbc1_b_wrcc1,counter wrcc1_x_wrdc1,counter wrdc1_b_wrec1,counter wrec1_y_wrfc1,Total
+clingcon,780,./pddl_105/result/Instancesv2_round/random/fixlen4/muse/p03[count=350]_PDDL_clingcon_780.txt,15174700,9088300,12806600,,,37069600
+clingcon,780,./pddl_105/result/Instancesv2_round/random/fixlen4/muse/p04[count=350]_PDDL_clingcon_780.txt,15174700,9088300,12806600,25357800,,62427400
+clingcon,780,./pddl_105/result/Instancesv2_round/random/fixlen4/muse/p05[count=350]_PDDL_clingcon_780.txt,15174700,9088300,12806600,25357800,28427300,90854700
+clingcon,780,./pddl_105/result/Instancesv2_round/random/fixlen4/muse/p02[count=350]_PDDL_clingcon_780.txt,15174700,9088300,,,,24263000
+clingcon,780,./pddl_105/result/Instancesv2_round/random/fixlen4/muse/p01[count=350]_PDDL_clingcon_780.txt,15174700,,,,,15174700
+clingcon,780,./pddl_105/result/Instancesv2_round/sipp/fixlen4/muse/p03[count=350]_PDDL_clingcon_780.txt,21742400,14888600,19017600,,,55648600
+clingcon,780,./pddl_105/result/Instancesv2_round/sipp/fixlen4/muse/p04[count=350]_PDDL_clingcon_780.txt,21742400,14888600,19017600,31269000,,86917600
+clingcon,780,./pddl_105/result/Instancesv2_round/sipp/fixlen4/muse/p05[count=350]_PDDL_clingcon_780.txt,21742400,14888600,19017600,31269000,32712100,119629700
+clingcon,780,./pddl_105/result/Instancesv2_round/sipp/fixlen4/muse/p02[count=350]_PDDL_clingcon_780.txt,21742400,14888600,,,,36631000
+clingcon,780,./pddl_105/result/Instancesv2_round/sipp/fixlen4/muse/p01[count=350]_PDDL_clingcon_780.txt,21742400,,,,,21742400
+clingcon,780,./pddl_105/result/Instancesv2_round/sippv2/fixlen4/muse/p03[count=350]_PDDL_clingcon_780.txt,21364900,14465300,18457200,,,54287400
+clingcon,780,./pddl_105/result/Instancesv2_round/sippv2/fixlen4/muse/p04[count=350]_PDDL_clingcon_780.txt,21364900,14465300,18457200,30940600,,85228000
+clingcon,780,./pddl_105/result/Instancesv2_round/sippv2/fixlen4/muse/p05[count=350]_PDDL_clingcon_780.txt,21364900,14465300,18457200,30940600,34360100,119588100
+clingcon,780,./pddl_105/result/Instancesv2_round/sippv2/fixlen4/muse/p02[count=350]_PDDL_clingcon_780.txt,21364900,14465300,,,,35830200
+clingcon,780,./pddl_105/result/Instancesv2_round/sippv2/fixlen4/muse/p01[count=350]_PDDL_clingcon_780.txt,21364900,,,,,21364900
