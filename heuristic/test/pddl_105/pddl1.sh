@@ -3,7 +3,11 @@
 #variable parameters
 declare task="../Instancesv2_round"
 declare scenario
+<<<<<<< HEAD
 declare to_csv="./inst15.sh"
+=======
+declare to_csv="./inst21.sh"
+>>>>>>> 96170727c8c15d20f7eed18d92214748220243d0
 declare ENHSP="./../../bin/enhsp-20.jar"
 declare PPS="./../../bin/pps.jar"
 declare DOMAIN="./../../pddl_encoding.pddl"
@@ -97,7 +101,7 @@ function run_test
 
     find "${task}" -type f -name "*.pddl" | \
     while read -r pddl_instance; do
-         if [[ "$pddl_instance" == *"$instance"*"$scenario"*"$key"* ]]; then
+        if [[ "$pddl_instance" == *"$instance"*"$scenario"*"$key"* ]]; then
             # Find links in goal
             links=()
             while IFS= read -r link; do
