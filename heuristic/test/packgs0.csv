@@ -37,3 +37,7 @@ OPT_CliNoTimeRnd,heu_105,OPT_clinotime,./heu0.sh,./heu2.sh
 OPT_Deltime,theory_delta,OPT_deltime,./tail0.sh,./tail2.sh
 OPT_DHXphs+105,heu_105,OPT_dhxphase_plus,./heu0.sh,./heu2.sh
 OPT_DHXphs+Rnd,heu_105,OPT_dhxphase_plus,./heu0.sh,./heu2.sh
+PDDL_Clingcon105,pddl_105,PDDL_clingcon,./pddl0.sh,./pddl1.sh
+PDDL_ClingconRnd,pddl_105,PDDL_clingcon,./pddl0.sh,./pddl1.sh
+PDDL_DHXplink105,pddl_105,PDDL_dhxplink,./pddl0.sh,./pddl1.sh
+PDDL_DHXplinkRnd,pddl_105,PDDL_dhxplink,./pddl0.sh,./pddl1.sh
