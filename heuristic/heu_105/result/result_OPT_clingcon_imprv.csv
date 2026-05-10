@@ -1,0 +1,22 @@
+Encoding,Horizon,Problem,counter wrac1_y_wrbc1,counter wrbc1_b_wrcc1,counter wrcc1_x_wrdc1,counter wrdc1_b_wrec1,counter wrec1_y_wrfc1,Total,Diff
+clingcon,600,./heu_105/result/Instancesv2_round/sippv2/fixlen4/26eve/p01[count=350],196.8534,,,,,197.089,.11953990329242119042
+clingcon,600,./heu_105/result/Instancesv2_round/sippv2/fixlen4/30morn/p03[count=350],70.047,57.6,68.5508,,,196.2476,.02537610651034713290
+clingcon,600,./heu_105/result/Instancesv2_round/sipp/fixlen4/muse/p04[count=350],176.163,121.533,145.785,237.102,,688.14,1.09817769639898857790
+clingcon,600,./heu_105/result/Instancesv2_round/sippv2/fixlen4/muse/p01[count=350],170.552,,,,,171.715,.67728503625192906851
+clingcon,660,./heu_105/result/Instancesv2_round/sippv2/fixlen4/30morn/p01[count=350],76.6998,,,,,77.3558,.84802949487950483350
+clingcon,660,./heu_105/result/Instancesv2_round/sipp/fixlen4/muse/p04[count=350],197.381,128.889,157.473,260.185,,745.914,.26625053290325694382
+clingcon,660,./heu_105/result/Instancesv2_round/sippv2/fixlen4/muse/p01[count=350],189.82,,,,,191.477,.86537808718540608010
+clingcon,720,./heu_105/result/Instancesv2_round/sipp/fixlen4/26eve/p01[count=350],223.275,,,,,223.498,.09977717921413167008
+clingcon,720,./heu_105/result/Instancesv2_round/sippv2/fixlen4/26eve/p01[count=350],222.052,,,,,223.5538,.67178459950132809194
+clingcon,720,./heu_105/result/Instancesv2_round/sipp/fixlen4/muse/p04[count=350],211.623,143.263,174.285,290.495,,825.81,.74399680313873651324
+clingcon,780,./heu_105/result/Instancesv2_round/sipp/fixlen4/muse/p04[count=350],220.633,154.519,192.044,300.375,,872.677,.58509620397925005471
+clingcon,780,./heu_105/result/Instancesv2_round/sippv2/fixlen4/muse/p01[count=350],211.753,,,,,213.649,.88743687075530426072
+clingcon,840,./heu_105/result/Instancesv2_round/sippv2/fixlen4/26eve/p01[count=350],250.754,,,,,252.794,.80698117835075199569
+clingcon,840,./heu_105/result/Instancesv2_round/sipp/fixlen4/26morn/p01[count=350],224.2504,,,,,224.5386,.12835209625427432076
+clingcon,840,./heu_105/result/Instancesv2_round/sippv2/fixlen4/30morn/p04[count=350],97.3918,80.064,93.594,87.173,,358.3376,.03203682784056152633
+clingcon,840,./heu_105/result/Instancesv2_round/sippv2/fixlen4/30morn/p05[count=350],97.3918,80.064,93.594,87.173,90.875,449.2126,.02555582813126791189
+clingcon,840,./heu_105/result/Instancesv2_round/sippv2/fixlen4/muse/p01[count=350],230.994,,,,,232.067,.46236647175169239917
+clingcon,900,./heu_105/result/Instancesv2_round/sippv2/fixlen4/30morn/p03[count=350],101.9186,82.944,98.488,,,284.5296,.41436813603927324257
+clingcon,900,./heu_105/result/Instancesv2_round/sippv2/fixlen4/30morn/p04[count=350],101.9186,82.944,98.488,92.337,,376.3156,.16688120290522104318
+clingcon,900,./heu_105/result/Instancesv2_round/sippv2/fixlen4/30morn/p05[count=350],101.9186,82.944,98.488,92.337,95.819,472.1346,.13301291623193894283
+clingcon,900,./heu_105/result/Instancesv2_round/sippv2/fixlen4/muse/p01[count=350],241.426,,,,,242.932,.61992656381209556583
