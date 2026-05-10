@@ -25,4 +25,8 @@ function group_all
     done
 }
 
+<<<<<<< HEAD
 "$@"
+=======
+"$@"
+>>>>>>> 3ee35799943d5ec622b962a61da434bd0bee294d
