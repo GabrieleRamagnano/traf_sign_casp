@@ -1,0 +1,14 @@
+pddl_solution(link(wrac1,y,wrbc1),15456780). pddl_solution(link(wrbc1,b,wrcc1),13190399). pddl_solution(link(wrcc1,x,wrdc1),13877519). pddl_solution(link(wrdc1,b,wrec1),13515599).
+clingcon version 5.2.1
+Reading from ...d/sipp/fixlen4/30eve/p04[count=350].lp ...
+Solving...
+Answer: 1 (Time: 14.434s)
+
+Assignment:
+
+SATISFIABLE
+
+Models       : 1+
+Calls        : 1
+Time         : 21.304s (Solving: 21.16s 1st Model: 14.28s Unsat: 0.00s)
+CPU Time     : 14.589s

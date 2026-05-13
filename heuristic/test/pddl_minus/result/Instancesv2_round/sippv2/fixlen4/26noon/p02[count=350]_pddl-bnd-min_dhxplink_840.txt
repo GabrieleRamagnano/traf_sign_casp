@@ -1,0 +1,14 @@
+pddl_solution(link(wrac1,y,wrbc1),26026600). pddl_solution(link(wrbc1,b,wrcc1),16531199).
+clingcon version 5.2.1
+Reading from ...ippv2/fixlen4/26noon/p02[count=350].lp ...
+Solving...
+Answer: 1 (Time: 15.374s)
+
+Assignment:
+
+SATISFIABLE
+
+Models       : 1+
+Calls        : 1
+Time         : 22.525s (Solving: 22.32s 1st Model: 15.15s Unsat: 0.00s)
+CPU Time     : 17.851s
