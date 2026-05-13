@@ -103,7 +103,7 @@ main() {
             asp_instance="${pddl_instance%.pddl}.lp"
             clingcon_output="${pddl_instance%.pddl}_pddl-bnd-min_dhxplink_$hor.txt"
             echo $asp_facts > $clingcon_output
-            echo $asp_facts | clingcon $asp_instance ./../../model/constants.lp ./../../model/pddl_delta_sum_extra_bnd_minus.lp ./../../model/heu/doria_encoding.lp - --const horizon=$hor --const bound=0 --config=crafty --time-limit=600 --heuristic=Domain --q=1  >> $clingcon_output 2>/dev/null
+            echo $asp_facts | clingcon $asp_instance ./../../model/constants.lp ./../../model/instance_fixed.lp ./../../model/enc_conf.lp ./../../model/pddl_delta_sum_extra_bnd_minus.lp ./../../model/heu/doria_encoding.lp - --const horizon=$hor --const bound=0 --config=crafty --time-limit=600 --heuristic=Domain --q=1  >> $clingcon_output 2>/dev/null
             
         #done
     done
