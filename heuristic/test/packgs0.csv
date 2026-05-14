@@ -44,5 +44,7 @@ PDDL_DHXplinkRnd,pddl_105,PDDL_dhxplink,./pddl0.sh,./pddl1.sh
 PDDL_TEST70,pddl_70,asp_bound,./pddl70.sh,./pddl71.sh
 PDDL_ClingconComb,pddl_combo,pddl-bnd_clingcon,./pddl0.sh,
 PDDL_DHXplinkComb,pddl_combo,pddl-bnd_dhxplink,./pddl0.sh,
+PDDL_DHXplinkmin,pddl_minus,pddl-bnd-min_dhxplink,./pddl0m.sh,
+CAFE_DHXplink,pddl_cafe,cafe-bnd_dhxplink,./pddl0c.sh,
 PDDL_TEST,pddl_105,asp_bound,./pddl0.sh,./pddl1.sh
 
