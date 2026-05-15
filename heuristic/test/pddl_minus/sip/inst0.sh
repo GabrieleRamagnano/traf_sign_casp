@@ -9,6 +9,12 @@ function exe_heulink
 {
     for hrz in "${horizon_s[@]}"; do
         bash "${heulink}" "${sipp}" "${hrz}" 
+    done
+}
+
+function exe_heulinkv2
+{
+    for hrz in "${horizon_s[@]}"; do
         bash "${heulink}" "${sippv2}" "${hrz}" 
     done
 }
@@ -16,6 +22,7 @@ function exe_heulink
 function execute
 {
     exe_heulink &
+    exe_heulinkv2 &
 }
 
 "$@"
