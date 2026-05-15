@@ -26,42 +26,42 @@ def sum_tot_values(enc,
     print(name+'['+str(n_instances)+']'+'('+horizon+key+')'+": "+str(sum))
         
 
-def comparison(csv_clingcon,
-               csv_second,
-	            name,
-               refe,
+def comparison(csv_reference,
+               csv_test,
+               name_ref,
+	            name_test,
                horizon,
 	            key,
-               enc1,
-               enc2):
+               enc_ref,
+               enc_test):
     
-    with open(csv_clingcon,'r') as f:
-         sum_tot_values(enc1,refe,f,horizon,key)
+    with open(csv_reference,'r') as f:
+         sum_tot_values(enc_ref,name_ref,f,horizon,key)
 
-    with open(csv_second,'r') as f:
-         sum_tot_values(enc2,name,f,horizon,key)
+    with open(csv_test,'r') as f:
+         sum_tot_values(enc_test,name_test,f,horizon,key)
          
 def main():
     if len(sys.argv) != 9:
        print("Missed: clingo.csv other.csv")
        sys.exit(1)
-    csv_clingcon = Path(sys.argv[1])
-    csv_second = Path(sys.argv[2])
-    name = sys.argv[3]
-    refe = sys.argv[4]
+    csv_reference = Path(sys.argv[1])
+    csv_test  = Path(sys.argv[2])
+    name_ref  = sys.argv[3]
+    name_test = sys.argv[4]
     horizon = sys.argv[5]
     key = sys.argv[6]
-    enc1 = sys.argv[7]
-    enc2 = sys.argv[8]
-    comparison(csv_clingcon,
-               csv_second,
-	            name,
-               refe,
+    enc_ref  = sys.argv[7]
+    enc_test = sys.argv[8]
+    comparison(csv_reference,
+               csv_test,
+               name_ref,
+	            name_test,
                horizon,
 	            key,
-               enc1,
-               enc2)
-
+               enc_ref,
+               enc_test)
+    
 if __name__ == "__main__":
     main()
 

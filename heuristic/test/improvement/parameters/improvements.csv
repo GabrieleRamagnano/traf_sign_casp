@@ -1,4 +1,4 @@
-tag,dir_in,dir_out,dotunknowncsv,unknownscsv,script_diff,script_get
-tag_,home_,dir_,dotunkn_csv,unkn_csv,diff,get
-PDDL_TEST70,./result/unknown,./result/improve,./parameters/dotunknown.csv,./parameters/unknowns.csv,./sh/inst3.sh,./sh/get0.sh
+tag,dir_in,dir_out,dotunknowncsv,unknownscsv,file_record,script_diff,script_get
+tag_,home_,dir_,dotunkn_csv,unkn_csv,record,diff,get
+PDDL_TEST70,./result/unknown,./result/improve,./parameters/dotunknown.csv,./parameters/unknowns.csv,./parameters/imprvs_results.csv,./sh/inst3.sh,./sh/get0.sh
 ,,,,,,

@@ -1,4 +1,5 @@
 workload,module,function
 unknown,./parameters/dotunknown.csv,create_dotunkw
 improve,./parameters/improvements.csv,improvement
+aggrega,./parameters/aggregations.csv,aggregate
 ,,

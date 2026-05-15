@@ -1,0 +1,4 @@
+tag,name__test,name_reference,encoding_test,encoding_reference,result_horizons,result_instances,improvements,results_aggregator,script_get
+tag_,name_test,name_ref,enc_test,enc_ref,result_hor,result_inst,imprvs,py_aggr,get
+PDDL_TEST70,clingcon,pddl+,clingcon,pddl,./result/aggregate/results.txt,./result/aggregate/results_inst.txt,./parameters/imprvs_results.csv,./py/inst1.py,./sh/get0.sh
+,,,,,,

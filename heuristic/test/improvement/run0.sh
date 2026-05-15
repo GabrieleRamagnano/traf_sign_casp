@@ -78,7 +78,7 @@ function execute
 
     tail -n +2 "${module_func}" | 
     while IFS=',' read -r request module function; do
-          if [[ "${request}" == "improve" ]]; then
+          if [[ "${request}" == "aggrega" ]]; then
              export_parameters "${module}" "${function}" "${name_test1}"
              #export_parameters "${module}" "${function}" "${name_test2}"
           fi
