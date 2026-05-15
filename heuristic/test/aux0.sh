@@ -42,8 +42,22 @@ function search
 {
     local place=$1
     local item=$2
-
+    
     ls "${place}" | 
+    while read -r line; do
+          if [[ "${line}" == *"${item}"* ]]; then
+             return 0   
+          fi
+    done
+    return 1
+}
+
+function search3
+{
+    local place=$1
+    local item=$2
+    
+    tree -i -f "${place}" | 
     while read -r line; do
           if [[ "${line}" == *"${item}"* ]]; then
              return 0   
@@ -176,6 +190,7 @@ function aux
     get_parameters "${commas:-unset}" param_s
     case "${func}" in split_line) split_line $2 input;;
                       search) search "${param_s[0]}" "${param_s[1]}";;
+                      search3) search3 "${param_s[0]}" "${param_s[1]}";;
                       set_output) set_output "${param_s[0]}" "${param_s[1]}";;
                       compose) compose param_s;;
                       reorder_result) reorder_result "${param_s[0]}" "${param_s[1]}";;

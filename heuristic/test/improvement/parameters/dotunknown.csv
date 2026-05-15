@@ -1,0 +1,4 @@
+tag,root,dir_in,dir_out,encoding_test,encoding_reference,double_encoding,file_record,script_unknw,script_split,script_record
+tag_,root_,home_,dir_,enc_test,enc_ref,double_enc,record,unknw,split,enc_record
+PDDL_TEST70,./../pddl_70,./result,./result/unknown,clingcon,pddl,true,./parameters/unknowns.csv,./sh/inst4.sh,./sh/split0.sh,./sh/inst5.sh
+,,,,,,,,,,,

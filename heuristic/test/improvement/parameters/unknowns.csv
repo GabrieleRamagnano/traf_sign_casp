@@ -1,0 +1,4 @@
+name,label,dotcsv,dotunknowncsv
+PDDL_TEST70,clingcon_asp_bound,./../pddl_70/result/result_clingcon_asp_bound_dot.csv,./result/unknown/result_clingcon_asp_bound_dotunkw.csv
+PDDL_TEST70,pddl_asp_bound,./../pddl_70/result/result_pddl_asp_bound_dot.csv,./result/unknown/result_pddl_asp_bound_dotunkw.csv
+,,,
