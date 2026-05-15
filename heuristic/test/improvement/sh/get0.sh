@@ -50,16 +50,24 @@ function add_file
     check_file || echo "${tag_},${i_test},${i_ref}" >> "${record}"
 }
 
+function check_comparison
+{
+    local -n _dotunkw=$1
+
+    if [[ "${compare}" == "all" ]]; then _dotunkw="${unk_csv}";
+    elif [[ "${compare}" == "peer" ]]; then _dotunkw="${dot_csv}"; fi
+}
+
 function check_double
 {
     if [[ "${double_encoding}" == "true" ]]; then
         tail -n +2 "${unkn_csv}" | 
         while IFS=',' read -r name_ lb dot_csv unk_csv; do
               if [[ "${name_}" == "${tag_}" && "${lb}" == "${encoding_test}_${label}" ]]; then
-                 dotunkw_test="${unk_csv}"
+                 check_comparison dotunkw_test
                  imprv_test="${dir_}/result_${lb}_imprv.csv"
               elif [[ "${name_}" == "${tag_}" && "${lb}" == "${encoding_reference}_${label}" ]]; then
-                   dotunkw_ref="${unk_csv}"
+                   check_comparison dotunkw_ref
                    imprv_ref="${dir_}/result_${lb}_imprv.csv"
               fi
         done
@@ -76,8 +84,9 @@ function get_parameters
               check_double
           fi
     done
-    echo "${dotunkw_test},${dotunkw_ref},${imprv_test},${imprv_ref}"
     add_file "${imprv_test}" "${imprv_ref}"
+    echo "${dotunkw_test},${dotunkw_ref},${imprv_test},${imprv_ref}"
+    
     
 }
 

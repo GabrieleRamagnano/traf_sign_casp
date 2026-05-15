@@ -5,7 +5,14 @@ import matplotlib.pyplot as plt # type: ignore
 import numpy as np
 import math
 
-def plot(horizons, name1, name2, data1, data2,opt):
+def plot(horizons, 
+         name1, 
+         name2, 
+         data1, 
+         data2,
+         opt,
+         name_figure,
+         place):
 
     traffic_results = {
         name1: data1,
@@ -49,7 +56,7 @@ def plot(horizons, name1, name2, data1, data2,opt):
     ax.spines['left'].set_visible(False)
     #ax.spines['bottom'].set_color("#DDDDDD")
     #ax.set_ylabel('PCUs',fontsize=13.5)
-    ax.set_ylabel('aggregated counter',fontsize=13.5)
+    ax.set_ylabel('Improvement',fontsize=13.5)
     ax.set_xlabel('Horizon (# of instances)',fontsize=13.5)
     ax.set_axisbelow(True)
     ax.yaxis.grid(True, color="#CEC9C9",linestyle='--') 
@@ -58,14 +65,20 @@ def plot(horizons, name1, name2, data1, data2,opt):
     ax.set_xticks(x + width, horizons)
     #ax.legend(loc='upper left',title='Encoding', ncols=2,alignment='left')
     #ax.set_ylim(0, 17000)
-    ax.set_ylim(0, major.pop()+(lmt/(2)))
+    ax.set_ylim(0, major.pop()+(lmt/(2/3)))
     #plt.xticks(fontsize=13.5,weight='bold')
     #plt.yticks(fontsize=13.5,weight='bold') 
     plt.legend(loc='upper left',title='Encoding',fontsize=14.5)
-    plt.savefig('plot/'+str(name1)+'.jpg',dpi=300)
+    plt.savefig(str(place)+'/'+str(name_figure)+'.jpg',dpi=300)
     #plt.show()
 
-def collect_data(file,target,name,opt,enc):
+def collect_data(file,
+                 target,
+                 name,
+                 opt,
+                 enc,
+                 name_fig,
+                 place):
     
     horizon = []
     exp_data = []
@@ -83,8 +96,8 @@ def collect_data(file,target,name,opt,enc):
                  horizon.append(hrz[1:]+' ('+n_inst[1:]+')')
                  exp_data.append(float(data[2:]))
             if re.search(r'\-{10}',line) != None and len(exp_data) > 0:
-               plot(horizon,target,enc,exp_data,cli_data,opt) if str(name) == "target" else \
-               plot(horizon,name,enc,exp_data,cli_data,opt) 
+               plot(horizon,target,enc,exp_data,cli_data,opt,name_fig,place) if str(name) == "target" else \
+               plot(horizon,name,enc,exp_data,cli_data,opt,name_fig,place) 
                horizon.clear()
                cli_data.clear()
                exp_data.clear()
@@ -96,7 +109,7 @@ def collect_data(file,target,name,opt,enc):
             
         
 def main():
-    if len(sys.argv) != 6:
+    if len(sys.argv) != 8:
        print("Missed: file target")
        sys.exit(1)
     file = Path(sys.argv[1])
@@ -104,7 +117,15 @@ def main():
     flag = Path(sys.argv[3]) 
     tag = Path(sys.argv[4]) 
     name_ref = Path(sys.argv[5]) 
-    collect_data(file,name_test,flag,tag,name_ref)
+    name_fig = Path(sys.argv[6]) 
+    place = Path(sys.argv[7])
+    collect_data(file,
+                name_test,
+                flag,
+                tag,
+                name_ref,
+                name_fig,
+                place)
 
 if __name__ == "__main__":
     main()

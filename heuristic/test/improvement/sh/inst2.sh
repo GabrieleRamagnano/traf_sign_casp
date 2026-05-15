@@ -57,6 +57,7 @@ function create_dotunkw
              bash "${unknw}"          
              add_dot "${lb}"
              csv_="${csv_dot%'_'${label}'_dot.csv'}_${lb}_dot.csv"
+             echo $csv_
              bash "${enc_record}" add_file "${csv_}" "${lb}"
         done
     else
@@ -73,7 +74,7 @@ function create_dotunkw
 
 function improvement
 {
-    split_line "$(bash "${get}" get_parameters)" arg_s #;echo "${arg_s[@]}"
+    split_line "$(bash "${get}" get_parameters)" arg_s ;echo "${arg_s[@]}"
     export dotunkw_test="${arg_s[0]}"
     export dotunkw_ref="${arg_s[1]}"
     export imprv_test="${arg_s[2]}"
@@ -135,14 +136,16 @@ function plot
     split_line "$(bash "${get}" get_name_plot)" arg_s #;echo "${arg_s[@]}"
     name_test="${arg_s[2]}"
     name_ref="${arg_s[3]}"
-
+    
     echo "${py_plot}" "${data_plot}" "${name_test}" target "${tag_}" "${name_ref}"
     python3 "${py_plot}" \
             "${data_plot}" \
             "${name_test}" \
             target \
             "${tag_}" \
-            "${name_ref}" 
+            "${name_ref}" \
+            "${name_plot}" \
+            "${place}"
   
 
 }

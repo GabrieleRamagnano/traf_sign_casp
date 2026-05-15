@@ -1,6 +1,4 @@
 #!/bin/bash
-declare unknown_inst=$1
-declare dotunkw_inst=$2
 declare task="../../../Results_experiments/Task1/bounds.csv" 
 declare utility="../aux0.sh"
 
@@ -22,13 +20,10 @@ function is_there
 {
     local -n _asp_output=$1
     local inst_=$2
-    local -i len
-
-    len="${#home_}"
-    echo "${root_}/${home_}${inst_:len+2}"
-    if  search "${root_}" "${root_}/${home_}${inst_:len+2}"; then
-        _asp_output="${root_}/${home_}${inst_:len+2}"
-        echo "${_asp_output}"
+ 
+    echo "${root_}/${inst_:2}"
+    if  search "${root_}" "${root_}/${inst_:2}"; then
+        _asp_output="${root_}/${inst_:2}" ;echo "${_asp_output}"
         return 0
     else
         return 1
@@ -37,8 +32,8 @@ function is_there
 
 function clean_file
 {
-    bash "${utility}" search ".,${unknown_inst}" && rm -r "${unknown_inst}"
-    bash "${utility}" search ".,${dotunkw_inst}" && rm -r "${unknown_inst}"; printf "$fst_line"$'\n' > "${dotunkw_inst}" 
+    bash "${utility}" search3 ".,${unknown_inst}" && rm -r "${unknown_inst}"
+    bash "${utility}" search3 ".,${dotunkw_inst}" && { rm -r "${dotunkw_inst}"; printf "$fst_line"$'\n' > "${dotunkw_inst}"; } 
 }
 
 function unknown
@@ -51,20 +46,23 @@ function unknown
 
 
     clean_file 
-    for sufx in "random/" "sipp/" "sippv2/"; do
-        tail -n +2 $task | while IFS=',' read -r HORIZON PROBLEM MIN; do
-        if [[ "$PROBLEM" == *"_round"* ]]; then
-               problem="./Instancesv2_round/${sufx}${PROBLEM:len}" #;cat "${root_}/${home_}/${problem}_${label}_$HORIZON.txt"
-               is_there asp_output "${home_}/${problem}_${label}_$HORIZON.txt" &&
-               tail -n +1 "${asp_output}" | while read -r line; do    
-                       if [[ "${line}" == *"UNKNOWN"* ]]; then
-                          echo "${asp_output}" >> "${unknown_inst}"
-                          echo "clingcon,${HORIZON},${root_:3}${home_:1}${problem:1},,,,,,0" >> "${dotunkw_inst}"
-                       fi
-               done
-        fi
+    if [[ "${encoding}" == "clingcon" ]]; then 
+        for sufx in "random/" "sipp/" "sippv2/"; do
+            tail -n +2 $task | 
+            while IFS=',' read -r HORIZON PROBLEM MIN; do
+                  if [[ "$PROBLEM" == *"_round"* ]]; then
+                         problem="./Instancesv2_round/${sufx}${PROBLEM:len}" #;echo "${root_}/${home_:2}/${problem:2}_${label}_$HORIZON.txt"
+                         is_there asp_output "${home_}/${problem:2}_${label}_$HORIZON.txt" &&
+                         tail -n +1 "${asp_output}" | while read -r line; do    
+                                 if [[ "${line}" == *"UNKNOWN"* ]]; then
+                                    echo "${asp_output}" >> "${unknown_inst}"
+                                    echo "${encoding},${HORIZON},${root_:3}${home_:1}${problem:1},,,,,,0" >> "${dotunkw_inst}"
+                                 fi
+                         done
+                  fi
+            done
         done
-    done
+    fi
  
 }
 
