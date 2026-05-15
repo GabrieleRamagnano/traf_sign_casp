@@ -96,6 +96,32 @@ function get_improvements
     echo "${imprv_test},${imprv_ref}"
 }
 
+function add_data
+{
+    add_file $1 $2
+}
+
+function get_data_plot
+{
+    imprvs="${data_aggr}"
+    get_improvements
+}
+
+function get_name_plot
+{
+    local test
+    local ref
+    tail -n +2 "${name_aggr}" |
+    while IFS=',' read -r name test_ ref_ w x y z a b c d; do
+          if [[ "${name}" == "${tag_}" ]]; then
+              test="${test_}"
+              ref="${ref_}"
+          fi
+    done
+    echo "${test},${ref}"
+
+}
+
 shopt -s lastpipe
 "$@"
 

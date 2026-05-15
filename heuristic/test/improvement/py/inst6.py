@@ -100,11 +100,11 @@ def main():
        print("Missed: file target")
        sys.exit(1)
     file = Path(sys.argv[1])
-    target = Path(sys.argv[2])
-    name = Path(sys.argv[3]) 
-    opt = Path(sys.argv[4]) 
-    enc = Path(sys.argv[5]) 
-    collect_data(file,target,name,opt,enc)
+    name_test = Path(sys.argv[2])
+    flag = Path(sys.argv[3]) 
+    tag = Path(sys.argv[4]) 
+    name_ref = Path(sys.argv[5]) 
+    collect_data(file,name_test,flag,tag,name_ref)
 
 if __name__ == "__main__":
     main()

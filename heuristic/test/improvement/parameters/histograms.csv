@@ -1,0 +1,3 @@
+tag,data,names,script_plot,script_get
+tag_,data_aggr,name_aggr,py_plot,get
+PDDL_TEST70,./parameters/histogr_data.csv,./parameters/aggregations.csv,./py/inst6.py,./sh/get0.sh

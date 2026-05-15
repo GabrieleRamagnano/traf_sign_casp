@@ -7,10 +7,6 @@ declare horizon_s=("600" "660" "720" "780" "840" "900")
 # aggregate over instance
 declare inst900="900"
 
-#variable parameters
-## -- python utilities -- ##
-declare -g py_plot="./inst6.py"   # plotter
-
 function split_line
 {
     local line=$1 
@@ -90,6 +86,7 @@ function aggregate
 {
     bash "${utility}" search3 ".,${result_hor}" && rm -r "${result_hor}"  
     bash "${utility}" search3 ".,${result_inst}" && rm -r "${result_inst}"
+    bash "${get}" add_data "${result_hor}" "${result_inst}"
 
     split_line "$(bash "${get}" get_improvements)" arg_s #;echo "${arg_s[@]}"
     csv_test_dot="${arg_s[0]}"
@@ -132,12 +129,22 @@ function aggregate
 
 function plot
 {
-    nam="cling"
-    refe="pddl"
-    lb_pair
-    echo "${py_plot}" "${data_plot}" "${nam}" target "${label_s[1]}" "${refe}"
-    python3 "${py_plot}" "${data_plot}" "${nam}" target "${label_s[1]}" "${refe}"
-    
+
+    split_line "$(bash "${get}" get_data_plot)" arg_s #;echo "${arg_s[@]}"
+    data_plot="${arg_s[0]}"
+    split_line "$(bash "${get}" get_name_plot)" arg_s #;echo "${arg_s[@]}"
+    name_test="${arg_s[2]}"
+    name_ref="${arg_s[3]}"
+
+    echo "${py_plot}" "${data_plot}" "${name_test}" target "${tag_}" "${name_ref}"
+    python3 "${py_plot}" \
+            "${data_plot}" \
+            "${name_test}" \
+            target \
+            "${tag_}" \
+            "${name_ref}" 
+  
+
 }
 
 shopt -s lastpipe
