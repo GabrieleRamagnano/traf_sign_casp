@@ -73,12 +73,13 @@ function export_parameters
 
 function execute
 {
-    local name_test1="PDDL_DHXplinkmin"
-    local name_test2=""
+    local name_test1=$1
+    local procedure=$2
+    #local name_test2=""
 
     tail -n +2 "${module_func}" | 
     while IFS=',' read -r request module function; do
-          if [[ "${request}" == "aggrega" ]]; then
+          if [[ "${request}" == "${procedure}" ]]; then
              export_parameters "${module}" "${function}" "${name_test1}"
              #export_parameters "${module}" "${function}" "${name_test2}"
           fi
@@ -86,4 +87,4 @@ function execute
 }
 
 shopt -s lastpipe
-execute 
+"$@" 

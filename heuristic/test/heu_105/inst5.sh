@@ -1,11 +1,14 @@
 #!/bin/bash 
 
 #input parameters
-declare name1=$1
-declare name2=$2
+declare target1=$1
+declare target2=$2
 declare lb1=$3
 declare lb2=$4
-declare label_ref=$3
+declare label_ref=$5
+declare figure=$6
+declare name1=$7
+declare name2=$8
 
 #variable parameters
 
@@ -32,7 +35,17 @@ declare -g data_plot_inst="./results_inst.txt" # data for the plotter
 
 function plot
 {
-    python3 "${py_plot}" "${data_plot}" $name1 $name2 target "${lb1}" "${lb2}"
+    python3 "${py_plot}" \
+            "${data_plot}" \
+            "${target1}" \
+            "${target2}"\
+            target \
+            "${lb1}" \
+            "${lb2}" \
+            "${figure}" \
+            "${name1}" \
+            "${name2}" 
+
 }
 
 

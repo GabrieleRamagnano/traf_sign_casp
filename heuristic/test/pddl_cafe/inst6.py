@@ -104,8 +104,8 @@ def collect_data(file,target,name,opt):
             if re.search(r'\-{10}',line) != None and len(exp_data) > 0:
                #print(exp_data)
                #print(cli_data)
-               plot(horizon,target,'pddl',exp_data,cli_data,opt) if str(name) == "target" else \
-               plot(horizon,name,'pddl',exp_data,cli_data,opt) 
+               plot(horizon,target,'cafe',exp_data,cli_data,opt) if str(name) == "target" else \
+               plot(horizon,name,'cafe',exp_data,cli_data,opt) 
                horizon.clear()
                cli_data.clear()
                exp_data.clear()
