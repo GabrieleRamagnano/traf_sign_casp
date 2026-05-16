@@ -1,4 +1,4 @@
-# How to execute your favourite CASP model using &ldquo;this stuff&rdquo;...
+# How to execute 
 
 ## Preliminaries
 The framework is divided into three parts:
