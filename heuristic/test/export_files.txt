@@ -114,3 +114,7 @@ Name::PDDL_DHXplink105
  ./model/constants.lp ./model/instance_fixed.lp ./model/enc_conf.lp ./model/pddl_delta_sum_extra_bnd.lp ./model/heu/doria_encoding.lp--PDDL_DHXplink105
 Name::PDDL_DHXplinkRnd
  ./model/constants.lp ./model/instance_random.lp ./model/enc_conf.lp ./model/pddl_delta_sum_extra_bnd.lp ./model/heu/doria_encoding.lp--PDDL_DHXplinkRnd
+Name::OPT_Deltime105
+ ./model/constants.lp ./model/enc_conf_time.lp ./model/enc_delta_sum.lp ./model/instance_fixed.lp--OPT_Deltime105
+ Name::OPT_DeltimeRnd
+ ./model/constants.lp ./model/enc_conf_time.lp ./model/enc_delta_sum.lp ./model/instance_random.lp--OPT_DeltimeRnd
