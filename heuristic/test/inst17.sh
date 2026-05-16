@@ -1,6 +1,4 @@
 #!/bin/bash
-declare get_result="./inst15.sh"
-
 horizon_s=("600" "660" "720" "780" "840" "900")
 time_slot_s=("morn" "noon" "eve")
 day_s=("26" "30")

@@ -8,7 +8,8 @@ declare -a day_s
 declare -g root
 
 declare group_csv="./inst5.sh"
-declare csv="./inst12.sh"
+declare csv="./inst17.sh"
+declare get_result="./inst4.sh"
 declare utility="./aux0.sh"
 export test_name="delta"
 export fst_line="Encoding,Horizon,Problem,counter wrac1_y_wrbc1,counter wrbc1_b_wrcc1,counter wrcc1_x_wrdc1,counter wrdc1_b_wrec1,counter wrec1_y_wrfc1,Total"
@@ -115,6 +116,7 @@ function print_all
 {
     set_root $1
     export dir="${root}/"
+    export get_result
     bash "${csv}" print_all
 }
 
