@@ -43,6 +43,7 @@ function search
     local place=$1
     local item=$2
     
+    
     ls "${place}" | 
     while read -r line; do
           if [[ "${line}" == *"${item}"* ]]; then
