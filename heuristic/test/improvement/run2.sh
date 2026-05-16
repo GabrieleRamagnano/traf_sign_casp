@@ -1,8 +1,7 @@
 #!/bin/bash
 declare run="./run0.sh"
-declare -a tag_s=("PDDL_DHXplinkComb"
-                  "CAFE_DHXplink"
-                  "PDDL_ClingconComb")
+declare -a tag_s=("OPTCAFE_DHXplink"
+                  "OPTFIRE_DHXplink")
 declare -a wload_s=("improve"
                     "aggrega"
                     "plotter")

@@ -56,7 +56,7 @@ function export_parameters
     while IFS=',' read -r "${arg_s[@]}"; do
           if [[ "${tag}" == "${name}" ]]; then
              for var in "${exp_var_s[@]}"; do
-                 declare -n value="${arg_s[idx]}"; echo "${var}"=${value}
+                 declare -n value="${arg_s[idx]}";echo "${var}"=${value}
                  export "${var}"=${value}
                  ((idx++))
              done

@@ -55,6 +55,8 @@ def plot(horizons,
         #ax.bar_label(rects, padding=2)
         multiplier += 1
         c += 1
+        
+    
 
     # Add some text for labels, title and custom x-axis tick labels, etc.
     #ax.spines['top'].set_visible(False)

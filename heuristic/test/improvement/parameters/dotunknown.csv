@@ -5,4 +5,6 @@ PDDL_DHXplinkComb,./../pddl_combo,./result,./result/unknown,clingcon,pddl,true,.
 PDDL_DHXplinkmin,./../pddl_minus,./result,./result/unknown,clingcon,pddl,true,./parameters/unknowns.csv,./sh/inst1.sh,./sh/split0.sh,./sh/inst5.sh
 CAFE_DHXplink,./../pddl_cafe,./result,./result/unknown,clingcon,pddl,true,./parameters/unknowns.csv,./sh/inst1.sh,./sh/split0.sh,./sh/inst5.sh
 PDDL_ClingconComb,./../pddl_combo,./result,./result/unknown,clingcon,pddl,true,./parameters/unknowns.csv,./sh/inst1.sh,./sh/split0.sh,./sh/inst5.sh
+OPTCAFE_DHXplink,./../heu_105,./result,./result/unknown,clingcon,cafe,true,./parameters/unknowns.csv,./sh/inst1.sh,./sh/split0.sh,./sh/inst5.sh
+OPTFIRE_DHXplink,./../heu_105,./result,./result/unknown,clingcon,pddl,true,./parameters/unknowns.csv,./sh/inst1.sh,./sh/split0.sh,./sh/inst5.sh
 ,,,,,,,,,,

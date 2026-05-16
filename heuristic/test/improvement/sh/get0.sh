@@ -77,6 +77,7 @@ function check_double
 
 function get_parameters
 {
+ 
     tail -n +1 "${dotunkn_csv}" | read -r line; split_line "${line}" arg_s  #;echo "${arg_s[@]}"
     tail -n +2 "${dotunkn_csv}" | 
     while IFS=',' read -r "${arg_s[@]}"; do
@@ -133,9 +134,5 @@ function get_name_plot
 
 shopt -s lastpipe
 "$@"
-
-
-
-
 
 

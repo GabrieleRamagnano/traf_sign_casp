@@ -9,3 +9,9 @@ CAFE_DHXplink,clingcon_cafe-bnd_dhxplink,./../pddl_cafe/result/result_clingcon_c
 CAFE_DHXplink,pddl_cafe-bnd_dhxplink,./../pddl_cafe/result/result_pddl_cafe-bnd_dhxplink_dot.csv,./result/unknown/result_pddl_cafe-bnd_dhxplink_dotunkw.csv
 PDDL_ClingconComb,clingcon_pddl-bnd_clingcon,./../pddl_combo/result/result_clingcon_pddl-bnd_clingcon_dot.csv,./result/unknown/result_clingcon_pddl-bnd_clingcon_dotunkw.csv
 PDDL_ClingconComb,pddl_pddl-bnd_clingcon,./../pddl_combo/result/result_pddl_pddl-bnd_clingcon_dot.csv,./result/unknown/result_pddl_pddl-bnd_clingcon_dotunkw.csv
+OPTCAFE_DHXplink,clingcon_opt-dhxplink,./../heu_105/result/result_clingcon_opt-dhxplink_dot.csv,./../heu_105/result/result_clingcon_opt-dhxplink_dot.csv
+OPTCAFE_DHXplink,cafe_opt-dhxplink,./../heu_105/result/result_cafe_opt-dhxplink_dot.csv,./../heu_105/result/result_cafe_opt-dhxplink_dot.csv
+OPTFIRE_DHXplink,clingcon_optpddl-dhxplink,./../heu_105/result/result_clingcon_optpddl-dhxplink_dot.csv,./../heu_105/result/result_clingcon_optpddl-dhxplink_dot.csv
+OPTFIRE_DHXplink,pddl_optpddl-dhxplink,./../heu_105/result/result_pddl_optpddl-dhxplink_dot.csv,./../heu_105/result/result_pddl_optpddl-dhxplink_dot.csv
+,,,
+
