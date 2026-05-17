@@ -1,6 +1,6 @@
-# How to execute 
+# How to execute Heuristic Experiments
 
-## Preliminaries
+## Structure
 The framework is divided into three parts:
 
 - **Model**: it contains all the .lp files that you want to test.
@@ -9,7 +9,7 @@ The framework is divided into three parts:
 
 ## Model
 
-You can load all your .lp files into the folder ./model. You are free to create other directories inside or just put your encodings anywhere, as long as they are in this folder, otherwise you won't be able to access them.
+You can load all your .lp files into the folder `./model`. You are free to create other directories inside or just put your encodings anywhere, as long as they are in this folder, otherwise you won't be able to access them.
 
 
 ## Tail
@@ -24,46 +24,46 @@ THE PREVIOUS MOVED SCRIPTS...otherwise problems will occur when multiple experim
 
 In the current setting the **Tail** is structured as follow:
 
-1. The file ./packgs0.csv contains all the informations you'll want to give about your *tail* scripts:
+1. The file `./packgs0.csv` contains all the informations you'll want to give about your *tail* scripts:
 
-```bash
+```
 name,package_test,label,tail,run_tail
 OPT_Aggrel1,theory_delta,OPT_aggrel1,./tail0.sh,./tail2.sh
 OPT_Heurate,heu_volume,OPT_heurate,./heu0.sh,./heu2.sh
 OPT_Heuphase,heu_volume,OPT_heuphase,./heu0.sh,./heu2.sh
 BND_DHphase,heu_volume,BND_dhphase,./heu0.sh,./heu1.sh
 ```
-1. **name**: it is the name of the experiment. It must match at most one of the tags in ./export_files.txt.
+1. **name**: it is the name of the experiment. It must match at most one of the tags in `./export_files.txt`.
 2. **package_test**: it is the folder containing your **tail** scripts (less the file used as API interface).
 3. **label**: it is the code name assign to the experiment result of the same type.
 4. **tail**: this script manages internally the folder **package_test** and adds an extra level of interface.
-5. **run_tail**: the code for running the instaces of each task. For TASK_1, set the suffix number to '1' (e.g. ./heu1.sh), for TASK_2 set it to '2' (e.g. ./heu2.sh).
+5. **run_tail**: the code for running the instaces of each task. For TASK_1, set the suffix number to '1' (e.g. `./heu1.sh`), for TASK_2 set it to '2' (e.g. ./heu2.sh).
 
 
-2. The file ./inst13.sh represents the **Tail** interface:
+2. The file `./inst13.sh` represents the **Tail** interface:
 
 - the function **get_tails** select from the file ./packgs0.csv the experiment you want to test and
 fills the internal variables
 
-```bash
+```
 pack_test="${package}"
 label="${_label}"
 tail="${_tail}"
 test_run="${runtail}"
 ```
-with the fildes specified before, in order to choose the correct folder, upload the .sh files 
+with the fildes specified before, in order to choose the correct folder, upload the `.sh` files 
 from it (like *tail*, *tail_run*) and set the label for the results;
 
 - all these parameters are used by the functions **move**, **execute** and **delete**.
 
 ## Manager
 
-The file manager that represents the link between **Model** and **Tail** is ./inst2.sh.
+The file manager that represents the link between **Model** and **Tail** is `./inst2.sh`.
 Here we show an example of execution.
 
-1. You cannot access directly to ./inst2.sh script. Run ./info to open it!
+1. You cannot access directly to `./inst2.sh` script. Run ./info to open it!
 
-```bash
+```
 (base) amministratore@Gabris-MacBook-Air test % bash ./info.sh 
 1) aux0.sh           3) inst11.sh        5) inst13.sh        7) inst2.sh         9) inst5.sh
 2) create_file.sh    4) inst12.sh        6) inst14.sh        8) inst4.sh        10) exit
@@ -78,7 +78,7 @@ bash filename -h
 2. If you choose the option 'total_run', you will run all the problem instances. Select 'test_run' 
 if you desire to customise your instance set.
 
-```bash
+```
 #? 2
 1) total_run
 2) test_run
@@ -87,7 +87,7 @@ if you desire to customise your instance set.
 
 3. Select your .lp encodings...
 
-```bash
+```
 #? 2
 1) ./model/constants.lp               9) ./model/enc_conf.lp              17) ./model/heu/max_volume.lp
 2) ./model/dates/activation.lp       10) ./model/enc_counter.lp           18) ./model/heu/min_volume.lp
@@ -128,7 +128,7 @@ Are you sure of your choices?[y/n]y
 ```
 ...and give them a name (it is the TAG!!!).
 
-```bash
+```
 Do you want to save this file set?[y/n]y
 How do you call this file set?
 Name: MyTest
@@ -140,7 +140,7 @@ There are also these additional packages:
 2) clingo_options      4) set_instance        6) done
 #? 
 ```
-Now, if you check the file ./export_file.sh, the tag **Name::MyTest** has been added.
+Now, if you check the file `./export_file.sh`, the tag **Name::MyTest** has been added.
 
 ```txt
 ...
@@ -154,10 +154,10 @@ Name::MyTest
  ./model/enc_clingcon.lp ./model/enc_conf.lp--MyTest
 ```
 
-This allow you to select in your following runs the same files setting without repeat the 
+This allow you to select in your following runs the same files set without repeat the 
 procedure again:
 
-```bash
+```
 #? 2
 1) ./model/constants.lp               9) ./model/enc_conf.lp              17) ./model/heu/max_volume.lp
 2) ./model/dates/activation.lp       10) ./model/enc_counter.lp           18) ./model/heu/min_volume.lp
@@ -228,7 +228,7 @@ There are also these additional packages:
 
 4. Here a possible sequence of choices for setting the parameters:
 
-```bash
+```
 There are also these additional packages:
 1) clingo_constants    3) traffic_parameters  5) set_task
 2) clingo_options      4) set_instance        6) done
@@ -328,7 +328,7 @@ instance::p01
 Write '-parallel' if you want to execute Instancesv2/ and Instancesv2_round/ concurrently.
 By default the choice is set to Instancesv2/.
 
-```bash
+```
 #? 6
 bye
 There are also these additional packages:
@@ -343,7 +343,7 @@ digit -round|-parallel for selecting Instancesv2_round/|both:
 
 Same reasoning with '-bound'...
 
-```bash
+```
 There are also these additional packages:
 1) clingo_constants    3) traffic_parameters  5) set_task
 2) clingo_options      4) set_instance        6) done
@@ -362,7 +362,7 @@ bye
 
 5. Here it comes to select the **Tail** interface.
 
-```bash
+```
 Choose the script for testing your code:
 1) aux0.sh           3) info.sh          5) inst12.sh        7) inst14.sh        9) inst4.sh        11) done
 2) create_file.sh    4) inst11.sh        6) inst13.sh        8) inst2.sh        10) inst5.sh
@@ -375,4 +375,4 @@ Continue?[y/n]y
 #?
 ```
 
-6. Once pressed 3, the work is...done!
+6. Once pressed 3, the work is done!

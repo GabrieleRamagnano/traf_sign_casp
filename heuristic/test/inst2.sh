@@ -673,7 +673,8 @@ function prompt
     local -a input
 
     case "${help}" in -h) show_cmd;;
-                       *) echo "not available to be run independently";;
+                       *) echo "Not available to be run independently"
+                          echo "Run 'bash ./info' and then select this script";;
     esac 
 }
 
